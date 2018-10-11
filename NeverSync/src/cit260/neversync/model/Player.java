@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Player implements Serializable{
     
     // class instance variables
-    private String name;
+        private String name;
 	private Double time;
 	private ArrayList<Game> games = new ArrayList<Game>();
 

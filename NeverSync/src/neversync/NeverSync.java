@@ -5,17 +5,24 @@
  */
 package neversync;
 
+import cit260.neversync.model.Player;
+//import cit260.neversync.model.Game;
+
+
 /**
  *
- * @author Langstons
+ * @author jeffledbetter
  */
 public class NeverSync {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+	
+	public static void main(String[] args) {
+	
+		Player playerOne = new Player();
+		
+		playerOne.setName("Fred Flinstone");
+		playerOne.setTime(7.00);
+		
+		System.out.println(playerOne.toString());
+	}
+	
 }
