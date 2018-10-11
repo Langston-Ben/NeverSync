@@ -133,9 +133,6 @@ public class Game implements Serializable{
     @Override
     public String toString() {
         return "Game{" + "thePlayer=" + thePlayer + ", theMap=" + theMap + ", theStorehouse=" + theStorehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + '}';
-    }
-    
-    
-    
+    } 
     
 }
