@@ -7,6 +7,7 @@ package cit260.neversync.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +17,17 @@ public class Player implements Serializable{
     
     // class instance variables
     private String name;
+    private ArrayList<Game> games = new ArrayList<Game>();
 
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(ArrayList<Game> games) {
+        this.games = games;
+    }
+    
+    
     public Player() {
     }
      
