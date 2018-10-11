@@ -5,6 +5,7 @@
  */
 package neversync;
 
+import cit260.neversync.model.Condition;
 import cit260.neversync.model.Player;
 //import cit260.neversync.model.Game;
 
@@ -21,8 +22,24 @@ public class NeverSync {
 		
 		playerOne.setName("Fred Flinstone");
 		playerOne.setTime(7.00);
+                
+                String playerOneName = playerOne.getName();
+                double playerOneTime = playerOne.getTime();
+                
+                System.out.println("Name = " + playerOneName +
+                        ", time = " + playerOneTime);
 		
 		System.out.println(playerOne.toString());
+                
+
+                String conditionName = Condition.Fair.getName();
+                String conditionDesc = Condition.Fair.getDescription();
+
+                
+                System.out.println("The condition of the item is " + conditionName + ". " + "Meaning " + conditionDesc);
+
 	}
 	
+        
+        
 }

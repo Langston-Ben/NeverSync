@@ -12,9 +12,9 @@ import java.awt.Point;
  */
 public enum Condition {
     
-    Good("Good", "The item is in good condition", new Point (1, 1)),
-    Fair("Fair", "The item is in fair condition", new Point (0, 1)),
-    Poor("Poor", "The item is in poor condition", new Point (1, 2));
+    Good("Good", "The item is in good condition.", new Point (1, 1)),
+    Fair("Fair", "The item is in fair condition.", new Point (0, 1)),
+    Poor("Poor", "The item is in poor condition.", new Point (1, 2));
     
  private String name;
  private String description;
