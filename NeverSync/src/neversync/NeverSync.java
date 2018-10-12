@@ -6,6 +6,7 @@
 package neversync;
 
 import cit260.neversync.model.Condition;
+import cit260.neversync.model.Game;
 import cit260.neversync.model.Player;
 //import cit260.neversync.model.Game;
 
@@ -37,6 +38,35 @@ public class NeverSync {
 
                 
                 System.out.println("The condition of the item is " + conditionName + ". " + "Meaning " + conditionDesc);
+                
+                
+                Game gameOne = new Game();
+                gameOne.setThePlayer("Jimmy Page");
+                gameOne.setTheMap("Main Map");
+                gameOne.setTheStorehouse("The Main Storehouse");
+                gameOne.setCurrentPopulation(200000);
+                gameOne.setAcresOwned(500);
+                gameOne.setWheatInStorage(20000);
+                
+                String gameOneName = gameOne.getThePlayer();
+                String gameOneTheMap = gameOne.getTheMap();
+                String gameOneTheStorehouse = gameOne.getTheStorehouse();
+                int gameOneCurrentPopulation = gameOne.getCurrentPopulation();
+                int gameOneAcresOwned = gameOne.getAcresOwned();
+                int gameOneWheatInStorage = gameOne.getWheatInStorage();
+                
+                
+                System.out.println("The Player's Name is: " + gameOneName + 
+                "\nThe current map is: " + gameOneTheMap + "\nThe current storehouse is: "
+                + gameOneTheStorehouse + "\nThe current population is " 
+                + gameOneCurrentPopulation + "\nThe current acres owned is " 
+                + gameOneAcresOwned + "\nThe current wheat is storage is: " 
+                + gameOneWheatInStorage + " bushels.");
+                
+            
+                
+                
+                
 
 	}
 	
