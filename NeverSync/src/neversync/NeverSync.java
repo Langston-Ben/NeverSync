@@ -17,17 +17,14 @@ import cit260.neversync.model.Scene;
 
 /**
  *
- * @author Ben Langston
+ * @author Ben Langston, Jeff Ledbetter, Scott Moscarello
  */
+
 public class NeverSync {
     
-	public static void main(String[] args) {
-	
-            // testTeamClasses
-            // testBenClasses
-            // testJeffClasses
-            
-//            public static void testTeamClasses() {
+    public static void testTeamClasses() {
+        
+            // test code for the player class
         
             Player playerOne = new Player();
 		
@@ -37,19 +34,7 @@ public class NeverSync {
                 String playerOneName = playerOne.getName();
                 double playerOneTime = playerOne.getTime();
                 
-                System.out.println("Name = " + playerOneName +
-                        ", time = " + playerOneTime);
-		
-		System.out.println(playerOne.toString());
-                
-                // test code for Condition (enum)
-                
-                String conditionName = Condition.Fair.getName();
-                String conditionDesc = Condition.Fair.getDescription();
-
-                
-                System.out.println("\nThe condition of the item is " 
-                + conditionName + ". " + "Meaning " + conditionDesc);
+                System.out.println(playerOne);
                 
                 // test code for Game class
                 
@@ -61,24 +46,20 @@ public class NeverSync {
                 gameOne.setAcresOwned(500);
                 gameOne.setWheatInStorage(20000);
                 
-                String gameOneName = gameOne.getThePlayer();
-                String gameOneTheMap = gameOne.getTheMap();
-                String gameOneTheStorehouse = gameOne.getTheStorehouse();
-                int gameOneCurrentPopulation = gameOne.getCurrentPopulation();
-                int gameOneAcresOwned = gameOne.getAcresOwned();
-                int gameOneWheatInStorage = gameOne.getWheatInStorage();
+                System.out.println("\n" + gameOne.toString());
                 
+                // test code for Condition (enum)
                 
-                System.out.println("The Player's Name is: " + gameOneName + 
-                "\nThe current map is: " + gameOneTheMap 
-                + "\nThe current storehouse is: "
-                + gameOneTheStorehouse + "\nThe current population is " 
-                + gameOneCurrentPopulation + "\nThe current acres owned is " 
-                + gameOneAcresOwned + "\nThe current wheat is storage is: " 
-                + gameOneWheatInStorage + " bushels.");
-        
+                String conditionName = Condition.Fair.getName();
+                String conditionDesc = Condition.Fair.getDescription();
+
+                
+                System.out.println("\nThe condition of the item is " 
+                + conditionName + ". " + "Meaning " + conditionDesc);
+                
+    }
     
-//        public static void testBenClasses() {
+    public static void testBenClasses() {
 
          // test code for question class
             
@@ -150,10 +131,17 @@ public class NeverSync {
                + "\nHave been there: " + aaronLocationVisited + "\nRow: " 
                + aaronLocationRow + "\nColumn: " + aaronLocationColumn);
                
+    }
+    
+	public static void main(String[] args) {
+	
+            testTeamClasses();
+            testBenClasses ();
+            // testJeffClasses
+                      
+             
 
-            }
-                
-               
+            }    
                
 	}
         
@@ -161,4 +149,3 @@ public class NeverSync {
 	
             
         
-
