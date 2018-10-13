@@ -135,8 +135,12 @@ public class NeverSync {
     
 	public static void main(String[] args) {
 	
+            System.out.println("\nThese are the team test classes:\n");
             testTeamClasses();
+            System.out.println("\nThis is the end of the team test classes.");
+            System.out.println("\nThese are Ben's test classes:");
             testBenClasses ();
+            System.out.println("\nThese are the end of Ben's test classes.");
             // testJeffClasses
                       
              
