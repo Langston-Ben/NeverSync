@@ -7,6 +7,7 @@ package neversync;
 
 import cit260.neversync.model.Condition;
 import cit260.neversync.model.Game;
+import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Player;
 import cit260.neversync.model.Point;
@@ -74,7 +75,7 @@ public class NeverSync {
                 
                 System.out.println("\n" + questionOne.toString());
                              
-               // test code for the point class
+         // test code for the point class
                
                Point pointOne = new Point();
                
@@ -84,20 +85,21 @@ public class NeverSync {
                System.out.println("\n" + pointOne.toString());
                
                 
-               // test code for the scence class
+         // test code for the scence class
                
+               String itemName = ItemType.Tool.getName();
                Scene sceneOne = new Scene();
-               String theAnswer1 = questionOne.getAnswer1();
-               
+               String theQuestion = questionOne.getQuestionText();
+             
                sceneOne.setName("City of Aaron");
                sceneOne.setDescription("Biblical City");
-               sceneOne.setQuestion(theAnswer1);
-               sceneOne.setItem("Tool");
+               sceneOne.setQuestion(theQuestion);
+               sceneOne.setItem(itemName);
                
                
                System.out.println("\n" + sceneOne.toString());
                
-               // test code for the location class
+         // test code for the location class
                
                Location locationOne = new Location();
                

@@ -18,8 +18,17 @@ public class Scene implements Serializable {
     private String description;   
     private String question;    
     private String item;
-
+    private Location location;
+   
     public Scene() {
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
     
     

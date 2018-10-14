@@ -15,139 +15,83 @@ import java.util.Objects;
 public class Question implements Serializable {
     
     private String questionText;    
-    private String anwser1;
+    private String answer1;
     private String answer2;
     private String answer3;
     private String answer4;
     private int correctAnswer;
+    private Scene scene;
 
     public Question() {
     }
     
-    
 
-    /**
-     * Get the value of correctAnswer
-     *
-     * @return the value of correctAnswer
-     */
-    public int getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    /**
-     * Set the value of correctAnswer
-     *
-     * @param correctAnswer new value of correctAnswer
-     */
-    public void setCorrectAnswer(int correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-
-    /**
-     * Get the value of answer4
-     *
-     * @return the value of answer4
-     */
-    public String getAnswer4() {
-        return answer4;
-    }
-
-    /**
-     * Set the value of answer4
-     *
-     * @param answer4 new value of answer4
-     */
-    public void setAnswer4(String answer4) {
-        this.answer4 = answer4;
-    }
-
-
-    /**
-     * Get the value of answer3
-     *
-     * @return the value of answer3
-     */
-    public String getAnswer3() {
-        return answer3;
-    }
-
-    /**
-     * Set the value of answer3
-     *
-     * @param answer3 new value of answer3
-     */
-    public void setAnswer3(String answer3) {
-        this.answer3 = answer3;
-    }
-
-
-    /**
-     * Get the value of answer2
-     *
-     * @return the value of answer2
-     */
-    public String getAnswer2() {
-        return answer2;
-    }
-
-    /**
-     * Set the value of answer2
-     *
-     * @param answer2 new value of answer2
-     */
-    public void setAnswer2(String answer2) {
-        this.answer2 = answer2;
-    }
-
-
-    /**
-     * Get the value of anwser1
-     *
-     * @return the value of anwser1
-     */
-    public String getAnwser1() {
-        return anwser1;
-    }
-
-    /**
-     * Set the value of anwser1
-     *
-     * @param anwser1 new value of anwser1
-     */
-    public void setAnwser1(String anwser1) {
-        this.anwser1 = anwser1;
-    }
-
-
-    /**
-     * Get the value of questionText
-     *
-     * @return the value of questionText
-     */
     public String getQuestionText() {
         return questionText;
     }
 
-    /**
-     * Set the value of questionText
-     *
-     * @param questionText new value of questionText
-     */
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
 
+    public String getAnswer1() {
+        return answer1;
+    }
+
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
+    }
+
+    public String getAnswer2() {
+        return answer2;
+    }
+
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
+    }
+
+    public String getAnswer3() {
+        return answer3;
+    }
+
+    public void setAnswer3(String answer3) {
+        this.answer3 = answer3;
+    }
+
+    public String getAnswer4() {
+        return answer4;
+    }
+
+    public void setAnswer4(String answer4) {
+        this.answer4 = answer4;
+    }
+
+    public int getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.questionText);
-        hash = 79 * hash + Objects.hashCode(this.anwser1);
-        hash = 79 * hash + Objects.hashCode(this.answer2);
-        hash = 79 * hash + Objects.hashCode(this.answer3);
-        hash = 79 * hash + Objects.hashCode(this.answer4);
-        hash = 79 * hash + this.correctAnswer;
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.questionText);
+        hash = 83 * hash + Objects.hashCode(this.answer1);
+        hash = 83 * hash + Objects.hashCode(this.answer2);
+        hash = 83 * hash + Objects.hashCode(this.answer3);
+        hash = 83 * hash + Objects.hashCode(this.answer4);
+        hash = 83 * hash + this.correctAnswer;
+        hash = 83 * hash + Objects.hashCode(this.scene);
         return hash;
     }
 
@@ -169,7 +113,7 @@ public class Question implements Serializable {
         if (!Objects.equals(this.questionText, other.questionText)) {
             return false;
         }
-        if (!Objects.equals(this.anwser1, other.anwser1)) {
+        if (!Objects.equals(this.answer1, other.answer1)) {
             return false;
         }
         if (!Objects.equals(this.answer2, other.answer2)) {
@@ -181,12 +125,15 @@ public class Question implements Serializable {
         if (!Objects.equals(this.answer4, other.answer4)) {
             return false;
         }
+        if (!Objects.equals(this.scene, other.scene)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Question{" + "questionText=" + questionText + ", anwser1=" + anwser1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", correctAnswer=" + correctAnswer + '}';
+        return "Question{" + "questionText=" + questionText + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", correctAnswer=" + correctAnswer + ", scene=" + scene + '}';
     }
     
     
