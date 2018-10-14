@@ -66,7 +66,7 @@ public class NeverSync {
                 Question questionOne = new Question();
                 
                 questionOne.setQuestionText("Where would you like to go?");
-                questionOne.setAnwser1("City One");
+                questionOne.setAnswer1("City One");
                 questionOne.setAnswer2("City Two");
                 questionOne.setAnswer3("City Three");
                 questionOne.setAnswer4("City Four");
@@ -87,9 +87,13 @@ public class NeverSync {
                // test code for the scence class
                
                Scene sceneOne = new Scene();
+               String theAnswer1 = questionOne.getAnswer1();
                
                sceneOne.setName("City of Aaron");
                sceneOne.setDescription("Biblical City");
+               sceneOne.setQuestion(theAnswer1);
+               sceneOne.setItem("Tool");
+               
                
                System.out.println("\n" + sceneOne.toString());
                
@@ -103,8 +107,7 @@ public class NeverSync {
                locationOne.setScene("City of Aaron");
                
                System.out.println("\n" + locationOne.toString());
-               
-                              
+                          
             }
     
 	public static void main(String[] args) {
@@ -119,6 +122,8 @@ public class NeverSync {
 
 
             // testJeffClasses
+            
+            // testScottClasses
                       
              
 
