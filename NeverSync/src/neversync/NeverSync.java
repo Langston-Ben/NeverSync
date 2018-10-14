@@ -72,20 +72,8 @@ public class NeverSync {
                 questionOne.setAnswer4("City Four");
                 questionOne.setCorrectAnswer(5);
                 
-                String questionOneQuestionText = questionOne.getQuestionText();
-                String questionOneAnswer1 = questionOne.getAnwser1();
-                String questionOneAnswer2 = questionOne.getAnswer2();
-                String questionOneAnswer3 = questionOne.getAnswer3();
-                String questionOneAnswer4 = questionOne.getAnswer4();
-                int questionOneCorrectAnswer = questionOne.getCorrectAnswer();
-                
-                System.out.println("\nNew Question = " + questionOneQuestionText
-                + "\nYour Choices:" + "\nAnswer One = " + questionOneAnswer1 
-                + "\nAnswer Two = " + questionOneAnswer2 + "\nAnswer Three = "
-                + questionOneAnswer3 + "\nAnswer Four = " + questionOneAnswer4
-                + "\nThe Output Value for the correct answer is: "
-                + questionOneCorrectAnswer);        
-                
+                System.out.println("\n" + questionOne.toString());
+                             
                // test code for the point class
                
                Point pointOne = new Point();
@@ -93,10 +81,8 @@ public class NeverSync {
                pointOne.setColumn(20);
                pointOne.setRow(40);
                
-               int pointOneCol = pointOne.getColumn();
-               int pointOneRow = pointOne.getRow();
-                
-               System.out.println("\nColumn = " + pointOneCol + "\nRow = " +pointOneRow);
+               System.out.println("\n" + pointOne.toString());
+               
                 
                // test code for the scence class
                
@@ -105,13 +91,7 @@ public class NeverSync {
                sceneOne.setName("City of Aaron");
                sceneOne.setDescription("Biblical City");
                
-               String aaronSceneOne = sceneOne.getName();
-               String aaronDescpriptionOne = sceneOne.getDescription();
-               
-               System.out.println("\nScene Name: " + aaronSceneOne 
-               + "\nScene Description: "
-               + aaronDescpriptionOne );
-               
+               System.out.println("\n" + sceneOne.toString());
                
                // test code for the location class
                
@@ -122,16 +102,10 @@ public class NeverSync {
                locationOne.setVisited(true);
                locationOne.setScene("City of Aaron");
                
-               int aaronLocationRow = locationOne.getRow();
-               int aaronLocationColumn = locationOne.getColumn();
-               boolean aaronLocationVisited = locationOne.isVisited();
-               String aaronLocationScene = locationOne.getScene();
+               System.out.println("\n" + locationOne.toString());
                
-               System.out.println("\nName of the location: " + aaronLocationScene
-               + "\nHave been there: " + aaronLocationVisited + "\nRow: " 
-               + aaronLocationRow + "\nColumn: " + aaronLocationColumn);
-               
-    }
+                              
+            }
     
 	public static void main(String[] args) {
 	
@@ -140,14 +114,17 @@ public class NeverSync {
             System.out.println("\nThis is the end of the team test classes.");
             System.out.println("\nThese are Ben's test classes:");
             testBenClasses ();
-            System.out.println("\nThese are the end of Ben's test classes.");
+            System.out.println("\nThis is the end of Ben's test classes.");
+            
+
+
             // testJeffClasses
                       
              
 
-            }    
+    }    
                
-	}
+}
         
         
 	
