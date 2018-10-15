@@ -5,14 +5,22 @@
  */
 package neversync;
 
+import java.awt.Point;
 import cit260.neversync.model.Condition;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Player;
+
+import cit260.neversync.model.ItemType;
+import cit260.neversync.model.InventoryItem;
+import cit260.neversync.model.Map;
+import cit260.neversync.model.StoreHouse;
+
 import cit260.neversync.model.Point;
 import cit260.neversync.model.Question;
 import cit260.neversync.model.Scene;
+
 
 
 
@@ -46,6 +54,8 @@ public class NeverSync {
                 gameOne.setCurrentPopulation(200000);
                 gameOne.setAcresOwned(500);
                 gameOne.setWheatInStorage(20000);
+								
+				
                 
                 System.out.println("\n" + gameOne.toString());
                 
@@ -58,7 +68,50 @@ public class NeverSync {
                 System.out.println("\nThe condition of the item is " 
                 + conditionName + ". " + "Meaning " + conditionDesc);
                 
-    }
+
+         // Create instance of ItemType Class
+		 System.out.println("(Test) ItemType Tool value: "  + ItemType.Tool.getName());
+		        
+         // Create instance of Map Class   
+		 Map mapOne = new Map();
+		 
+		 //mapOne.setLocations( "Town Square" );
+		 //mapOne.setCurrentLocation(1,3);
+		 mapOne.setRows(5);
+		 mapOne.setColumns(5);
+		 
+		 //ArrayList mapOneLocations = mapOne.getLocations();
+		 Point mapOneCurrentLocation = mapOne.getCurrentLocation();
+         int mapOneRows = mapOne.getRows();
+		 int mapOneColumns = mapOne.getColumns();
+		 
+		 System.out.println("Map Details: " + 
+				 //"\n Locations: " + mapOneLocations +
+				 //"\n Current Location: " + mapOneCurrentLocation +
+				 "\n Rows: " + mapOneRows +
+				 "\n Columns: " + mapOneColumns
+				 );
+		 System.out.println(mapOne.toString());
+		 
+		 // Create instance of StoreHouse Class
+		 StoreHouse storeOne = new StoreHouse();
+		 
+		 storeOne.setAnimal("Pig");
+		 System.out.println("(Test) StoreHouse - Animal Value: " + storeOne.getAnimal());
+		 
+
+		 // Create instance of InventoryItem Class
+		 InventoryItem inventoryItemOne = new InventoryItem();
+		 inventoryItemOne.setName("Juicy Pig");
+		 inventoryItemOne.setQuantity(2);
+		 inventoryItemOne.setPricePerUnit(30.0);
+		 inventoryItemOne.setAge(3);
+
+		 System.out.println("(Test) InventoryItem value: "  + inventoryItemOne.toString());
+	
+		 System.out.println(inventoryItemOne.getCondition());
+	}
+	    
     
     public static void testBenClasses() {
 
@@ -127,13 +180,11 @@ public class NeverSync {
             
             // testScottClasses
                       
-             
-
+        
     }    
                
 }
         
         
 	
-            
         
