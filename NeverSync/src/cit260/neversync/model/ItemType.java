@@ -20,7 +20,18 @@ public enum ItemType {
 	private String name;
 	private String description;
 	private int age;
+  
+
 	
+  private Scene scene;
+
+  public Scene getScene() {
+  return scene;
+  }  
+  
+  
+  
+  
 	ItemType(String name, String description, int age) {
 		this.name = name;
 		this.description = description;
@@ -45,5 +56,5 @@ public enum ItemType {
 		return "ItemType{" + "name=" + name + ", description=" + description + ", age=" + age + '}';
 	}
 	
-	
 }
+
