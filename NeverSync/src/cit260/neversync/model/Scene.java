@@ -16,8 +16,8 @@ public class Scene implements Serializable {
     
     private String name;     
     private String description;   
-    private String question;    
-    private String item;
+    private Question question;    
+    private InventoryItem item;
     private Location location;
    
     public Scene() {
@@ -38,7 +38,7 @@ public class Scene implements Serializable {
      *
      * @return the value of item
      */
-    public String getItem() {
+    public InventoryItem getItem() {
         return item;
     }
 
@@ -47,7 +47,7 @@ public class Scene implements Serializable {
      *
      * @param item new value of item
      */
-    public void setItem(String item) {
+    public void setItem(InventoryItem item) {
         this.item = item;
     }
 
@@ -57,7 +57,7 @@ public class Scene implements Serializable {
      *
      * @return the value of question
      */
-    public String getQuestion() {
+    public Question getQuestion() {
         return question;
     }
 
@@ -66,7 +66,7 @@ public class Scene implements Serializable {
      *
      * @param question new value of question
      */
-    public void setQuestion(String question) {
+    public void setQuestion(Question question) {
         this.question = question;
     }
 
@@ -154,3 +154,4 @@ public class Scene implements Serializable {
     
     
 }
+
