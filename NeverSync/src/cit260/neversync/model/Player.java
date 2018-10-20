@@ -7,7 +7,7 @@ package cit260.neversync.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class Player implements Serializable{
     
     // class instance variables
-    private String name;
+        private String name;
 	private Double time;
-	private ArrayList<Game> games = new ArrayList<Game>();
+	private Game game;
 
     // Constructor
     public Player() {
@@ -41,12 +41,12 @@ public class Player implements Serializable{
 		this.time = time;
 	}
 	
-    public ArrayList<Game> getGames() {
-        return games;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGames(ArrayList<Game> games) {
-        this.games = games;
+    public void setGame(Game game) {
+        this.game = game;
     }
 		
     
@@ -58,7 +58,7 @@ public class Player implements Serializable{
 		int hash = 7;
 		hash = 47 * hash + Objects.hashCode(this.name);
 		hash = 47 * hash + (int) (Double.doubleToLongBits(this.time) ^ (Double.doubleToLongBits(this.time) >>> 32));
-		hash = 47 * hash + Objects.hashCode(this.games);
+		hash = 47 * hash + Objects.hashCode(this.game);
 		return hash;
 	}
 
@@ -80,7 +80,7 @@ public class Player implements Serializable{
 		if (!Objects.equals(this.name, other.name)) {
 			return false;
 		}
-		if (!Objects.equals(this.games, other.games)) {
+		if (!Objects.equals(this.game, other.game)) {
 			return false;
 		}
 		return true;
@@ -88,5 +88,11 @@ public class Player implements Serializable{
 	
 		@Override
 	public String toString() {
-		return "Player{" + "name=" + name + ", time=" + time + ", games=" + games + '}';
+		return "Player{" + "name=" + name + ", time=" + time + ", game=" + game + '}';
+	}
+    
+
+	
+        
 }
+
