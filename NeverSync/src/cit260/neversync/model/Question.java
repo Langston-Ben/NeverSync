@@ -20,7 +20,7 @@ public class Question implements Serializable {
     private String answer3;
     private String answer4;
     private int correctAnswer;
-    private Scene scene;
+   
 
     public Question() {
     }
@@ -74,13 +74,6 @@ public class Question implements Serializable {
         this.correctAnswer = correctAnswer;
     }
 
-    public Scene getScene() {
-        return scene;
-    }
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-    }
 
     @Override
     public int hashCode() {
@@ -91,7 +84,6 @@ public class Question implements Serializable {
         hash = 83 * hash + Objects.hashCode(this.answer3);
         hash = 83 * hash + Objects.hashCode(this.answer4);
         hash = 83 * hash + this.correctAnswer;
-        hash = 83 * hash + Objects.hashCode(this.scene);
         return hash;
     }
 
@@ -125,18 +117,16 @@ public class Question implements Serializable {
         if (!Objects.equals(this.answer4, other.answer4)) {
             return false;
         }
-        if (!Objects.equals(this.scene, other.scene)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Question{" + "questionText=" + questionText + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", correctAnswer=" + correctAnswer + ", scene=" + scene + '}';
+        return "Question{" + "questionText=" + questionText + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", correctAnswer=" + correctAnswer + '}';
     }
     
     
 
     
 }
+
