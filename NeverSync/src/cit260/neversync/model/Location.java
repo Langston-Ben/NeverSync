@@ -17,7 +17,7 @@ public class Location implements Serializable {
     private int row;        
     private int column;   
     private boolean visited;   
-    private String scene;
+    private Scene scene;
 
     public Location() {
     }
@@ -28,7 +28,7 @@ public class Location implements Serializable {
      *
      * @return the value of scene
      */
-    public String getScene() {
+    public Scene getScene() {
         return scene;
     }
 
@@ -37,7 +37,7 @@ public class Location implements Serializable {
      *
      * @param scene new value of scene
      */
-    public void setScene(String scene) {
+    public void setScene(Scene scene) {
         this.scene = scene;
     }
 
@@ -142,3 +142,4 @@ public class Location implements Serializable {
 
     
 }
+
