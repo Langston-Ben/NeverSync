@@ -40,12 +40,10 @@ public class PlantControlTest {
         double expResult = 70.0;
         double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
-        // TODO review the generated test code and remove the default call to fail.
+//         TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
     }
-    
-    static {
-        System.out.println("\tTest Case #2");
+    {   System.out.println("\tTest Case #2");
         double acresOwned = 500;
         double acresToPlant = 0;
         double initWheatStorage = 300;
@@ -55,8 +53,8 @@ public class PlantControlTest {
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
     }
+    {
     
-    static {
         System.out.println("\tTest Case #3");
         double acresOwned = 500;
         double acresToPlant = 1004;
@@ -66,9 +64,9 @@ public class PlantControlTest {
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-    }
+  
+}{
     
-    static {
         System.out.println("\tTest Case #4");
         double acresOwned = 500;
         double acresToPlant = 300;
@@ -78,9 +76,9 @@ public class PlantControlTest {
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-    }
     
-    static {
+    
+}{
         System.out.println("\tTest Case #5");
         double acresOwned = 1000;
         double acresToPlant = 100;
@@ -90,9 +88,9 @@ public class PlantControlTest {
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-    }
-    
-    static {
+
+}{
+   
         System.out.println("\tTest Case #6");
         double acresOwned = 2000;
         double acresToPlant = 1000;
@@ -102,9 +100,7 @@ public class PlantControlTest {
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-    }
-    
-    static {
+}{
         System.out.println("\tTest Case #7");
         double acresOwned = 2000;
         double acresToPlant = 1000;
@@ -115,6 +111,6 @@ public class PlantControlTest {
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 
-    }
-    
+
+}
 }
