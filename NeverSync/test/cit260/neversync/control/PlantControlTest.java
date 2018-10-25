@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cit260.neversnyc.control;
+package cit260.neversync.control;
 
 import org.junit.After;
 import org.junit.BeforeClass;
@@ -32,7 +32,7 @@ public class PlantControlTest {
      */
     @Test
     public void testCalcBushelsToPlant() {
-        System.out.println("calcBushelsToPlant");
+        System.out.println("  calcBushelsToPlant");
         System.out.println("\tTest Case #1");
         double acresOwned = 500;
         double acresToPlant = 400;
@@ -40,77 +40,80 @@ public class PlantControlTest {
         double expResult = 70.0;
         double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
-//         TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-    {   System.out.println("\tTest Case #2");
-        double acresOwned = 500;
-        double acresToPlant = 0;
-        double initWheatStorage = 300;
-        double expResult = -1;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
-        assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-    }
-    {
-    
-        System.out.println("\tTest Case #3");
-        double acresOwned = 500;
-        double acresToPlant = 1004;
-        double initWheatStorage = 5;
-        double expResult = -1;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
-        assertEquals(expResult, result, 0.0001);
-        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-  
-}{
-    
-        System.out.println("\tTest Case #4");
-        double acresOwned = 500;
-        double acresToPlant = 300;
-        double initWheatStorage = 0;
-        double expResult = -1;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
-        assertEquals(expResult, result, 0.0001);
-        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    
-    
-}{
-        System.out.println("\tTest Case #5");
-        double acresOwned = 1000;
-        double acresToPlant = 100;
-        double initWheatStorage = 110;
-        double expResult = 49;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
-        assertEquals(expResult, result, 0.0001);
-        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-
-}{
    
+    
+//    static {
+        System.out.println("\tTest Case #2");
+        acresOwned = 500;
+        acresToPlant = 0;
+        initWheatStorage = 300;
+        expResult = -1;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    
+    
+//    static {
+        System.out.println("\tTest Case #3");
+        acresOwned = 500;
+        acresToPlant = 1004;
+        initWheatStorage = 5;
+        expResult = -1;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    
+//    static {
+        System.out.println("\tTest Case #4");
+        acresOwned = 500;
+        acresToPlant = 300;
+        initWheatStorage = 0;
+        expResult = -1;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+   
+
+        System.out.println("\tTest Case #5");
+        acresOwned = 1000;
+        acresToPlant = 100;
+        initWheatStorage = 110;
+        expResult = 49;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    
+//    static {
         System.out.println("\tTest Case #6");
-        double acresOwned = 2000;
-        double acresToPlant = 1000;
-        double initWheatStorage = 560;
-        double expResult = 4;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        acresOwned = 2000;
+        acresToPlant = 1000;
+        initWheatStorage = 560;
+        expResult = 4;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
-}{
+//    }
+//    
+//    static {
         System.out.println("\tTest Case #7");
-        double acresOwned = 2000;
-        double acresToPlant = 1000;
-        double initWheatStorage = 600;
-        double expResult = 40;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        acresOwned = 2000;
+        acresToPlant = 1000;
+        initWheatStorage = 600;
+        expResult = 40;
+        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 
-
-}
+    }
+    
 }
