@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cit260.neversnyc.control;
+package cit260.neversync.control;
 
 /**
  *
@@ -32,13 +32,12 @@ if (initWheatStorage < 110 || initWheatStorage > 600) {
 }
 
 
-double bushelsToPlant = acresToPlant * .5;
-double wheatRemaining = currentWheatStorage - bushelsToPlant;
+//double bushelsToPlant = acresToPlant * .5;
+double wheatRemaining = currentWheatStorage - (acresToPlant * .5);
 
 return wheatRemaining;
 
 
         }    
- 
-    
+   
 }
