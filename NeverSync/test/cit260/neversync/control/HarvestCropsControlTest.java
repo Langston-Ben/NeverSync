@@ -5,7 +5,6 @@
  */
 package cit260.neversync.control;
 
-import cit260.neversnyc.control.HarvestCropsControl;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
