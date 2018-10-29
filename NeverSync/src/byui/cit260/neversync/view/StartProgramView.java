@@ -21,7 +21,7 @@ public class StartProgramView {
  do { 
     String[] inputs = StartProgramView.getInputs();
     
-        if (inputs[0] == null || inputs.length < 1 || inputs[0] == "Q") {
+        if (inputs[0] == null || inputs.length < 1 || inputs[0].equals("Q")) {
         return;
         }
         else {
@@ -29,9 +29,7 @@ public class StartProgramView {
         }
 } while (endOfView = false);
  
-
     }
-    
     
     private static String[] getInputs() {
         System.out.println("**** getInputs() called***");
@@ -48,13 +46,7 @@ public class StartProgramView {
     }
     
     
-//    public void display() {
-//    }
-
-   
-
-    
-        
+ 
     }
 
  
