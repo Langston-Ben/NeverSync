@@ -20,8 +20,11 @@ public class StartProgramView {
     boolean endOfView = false;
  do { 
     String[] inputs = StartProgramView.getInputs();
+        
+        
     
         if (inputs[0] == null || inputs.length < 1 || inputs[0].equals("Q")) {
+        inputs[0] = inputs[0].toUpperCase();    
         return;
         }
         else {
