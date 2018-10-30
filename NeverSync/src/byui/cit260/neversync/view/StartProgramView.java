@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.neversync.view;
+import java.util.Scanner;
 
 /**
  *
@@ -34,13 +35,39 @@ public class StartProgramView {
  
     }
     
-    private static String[] getInputs() {
-        System.out.println("**** getInputs() called***");
+    private static String [] getInputs() {
         
         String[] inputs = new String[1];
-        inputs[0] = "testInput";
-        return inputs;
- }
+        System.out.println("Placehold for City of Aaron Game Description");
+        System.out.println("Compiled By Jeff Ledbetter & Ben Langston");
+        System.out.println("*****Welcome to the Game!*****");
+                
+        boolean valid = false;
+        
+        while (valid == false) {
+        Scanner inFile;
+        inFile = new Scanner(System.in);   
+        System.out.println("\nPlease Enter Your Name");
+        
+        inputs[0] = inFile.nextLine();
+        
+        String gamePlayerName = inputs[0].trim();
+        
+        
+        if (gamePlayerName.length() < 1) {
+            System.out.println("You must enter a non-blank value");
+            continue;
+        }
+            inputs[0] = gamePlayerName;
+               valid = true;
+               
+            }
+            
+            return inputs;
+            
+    }
+    
+    // This will be changed on the next step
     
     private static boolean doAction(String[] inputs) {
      System.out.println("**** doAction() called ***");
@@ -48,12 +75,9 @@ public class StartProgramView {
      return true;
     }
     
-    
- 
-    }
+}
 
- 
- 
+
     
      
 
