@@ -10,6 +10,8 @@ package cit260.neversync.control;
  * @author benjaminlangston
  */
 public class BuyLandControl {
+ 
+// function to determine land ownership after a purchase
     
 public static double calcLandPurchase(double acresOwnedinit, double currentPop, 
 double currentWheat, double acresToPurchase, double acresPrice) {
@@ -32,6 +34,8 @@ double acresOwnedNew = acresOwnedinit + acresToPurchase;
 
 return acresOwnedNew;
 }
+
+// function to determine the wheat remaining after a land purchase
 
 public static double calcWheatRemaining(double acresOwnedinit, double currentPop, 
 double currentWheat, double acresToPurchase, double acresPrice) {
