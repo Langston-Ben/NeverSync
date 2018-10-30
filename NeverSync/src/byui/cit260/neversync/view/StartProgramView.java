@@ -6,6 +6,7 @@
 package byui.cit260.neversync.view;
 import cit260.neversync.model.Player;
 import java.util.Scanner;
+import neversync.NeverSync;
 
 /**
  *
@@ -24,9 +25,9 @@ public class StartProgramView {
     String[] inputs = StartProgramView.getInputs();
         
         
-    
+        inputs[0] = inputs[0].toUpperCase();
         if (inputs[0] == null || inputs.length < 1 || inputs[0].equals("Q")) {
-        inputs[0] = inputs[0].toUpperCase();    
+            
         return;
         }
         else {
@@ -97,8 +98,39 @@ public class StartProgramView {
     private static class GameControl {
 
         private static Player savePlayer(String playersName) {
-            System.out.println("*****savePlayer() called ***");
-            return new Player();
+            
+            if (playersName == null || playersName.length() < 1) {
+            return null;
+            }
+        
+            else {
+            Player player = new Player();
+            player.setName(playersName);
+            NeverSync.setPlayer(player);
+            
+            return player;
+            }
+//           
+//            ENDIF
+//            player = new Player object
+//            save the name in the player object
+//            save the player in the main class of the project
+//            RETURN player
+//            END
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+//            System.out.println("*****savePlayer() called ***");
+//            return new Player();
             
         }
 
