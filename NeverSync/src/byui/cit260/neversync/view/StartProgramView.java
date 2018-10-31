@@ -83,7 +83,6 @@ public class StartProgramView {
            
     }
     
-   
     
     private static boolean doAction(String[] input) {
         
@@ -112,7 +111,7 @@ public class StartProgramView {
     }
 
     private static class GameControl {
-
+//
         private static Player savePlayer(String playersName) {
             
             if (playersName == null || playersName.length() < 1) {
@@ -138,9 +137,6 @@ public class StartProgramView {
 
     private static class MainMenuView {
 
-        
-
-        
         public MainMenuView() {
         }
         
@@ -212,8 +208,7 @@ public class StartProgramView {
 //               return false;
             }
             
-         return false;       
-         
+         return false;           
         }
 
 
@@ -222,25 +217,18 @@ public class StartProgramView {
             GameControl.createNewGame(NeverSync.getPlayer());
             GameMenuView gameMenuView = new GameMenuView();
             gameMenuView.displayGameMenuView();
-//            GameMenuView gameMenuView = new GamMenuView;
-//            startNewGame(): void {
-//                Create a new Game
-// 
-//                gameMenuView = create a new GameMenuView 
-//                object gameMenuView
-//                .displayGameMenuView();
-//            }
         }
 
         private void restartGame() {
-            System.out.println("***** restartGame() - called! ");
+        StartExistingGameView startExistingGameView = new StartExistingGameView();
+        startExistingGameView.displayStartExistingGameView();
         }
 
         private void getHelp() {
-            System.out.println("***** getHelp() - called! ");
-        }
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.displayHelpMenuView();
+        }   
             
-            
-        }
     }
+}
     
