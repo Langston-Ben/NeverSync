@@ -51,6 +51,7 @@ public class NeverSync {
             
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayStartProgramView();
+//            startProgramView.displayMainMenuView();
             
             
             
