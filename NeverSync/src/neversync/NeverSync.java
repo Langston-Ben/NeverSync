@@ -50,7 +50,7 @@ public class NeverSync {
 	public static void main(String[] args) {
             
             StartProgramView startProgramView = new StartProgramView();
-            startProgramView.displayStartProgramView();
+            startProgramView.display();
 //            startProgramView.displayMainMenuView();
             
             

@@ -5,6 +5,7 @@
  */
 package byui.cit260.neversync.view;
 
+//import cit260.neversync.model.Game;
 import cit260.neversync.model.Player;
 import java.util.Scanner;
 import neversync.NeverSync;
@@ -20,35 +21,36 @@ public class StartProgramView {
     }
    
     
-    public static void displayStartProgramView() {
+    public void display() {
     boolean endOfView = false;
  do { 
-    String[] inputs = StartProgramView.getInputs();
+    String[] input = StartProgramView.getInput();
         
         
-        inputs[0] = inputs[0].toUpperCase();
-        if (inputs[0] == null || inputs.length < 1 || inputs[0].equals("Q")) {
+        input[0] = input[0].toUpperCase();
+        if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
             
         return;
         }
         else {
-        endOfView = doAction(inputs); 
+        endOfView = doAction(input); 
         }
 } while (endOfView = false);
  
     }
     
-    private static String [] getInputs() {
+    private static String [] getInput() {
         
-        String[] inputs = new String[1];
+        String[] input = new String[1];
         System.out.println("===================================================="
                 + "==========="
-                + "\nWelcome to the City of Aaron! \nThe player of the "
-                + "\ngame will assume the role of the leader over the city of "
-                + "\nAaron. Wheat is the staff of life, and is used as the main "
-                + "\ncurrency in the city. As ruler over the city, the player’s "
-                + "\ntask is to manage the village’s wheat crops so that the people "
-                + "\nof the village can be adequately fed, while dealing with rats, "
+                + "\n          Welcome to the City of Aaron! "
+                + "\nThe player of the game will assume the role of the leader"
+                + "\nover the city of Aaron. Wheat is the staff of life,"
+                + "\nand is used as the main currency in the city."
+                + "\nAs ruler over the city, the player’s task is to manage the "
+                + "\nvillage’s wheat crops so that the people of the village"
+                + "\ncan be adequately fed, while dealing with rats, "
                 + "\nand random crop yields. The city is blessed when the people pay "
                 + "\ntheir tithes and offerings. After serving for 10 years, "
                 + "\nthe player will be judged by the people. If too many people "
@@ -63,29 +65,29 @@ public class StartProgramView {
         while (valid == false) {
         Scanner inFile;
         inFile = new Scanner(System.in);   
-        System.out.println("\nPlease Enter Your Name");
+        System.out.println("\nPlease Enter Your Name\n");
         
-        inputs[0] = inFile.nextLine();
+        input[0] = inFile.nextLine();
         
-        String gamePlayerName = inputs[0].trim();
+        String gamePlayerName = input[0].trim();
         
         
         if (gamePlayerName.length() < 1) {
             System.out.println("You must enter a non-blank value");
             continue;
         }
-            inputs[0] = gamePlayerName;
+            input[0] = gamePlayerName;
             valid = true;          
         }          
-            return inputs;
+            return input;
            
     }
     
-    // This will be changed on the next step
+   
     
-    private static boolean doAction(String[] inputs) {
+    private static boolean doAction(String[] input) {
         
-           String playersName = inputs[0];
+           String playersName = input[0];
            Player player = GameControl.savePlayer(playersName);
            
            if (player == null) {
@@ -129,6 +131,9 @@ public class StartProgramView {
 
         public GameControl() {
         }
+        public static void createNewGame(Player player) {
+            System.out.println("createNewGame was called");
+        }
     }
 
     private static class MainMenuView {
@@ -138,24 +143,25 @@ public class StartProgramView {
         
         public MainMenuView() {
         }
+        
         private void displayMainMenuView() {   
         boolean endOfView = false;
     do { 
-        String[] inputs = MainMenuView.getInputs();
-        //inputs[0] = inputs[0].toUpperCase();
-        if (inputs[0] == null || inputs.length < 1 || inputs[0].equals("Q")) {
+        String[] input = MainMenuView.getInput();
+        //input[0] = input[0].toUpperCase();
+        if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
             
         return;
         }
         else {
-        endOfView = doAction(inputs); 
+        endOfView = doAction(input); 
         }
 } while (endOfView = false);
  
     }
-       private static String [] getInputs() {
+       private static String [] getInput() {
         
-        String[] inputs = new String[1];
+        String[] input = new String[1];
         System.out.println("Main Menu\n" +
             "The options on the main menu are: \n" +
             "S - Start a New Game\n" +
@@ -171,26 +177,26 @@ public class StartProgramView {
         inFile = new Scanner(System.in);   
         System.out.println("\nPlease Enter Your Selection");
         
-        inputs[0] = inFile.nextLine();
+        input[0] = inFile.nextLine();
         
-        String gameMenuSelection = inputs[0].trim();
+        String gameMenuSelection = input[0].trim();
         
         
         if (gameMenuSelection.length() < 1) {
             System.out.println("You must specify a value");
             continue;
         }
-            inputs[0] = gameMenuSelection;
+            input[0] = gameMenuSelection;
             valid = true;          
         }          
-            return inputs;
+            return input;
            
     }    
         
-        private boolean doAction(String[] inputs) {
+        private boolean doAction(String[] input) {
             
-            inputs[0] = inputs[0].toUpperCase();
-            String menuItem = inputs[0];
+            input[0] = input[0].toUpperCase();
+            String menuItem = input[0];
             
             
             switch (menuItem) {
@@ -203,7 +209,7 @@ public class StartProgramView {
                 case "Q" : return true;
                 
                 default: System.out.println("Invalid Menu Item");
-//               
+//               return false;
             }
             
          return false;       
@@ -212,7 +218,18 @@ public class StartProgramView {
 
 
         private void startNewGame() {
-            System.out.println("***** startNewGame() - called! ");
+            
+            GameControl.createNewGame(NeverSync.getPlayer());
+            GameMenuView gameMenuView = new GameMenuView();
+            gameMenuView.displayGameMenuView();
+//            GameMenuView gameMenuView = new GamMenuView;
+//            startNewGame(): void {
+//                Create a new Game
+// 
+//                gameMenuView = create a new GameMenuView 
+//                object gameMenuView
+//                .displayGameMenuView();
+//            }
         }
 
         private void restartGame() {
