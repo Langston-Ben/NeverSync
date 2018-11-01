@@ -7,7 +7,7 @@ package byui.cit260.neversync.view;
 
 /**
  *
- * @author benjaminlangston
+ * @author Ben Langston and Jeff Ledbetter
  */
 public class GameMenuView {
 
@@ -15,7 +15,7 @@ public class GameMenuView {
     }
 
     void displayGameMenuView() {
-       System.out.println("displayGameMenuView called**********");
+       System.out.println("\ndisplayGameMenuView called**********\n");
     }
     
 }

@@ -9,15 +9,12 @@ import java.util.Scanner;
 
 /**
  *
- * @author benjaminlangston
+ * @author Ben Langston and Jeff Ledbetter
  */
 public class HelpMenuView {
     
     public void displayHelpMenuView() {
-    
-    
-        
-//        private void displayHelpMenuView() {   
+  
         boolean endOfView = false;
     do { 
         String[] input = HelpMenuView.getInput();
@@ -35,17 +32,17 @@ public class HelpMenuView {
        private static String [] getInput() {
         
         String[] input = new String[1];
-        System.out.println("************************\n"  
+        System.out.println("\n************************\n"  
         + "City Of Aaron Help Menu\n"
         + "************************\n");
         System.out.println(
-            "The options on the main menu are: \n" +
+            "\nThe options on the main menu are: \n" +
             "G - The theme of the game\n" +
             "M - How to move through the game\n" +
             "P - How is the game won?\n" +
             "H - Crop managing resources\n" +
             "W - How much wheat is in the storehouse\n" +
-            "Q - Q the help menu");
+            "Q - Q the help menu\n");
         
                 
         boolean valid = false;
@@ -53,7 +50,7 @@ public class HelpMenuView {
         while (valid == false) {
         Scanner inFile;
         inFile = new Scanner(System.in);   
-        System.out.println("\nPlease Enter Your Selection");
+        System.out.println("\nPlease Enter Your Selection\n");
         
         input[0] = inFile.nextLine();
         
@@ -61,7 +58,7 @@ public class HelpMenuView {
         
         
         if (helpMenuSelection.length() < 1) {
-            System.out.println("You must specify a value");
+            System.out.println("\nYou must specify a value\n");
             continue;
         }
             input[0] = helpMenuSelection;
@@ -90,7 +87,7 @@ public class HelpMenuView {
                     break;
                 case "Q" : return true;
                 
-                default: System.out.println("Invalid Menu Item");
+                default: System.out.println("\nInvalid Menu Item\n");
               
             }
             
@@ -99,24 +96,24 @@ public class HelpMenuView {
  
 
     private void themeHelp() {
-       System.out.println("The purpose of the game help displayed here\n");
+       System.out.println("\nThe purpose of the game help displayed here\n");
     }
 
     private void moveHelp() {
-        System.out.println("How to move around the game help displayed here\n");
+        System.out.println("\nHow to move around the game help displayed here\n");
     }
 
     private void playHelp() {
-        System.out.println("How to win the game help displayed here\n");
+        System.out.println("\nHow to win the game help displayed here\n");
     }
 
     private void cropHarvestHelp() {
-        System.out.println("Havest and crop resources help displayed here\n");
+        System.out.println("\nHavest and crop resources help displayed here\n");
     }
 
     private void storeHouseHelp() {
-        System.out.println("Storehouse help displayed here\n");
+        System.out.println("\nStorehouse help displayed here\n");
     }
             
-    }
+}
 

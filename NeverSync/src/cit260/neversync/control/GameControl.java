@@ -6,37 +6,39 @@
 package cit260.neversync.control;
 
 //import cit260.neversync.model.Player;
-//import neversync.NeverSync;
+
+import cit260.neversync.model.Player;
+import neversync.NeverSync;
 
 /**
  *
- * @author benjaminlangston
+ * @author Ben Langston and Jeff Ledbetter
  */
 public class GameControl {
     
-//    private static class GameControl {
+    
 
-//        private static Player savePlayer(String playersName) {
-//            
-//            if (playersName == null || playersName.length() < 1) {
-//            return null;
-//            }
-//        
-//            else {
-//            Player player = new Player();
-//            player.setName(playersName);
-//            NeverSync.setPlayer(player);
-//            
-//            return player;
-//            }
-//          
-//        }
-//
-//        public GameControl() {
-//        }
-//        public static void createNewGame(Player player) {
-//            System.out.println("createNewGame was called");
-//        }
+        public static Player savePlayer(String playersName) {
+            
+            if (playersName == null || playersName.length() < 1) {
+            return null;
+            }
+        
+            else {
+            Player player = new Player();
+            player.setName(playersName);
+            NeverSync.setPlayer(player);
+            
+            return player;
+            }
+          
+        }
+
+        public GameControl() {
+        }
+        public static void createNewGame(Player player) {
+            System.out.println("\ncreateNewGame was called\n");
+        }
     }
     
 
