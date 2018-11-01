@@ -35,13 +35,14 @@ public class StartProgramView {
         else {
         endOfView = doAction(input); 
         }
-} while (endOfView = false);
+} while (endOfView != true);
  
     }
     
     private static String [] getInput() {
         
         String[] input = new String[1];
+        System.out.println("****** add banner here ******");
         System.out.println("===================================================="
                 + "==========="
                 + "\n          Welcome to the City of Aaron! "
@@ -152,7 +153,7 @@ public class StartProgramView {
         else {
         endOfView = doAction(input); 
         }
-} while (endOfView = false);
+} while (endOfView != true);
  
     }
        private static String [] getInput() {
@@ -205,12 +206,11 @@ public class StartProgramView {
                 case "Q" : return true;
                 
                 default: System.out.println("Invalid Menu Item");
-//               return false;
+              
             }
             
          return false;           
         }
-
 
         private void startNewGame() {
             
