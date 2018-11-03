@@ -25,11 +25,7 @@ public class StartProgramView {
  do { 
     String[] input = StartProgramView.getInput();
         
-        
-//        input[0] = input[0].toUpperCase();
         if (input[0] == null || input.length < 1 || input[0].equalsIgnoreCase("Q"))
-//                input[0].toUpperCase(equals("Q")))
-//                || input[0].equals("q")) {
                 {
         return;
         }
@@ -42,7 +38,7 @@ public class StartProgramView {
     
     private static String [] getInput() {
         
-        String[] input = new String[1];
+        String[] input = new String[2];
         System.out.println("" +
 "===================================================================================" +
 "                                                                                 \n" +
@@ -103,7 +99,7 @@ public class StartProgramView {
             System.out.println("You must enter a non-blank value");
             continue;
         }
-            input[0] = gamePlayerName;
+            input[1] = gamePlayerName;
             valid = true;          
         }          
             return input;
@@ -111,9 +107,12 @@ public class StartProgramView {
     }
     
     
+    
+    
     private static boolean doAction(String[] input) {
         
-           String playersName = input[0];
+           String playersName = input[1];
+           
            Player player = GameControl.savePlayer(playersName);
            
            if (player == null) {
