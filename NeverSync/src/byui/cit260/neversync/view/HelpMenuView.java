@@ -37,11 +37,11 @@ public class HelpMenuView {
         + "************************\n");
         System.out.println(
             "\nThe options on the main menu are: \n" +
+			"C - Crop management resources\n" +
             "G - The theme of the game\n" +
             "M - How to move through the game\n" +
-            "P - How is the game won?\n" +
-            "H - Crop managing resources\n" +
-            "W - How much wheat is in the storehouse\n" +
+			"S - Utilizing the Storehouse\n" +
+            "W - How is the game won?\n" +
             "Q - Q the help menu\n");
         
                 
@@ -75,15 +75,15 @@ public class HelpMenuView {
             
             
             switch (helpItem) {
+				case "C" : cropHarvestHelp();
+                    break;
                 case "G" : themeHelp();
                     break;
                 case "M" : moveHelp();
                     break;
-                case "P" : playHelp();
+                case "S" : storeHouseHelp();
                     break;
-                case "H" : cropHarvestHelp();
-                    break;
-                case "W" : storeHouseHelp();
+				case "W" : playHelp();
                     break;
                 case "Q" : return true;
                 
@@ -94,43 +94,53 @@ public class HelpMenuView {
          return false;           
         }
  
-
+	private void cropHarvestHelp() {
+        System.out.println("\nCrop management resources:");
+		System.out.println("\n"
+				+ "You are given 2700 bushels of wheat to begin the game. "
+				+ "\nEach person consumes 3 bushels per year."
+				+ "\nEach year you are allowed to decide how much is set aside to pay tithing, feed your people, plant as crops, and to save. "
+				+ "\nYou may receive up to 10 newcomers per year. "
+				+ "\nYou may lose wheat in storage due to rats. "
+				+ "\nYou may also lose a portion of your crops to invaders. "
+				+ "\nYou are less likely to suffer these losses when you pay tithing and adequately provide for your people. "
+    );
+	}
+		
     private void themeHelp() {
        System.out.println("\nThe Theme of the Game");
        System.out.println("\n"
-               + "The theme or goal of the game is to lead the city of NeverSync"
-               + "\nin prosperous living. You are presented with multiple choices "
-               + "\nround by round (10 rounds) that will either bless or curse your "
-               + "\npeople. The goal is to maintain balance and grow the population "
-               + "\nwhile meeting the needs of your community."
+               + "The theme or goal of the game is to lead the city of NeverSync in prosperous living."
+               + "\nYou are presented with multiple choices round by round (10 rounds) that will either bless or curse your people."
+               + "\n The goal is to maintain balance and grow the population while meeting the needs of your community."
                + "\n");
     }
 
     private void moveHelp() {
 		System.out.println("\nHow to move through the game:");
         System.out.println("\n"
-				+ "The game has many scenes or locations. "
-				+ "\nYou move by picking your desired destination. "
-				+ "\nYou can choose from scenes such as the Temple, Storehouse, or Wheat Storage. "
+				+ "The game has many scenes or locations."
+				+ "\nYou move by picking your desired destination."
+				+ "\nYou can choose from scenes such as the Temple, Storehouse, or Wheat Storage."
 				+ "\nAfter selecting your desired location you will be moved to that scene.\n");
     }
-
-    private void playHelp() {
+	
+    private void storeHouseHelp() {
+        System.out.println("\nUtilizing the Storehouse");
+		System.out.println("\n"
+				+ "The storehouse serves two primary functions."
+				+ "\nIt is the place where you store your excess wheat."
+				+ "\nIt is also a mercantile, where needed tools and items can be purchased."
+				+ "\nYou will be able to view your current wheat storage totals in order to know if you can afford to purchase the desired item."
+    );
+	}
+	
+	private void playHelp() {
         System.out.println("\nHow to WIN the game:");
         System.out.println("\n"
 				+ "The game is lost by allowing over 50% of your original population to die from starvation at any point in the game."
-				+ "\nThe game is won by growing your population, avoiding starvation, overcoming obstacles such as rats and invaders. "
+				+ "\nThe game is won by growing your population, avoiding starvation, overcoming obstacles such as rats and invaders."
 				+ "\nYour overall score is compared with past games."
 				+ "\nGetting a new high score unlocks a 3 round bonus level that provides an opportunity to achieve Zion status and have your city taken up unto the Lord.\n");
-    }
-
-    private void cropHarvestHelp() {
-        System.out.println("\nHavest and crop resources help displayed here\n");
-    }
-
-    private void storeHouseHelp() {
-        System.out.println("\nStorehouse help displayed here\n");
-    }
-            
+    }            
 }
-
