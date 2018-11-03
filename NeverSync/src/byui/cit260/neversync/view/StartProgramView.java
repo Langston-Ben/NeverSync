@@ -91,7 +91,8 @@ public class StartProgramView {
         Scanner inFile;
         inFile = new Scanner(System.in);   
         System.out.println("\nPlease Enter Your Name\n"
-                + "Or Q to quit\n");
+                + "Or Q to quit\n"
+                + "Names must be three characters or more");
         
         input[0] = inFile.nextLine();
         
