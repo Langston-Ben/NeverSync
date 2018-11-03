@@ -90,7 +90,8 @@ public class StartProgramView {
         while (valid == false) {
         Scanner inFile;
         inFile = new Scanner(System.in);   
-        System.out.println("\nPlease Enter Your Name\n");
+        System.out.println("\nPlease Enter Your Name\n"
+                + "Or Q to quit\n");
         
         input[0] = inFile.nextLine();
         

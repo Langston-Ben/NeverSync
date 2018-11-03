@@ -96,7 +96,14 @@ public class HelpMenuView {
  
 
     private void themeHelp() {
-       System.out.println("\nThe purpose of the game help displayed here\n");
+       System.out.println("\nThe Theme of the Game");
+       System.out.println("\n"
+               + "The theme or goal of the game is to lead the city of NeverSync"
+               + "\nin prosperous living. You are presented with multiple choices "
+               + "\nround by round (10 rounds) that will either bless or curse your "
+               + "\npeople. The goal is to maintain balance and grow the population "
+               + "\nwhile meeting the needs of your community."
+               + "\n");
     }
 
     private void moveHelp() {
