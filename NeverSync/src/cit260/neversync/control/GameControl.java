@@ -20,7 +20,7 @@ public class GameControl {
 
         public static Player savePlayer(String playersName) {
             
-            if (playersName == null || playersName.length() < 1) {
+            if (playersName == null || playersName.length() < 3) {
             return null;
             }
         

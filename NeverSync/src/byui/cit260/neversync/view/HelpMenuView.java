@@ -107,11 +107,21 @@ public class HelpMenuView {
     }
 
     private void moveHelp() {
-        System.out.println("\nHow to move around the game help displayed here\n");
+		System.out.println("\nHow to move through the game:");
+        System.out.println("\n"
+				+ "The game has many scenes or locations. "
+				+ "\nYou move by picking your desired destination. "
+				+ "\nYou can choose from scenes such as the Temple, Storehouse, or Wheat Storage. "
+				+ "\nAfter selecting your desired location you will be moved to that scene.\n");
     }
 
     private void playHelp() {
-        System.out.println("\nHow to win the game help displayed here\n");
+        System.out.println("\nHow to WIN the game:");
+        System.out.println("\n"
+				+ "The game is lost by allowing over 50% of your original population to die from starvation at any point in the game."
+				+ "\nThe game is won by growing your population, avoiding starvation, overcoming obstacles such as rats and invaders. "
+				+ "\nYour overall score is compared with past games."
+				+ "\nGetting a new high score unlocks a 3 round bonus level that provides an opportunity to achieve Zion status and have your city taken up unto the Lord.\n");
     }
 
     private void cropHarvestHelp() {
