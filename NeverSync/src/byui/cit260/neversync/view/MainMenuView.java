@@ -22,7 +22,7 @@ public class MainMenuView {
         boolean endOfView = false;
     do { 
         String[] input = MainMenuView.getInput();
-        //input[0] = input[0].toUpperCase();
+        input[0] = input[0].toUpperCase();
         if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
             
         return;
