@@ -42,7 +42,7 @@ public class CropManagementView {
             "F - Feed the People\n" +
             "P - Plant the Crops\n" +
             "T - Pay Tithes and Offerings\n" +
-            "Q - Q the help menu\n");
+            "Q - Return to the game menu\n");
         
                 
         boolean valid = false;
@@ -54,14 +54,14 @@ public class CropManagementView {
         
         input[0] = inFile.nextLine();
         
-        String helpMenuSelection = input[0].trim();
+        String cropManagementSelection = input[0].trim();
         
         
-        if (helpMenuSelection.length() < 1) {
+        if (cropManagementSelection.length() < 1) {
             System.out.println("\nYou must specify a value\n");
             continue;
         }
-            input[0] = helpMenuSelection;
+            input[0] = cropManagementSelection;
             valid = true;          
         }          
             return input;
@@ -71,10 +71,10 @@ public class CropManagementView {
         private boolean doAction(String[] input) {
             
             input[0] = input[0].toUpperCase();
-            String helpItem = input[0];
+            String cropSelection = input[0];
             
             
-            switch (helpItem) {
+            switch (cropSelection) {
 		case "B" : buyLand();
                     break;
                 case "S" : sellLand();
@@ -119,77 +119,40 @@ public class CropManagementView {
  		
  		// get the value for the number of years of the loan
  		double acresToPurchase = inFile.nextDouble();
- 		BuyLandControl buyLandControl = new BuyLandControl();
+                
+                // pass the values to the function and assign the return to a variable
                 double land = BuyLandControl.calcLandPurchase(acresOwnedint, 
                 currentPop, currentWheat, acresToPurchase, acresPrice);
                 
+                // pass the values to 2nd function and assign the return to a variable
                 double wheat = BuyLandControl.calcWheatRemaining(acresOwnedint, 
                 currentPop, currentWheat, acresToPurchase, acresPrice);
-                
-//                calcLandPurchase(double acresOwnedinit, double currentPop, 
-//double currentWeat, double acresToPurchase, double acresPrice);
-// 		// prompt to enter the periods per year
-// 		System.out.println("\nPeriods per years: ");
-// 		
-// 		// get the value of the periods per year entered
-// 		double periodsPerYear = inFile.nextDouble();
- 		
-// 		// prompt to enter the yearly interest rate
-// 		System.out.println("\nEnter the Interest Rate for this loan as a decimal:");
-// 		
-// 		// get the value of the interest rate
-// 		double interestRate = inFile.nextDouble();
-// 		
-// 		
-// 		// perform the first calculation
-// 		double eqOne = 1 + (interestRate / periodsPerYear);
-// 		
-// 		// perform the second calculation
-// 		double eqTwo = numberOfYears * -periodsPerYear;
-// 		
-// 		// perform the third calculation
-// 		double eqThree = 1 - Math.pow(eqOne,eqTwo);
-// 		
-// 		// perform the fourth calculation
-// 		double payment = loanAmount * (interestRate / periodsPerYear) / eqThree;
-// 		
-// 		// round the payment amount to two decimals
-// 		double monthlyPayment = Math.round(payment * 100.0) /100.0;
-// 		
-// 		// display the results of the calculated input
-// 		
- 		System.out.println("\n------------------------------------------------------" +
- 		"--------------");
+                	
+ 		System.out.println("\n-----------------------------"
+                                    + "-------------------------" +
+                                    "--------------");
  		
  			System.out.println("The new amount of land is " +land 
-                        + " after the recent purchase"); 
+                        + " acres after the recent purchase"); 
+                		  
+ 		System.out.println("--------------------------------"
+                                   + "-----------------------" +
+                                   "-------------\n");	
                 
- 							  
- 		System.out.println("-------------------------------------------------------" +
- 		"-------------\n");	
-                
-                System.out.println("\n------------------------------------------------------" +
- 		"--------------");
+                System.out.println("\n-------------------------------"
+                                    + "-----------------------" +
+                                    "--------------");
  		
  			System.out.println("The wheat remain is " + wheat 
                         + " bushels after the recent purchase"); 
                 
  							  
- 		System.out.println("-------------------------------------------------------" +
- 		"-------------\n");
+ 		System.out.println("----------------------------------"
+                                   + "---------------------" +
+                                   "-------------\n");
 
  		}
-        
-        
-        
-        
-        
-        
-        
-        
-       
-    
-
+ 
     private void sellLand() {
         System.out.println("Placeholder for sellLand");
     }
