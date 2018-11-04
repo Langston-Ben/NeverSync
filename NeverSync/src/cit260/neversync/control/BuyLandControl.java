@@ -63,5 +63,10 @@ double wheatNew = currentWheat - ( acresPrice * acresToPurchase);
 return wheatNew;
 
     }
+
+//    public BuyLandControl(double acresOwnedint, double currentPop, 
+//           double currentWheat, double acresToPurchase, double acresPrice) {
+//        
+//    }
     
 }
