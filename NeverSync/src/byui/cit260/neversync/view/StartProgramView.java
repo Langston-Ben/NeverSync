@@ -9,7 +9,6 @@ import cit260.neversync.control.GameControl;
 import cit260.neversync.model.Player;
 import java.util.Scanner;
 
-
 /**
  *
  * @author Ben Langston and Jeff Ledbetter
@@ -17,51 +16,49 @@ import java.util.Scanner;
 public class StartProgramView {
 
     public StartProgramView() {
-        
+
     }
-       
+
     public void display() {
-    boolean endOfView = false;
- do { 
-    String[] input = StartProgramView.getInput();
-        
-        if (input[0] == null || input.length < 1 || input[0].equalsIgnoreCase("Q"))
-                {
-        return;
-        }
-        else {
-        endOfView = doAction(input); 
-        }
-} while (endOfView != true);
- 
+        boolean endOfView = false;
+        do {
+            String[] input = StartProgramView.getInput();
+
+            if (input[0] == null || input.length < 1 || input[0].equalsIgnoreCase("Q")) {
+                return;
+            } else {
+                endOfView = doAction(input);
+            }
+        } while (endOfView != true);
+
     }
-    
-    private static String [] getInput() {
-        
+
+    private static String[] getInput() {
+
         String[] input = new String[2];
-        System.out.println("" +
-"===================================================================================" +
-"                                                                                 \n" +
-"                                                                                 \n" +
-"           ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗        \n" +
-"           ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝        \n" +
-"           ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗          \n" +
-"           ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝          \n" +
-"           ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗        \n" +
-"            ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝        \n" +
-"                               ████████╗ ██████╗                                 \n" +
-"                               ╚══██╔══╝██╔═══██╗                                \n" +
-"                                  ██║   ██║   ██║                                \n" +
-"                                  ██║   ██║   ██║                                \n" +
-"                                  ██║   ╚██████╔╝                                \n" +
-"                                  ╚═╝    ╚═════╝                                 \n" +
-"   ███╗   ██╗███████╗██╗   ██╗███████╗██████╗ ███████╗██╗   ██╗███╗   ██╗ ██████╗\n" +
-"   ████╗  ██║██╔════╝██║   ██║██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝████╗  ██║██╔════╝\n" +
-"   ██╔██╗ ██║█████╗  ██║   ██║█████╗  ██████╔╝███████╗ ╚████╔╝ ██╔██╗ ██║██║     \n" +
-"   ██║╚██╗██║██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║  ╚██╔╝  ██║╚██╗██║██║     \n" +
-"   ██║ ╚████║███████╗ ╚████╔╝ ███████╗██║  ██║███████║   ██║   ██║ ╚████║╚██████╗\n" +
-"   ╚═╝  ╚═══╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\n" +
-"");
+        System.out.println(""
+                + "==================================================================================="
+                + "                                                                                 \n"
+                + "                                                                                 \n"
+                + "           ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗        \n"
+                + "           ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝        \n"
+                + "           ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗          \n"
+                + "           ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝          \n"
+                + "           ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗        \n"
+                + "            ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝        \n"
+                + "                               ████████╗ ██████╗                                 \n"
+                + "                               ╚══██╔══╝██╔═══██╗                                \n"
+                + "                                  ██║   ██║   ██║                                \n"
+                + "                                  ██║   ██║   ██║                                \n"
+                + "                                  ██║   ╚██████╔╝                                \n"
+                + "                                  ╚═╝    ╚═════╝                                 \n"
+                + "   ███╗   ██╗███████╗██╗   ██╗███████╗██████╗ ███████╗██╗   ██╗███╗   ██╗ ██████╗\n"
+                + "   ████╗  ██║██╔════╝██║   ██║██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝████╗  ██║██╔════╝\n"
+                + "   ██╔██╗ ██║█████╗  ██║   ██║█████╗  ██████╔╝███████╗ ╚████╔╝ ██╔██╗ ██║██║     \n"
+                + "   ██║╚██╗██║██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║  ╚██╔╝  ██║╚██╗██║██║     \n"
+                + "   ██║ ╚████║███████╗ ╚████╔╝ ███████╗██║  ██║███████║   ██║   ██║ ╚████║╚██████╗\n"
+                + "   ╚═╝  ╚═══╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\n"
+                + "");
         System.out.println("===================================================="
                 + "==============================="
                 + "\n          Welcome to the City of Aaron! "
@@ -80,59 +77,52 @@ public class StartProgramView {
                 + "===============================");
         System.out.println("\nCompiled By Jeff Ledbetter & Ben Langston\n");
         System.out.println("*****Welcome to the Game!*****\n");
-                
+
         boolean valid = false;
-        
+
         while (valid == false) {
-        Scanner inFile;
-        inFile = new Scanner(System.in);   
-        System.out.println("\nPlease Enter Your Name\n"
-                + "Or Q to quit\n"
-                + "Names must be three characters or more");
-        
-        input[0] = inFile.nextLine();
-        
-        String gamePlayerName = input[0].trim();
-        
-        
-        if (gamePlayerName.length() < 1) {
-            System.out.println("You must enter a non-blank value");
-            continue;
-        }
-            input[1] = gamePlayerName;
-            valid = true;          
-        }          
-            return input;
-           
-    }
-    
-    
-    
-    
-    private static boolean doAction(String[] input) {
-        
-           String playersName = input[1];
-           
-           Player player = GameControl.savePlayer(playersName);
-           
-           if (player == null) {
-           System.out.println("Could not create the player." + "\n"
-                   + "Enter a different name.");
-           return false;
-           }
-           
-           else {
-           System.out.println("======================================= "
-           + "\nWelcome to the game " + playersName
-           + "\nWe hope you have a lot of fun!"
-           + "\n=======================================");
-           
-           MainMenuView mainMenuView = new MainMenuView();
-           mainMenuView.displayMainMenuView();
-           return true;
-           
-                   
+            Scanner inFile;
+            inFile = new Scanner(System.in);
+            System.out.println("\nPlease Enter Your Name\n"
+                    + "Or Q to quit\n"
+                    + "Names must be three characters or more");
+
+            input[0] = inFile.nextLine();
+
+            String gamePlayerName = input[0].trim();
+
+            if (gamePlayerName.length() < 1) {
+                System.out.println("You must enter a non-blank value");
+                continue;
             }
+            input[1] = gamePlayerName;
+            valid = true;
+        }
+        return input;
+
+    }
+
+    private static boolean doAction(String[] input) {
+
+        String playersName = input[1];
+
+        Player player = GameControl.savePlayer(playersName);
+
+        if (player == null) {
+            System.out.println("Could not create the player." + "\n"
+                    + "Enter a different name.");
+            return false;
+        } else {
+            System.out.println("======================================= "
+                    + "\nWelcome to the game " + playersName
+                    + "\nWe hope you have a lot of fun!"
+                    + "\n=======================================");
+
+            MainMenuView mainMenuView = new MainMenuView();
+            mainMenuView.displayMainMenuView();
+            return true;
+
+        }
 
     }
 
@@ -160,7 +150,6 @@ public class StartProgramView {
 //            System.out.println("createNewGame was called");
 //        }
 //    }
-
 //    private static class MainMenuView {
 //
 //        public MainMenuView() {
@@ -253,7 +242,5 @@ public class StartProgramView {
 //        HelpMenuView helpMenuView = new HelpMenuView();
 //        helpMenuView.displayHelpMenuView();
 //        }   
-            
 //    }
 }
-    

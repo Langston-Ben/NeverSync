@@ -13,13 +13,13 @@ import java.util.Objects;
  * @author benjaminlangston
  */
 public class Scene implements Serializable {
-    
-    private String name;     
-    private String description;   
-    private Question question;    
+
+    private String name;
+    private String description;
+    private Question question;
     private InventoryItem item;
     private Location location;
-   
+
     public Scene() {
     }
 
@@ -30,8 +30,6 @@ public class Scene implements Serializable {
     public void setLocation(Location location) {
         this.location = location;
     }
-    
-    
 
     /**
      * Get the value of item
@@ -51,7 +49,6 @@ public class Scene implements Serializable {
         this.item = item;
     }
 
-
     /**
      * Get the value of question
      *
@@ -70,7 +67,6 @@ public class Scene implements Serializable {
         this.question = question;
     }
 
-
     /**
      * Get the value of description
      *
@@ -88,7 +84,6 @@ public class Scene implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     /**
      * Get the value of name
@@ -150,8 +145,4 @@ public class Scene implements Serializable {
         return "Scene{" + "name=" + name + ", description=" + description + ", question=" + question + ", item=" + item + '}';
     }
 
-    
-    
-    
 }
-

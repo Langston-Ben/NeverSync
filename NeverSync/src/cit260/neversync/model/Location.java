@@ -13,15 +13,14 @@ import java.util.Objects;
  * @author benjaminlangston
  */
 public class Location implements Serializable {
-    
-    private int row;        
-    private int column;   
-    private boolean visited;   
+
+    private int row;
+    private int column;
+    private boolean visited;
     private Scene scene;
 
     public Location() {
     }
-    
 
     /**
      * Get the value of scene
@@ -41,7 +40,6 @@ public class Location implements Serializable {
         this.scene = scene;
     }
 
-
     /**
      * Get the value of visited
      *
@@ -60,7 +58,6 @@ public class Location implements Serializable {
         this.visited = visited;
     }
 
-
     /**
      * Get the value of column
      *
@@ -78,7 +75,6 @@ public class Location implements Serializable {
     public void setColumn(int column) {
         this.column = column;
     }
-
 
     /**
      * Get the value of row
@@ -140,6 +136,4 @@ public class Location implements Serializable {
         return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scene + '}';
     }
 
-    
 }
-

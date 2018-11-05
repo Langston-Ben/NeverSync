@@ -12,105 +12,101 @@ import java.util.Objects;
  *
  * @author jeffledbetter
  */
-public class StoreHouse implements Serializable{
+public class StoreHouse implements Serializable {
 
-	
-	private String tool;
-	private String animal;
-	private String food;
-	private String medicine;
-	private String weapon;
-			
-			
-	public StoreHouse() {
-	}
+    private String tool;
+    private String animal;
+    private String food;
+    private String medicine;
+    private String weapon;
 
-	public String getTool() {
-		return tool;
-	}
+    public StoreHouse() {
+    }
 
-	public void setTool(String tool) {
-		this.tool = tool;
-	}
+    public String getTool() {
+        return tool;
+    }
 
-	public String getAnimal() {
-		return animal;
-	}
+    public void setTool(String tool) {
+        this.tool = tool;
+    }
 
-	public void setAnimal(String animal) {
-		this.animal = animal;
-	}
+    public String getAnimal() {
+        return animal;
+    }
 
-	public String getFood() {
-		return food;
-	}
+    public void setAnimal(String animal) {
+        this.animal = animal;
+    }
 
-	public void setFood(String food) {
-		this.food = food;
-	}
+    public String getFood() {
+        return food;
+    }
 
-	public String getMedicine() {
-		return medicine;
-	}
+    public void setFood(String food) {
+        this.food = food;
+    }
 
-	public void setMedicine(String medicine) {
-		this.medicine = medicine;
-	}
+    public String getMedicine() {
+        return medicine;
+    }
 
-	public String getWeapon() {
-		return weapon;
-	}
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
+    }
 
-	public void setWeapon(String weapon) {
-		this.weapon = weapon;
-	}
+    public String getWeapon() {
+        return weapon;
+    }
 
-	
-	@Override
-	public int hashCode() {
-		int hash = 7;
-		hash = 79 * hash + Objects.hashCode(this.tool);
-		hash = 79 * hash + Objects.hashCode(this.animal);
-		hash = 79 * hash + Objects.hashCode(this.food);
-		hash = 79 * hash + Objects.hashCode(this.medicine);
-		hash = 79 * hash + Objects.hashCode(this.weapon);
-		return hash;
-	}
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final StoreHouse other = (StoreHouse) obj;
-		if (!Objects.equals(this.tool, other.tool)) {
-			return false;
-		}
-		if (!Objects.equals(this.animal, other.animal)) {
-			return false;
-		}
-		if (!Objects.equals(this.food, other.food)) {
-			return false;
-		}
-		if (!Objects.equals(this.medicine, other.medicine)) {
-			return false;
-		}
-		if (!Objects.equals(this.weapon, other.weapon)) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.tool);
+        hash = 79 * hash + Objects.hashCode(this.animal);
+        hash = 79 * hash + Objects.hashCode(this.food);
+        hash = 79 * hash + Objects.hashCode(this.medicine);
+        hash = 79 * hash + Objects.hashCode(this.weapon);
+        return hash;
+    }
 
-	@Override
-	public String toString() {
-		return "StoreHouse{" + "tool=" + tool + ", animal=" + animal + ", food=" + food + ", medicine=" + medicine + ", weapon=" + weapon + '}';
-	}
-	
-	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StoreHouse other = (StoreHouse) obj;
+        if (!Objects.equals(this.tool, other.tool)) {
+            return false;
+        }
+        if (!Objects.equals(this.animal, other.animal)) {
+            return false;
+        }
+        if (!Objects.equals(this.food, other.food)) {
+            return false;
+        }
+        if (!Objects.equals(this.medicine, other.medicine)) {
+            return false;
+        }
+        if (!Objects.equals(this.weapon, other.weapon)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "StoreHouse{" + "tool=" + tool + ", animal=" + animal + ", food=" + food + ", medicine=" + medicine + ", weapon=" + weapon + '}';
+    }
+
 }

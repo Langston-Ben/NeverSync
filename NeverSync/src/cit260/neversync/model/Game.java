@@ -12,8 +12,8 @@ import java.util.Objects;
  *
  * @author Langstons
  */
-public class Game implements Serializable{
-    
+public class Game implements Serializable {
+
     // class instance variables
     private String thePlayer;
     private String theMap;
@@ -22,7 +22,6 @@ public class Game implements Serializable{
     private int acresOwned;
     private int wheatInStorage;
     private Player player;
-     
 
     public Game() {
     }
@@ -34,8 +33,6 @@ public class Game implements Serializable{
     public void setPlayer(Player player) {
         this.player = player;
     }
-    
-    
 
     public String getThePlayer() {
         return thePlayer;
@@ -133,6 +130,6 @@ public class Game implements Serializable{
     @Override
     public String toString() {
         return "Game{" + "thePlayer=" + thePlayer + ", theMap=" + theMap + ", theStorehouse=" + theStorehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + '}';
-    } 
-    
+    }
+
 }

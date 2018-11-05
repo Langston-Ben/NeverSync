@@ -20,156 +20,149 @@ import java.util.Objects;
  *
  * @author jeffledbetter
  */
-public class InventoryItem implements Serializable{
-	
-	private String name;
-	private ArrayList<ItemType> itemType = new ArrayList<ItemType>();
-	private int quantity;
-	private ArrayList<Condition> condition = new ArrayList<Condition>();
-	private double pricePerUnit;
-	private String animalType;
-	private int age;
-	
-	
-	
-	public InventoryItem() {
-	}
+public class InventoryItem implements Serializable {
 
-	public Condition getGood() {
-		return Good;
-	}
-	
-	public Condition getFair() {
-		return Fair;
-	}
-	
-	public Condition getPoor() {
-		return Poor;
-	}
-	
-	public ItemType getTool() {
-		return Tool;
-	}
-	
-	public ItemType getFood() {
-		return Food;
-	}
-	public ItemType getAnimal() {
-		return Animal;
-	}
-	public ItemType getMedicine() {
-		return Medicine;	
-	}
-		
-		
-				
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String name;
+    private ArrayList<ItemType> itemType = new ArrayList<ItemType>();
+    private int quantity;
+    private ArrayList<Condition> condition = new ArrayList<Condition>();
+    private double pricePerUnit;
+    private String animalType;
+    private int age;
 
-	public ArrayList<ItemType> getItemType() {
-		return itemType;
-	}
+    public InventoryItem() {
+    }
+
+    public Condition getGood() {
+        return Good;
+    }
+
+    public Condition getFair() {
+        return Fair;
+    }
+
+    public Condition getPoor() {
+        return Poor;
+    }
+
+    public ItemType getTool() {
+        return Tool;
+    }
+
+    public ItemType getFood() {
+        return Food;
+    }
+
+    public ItemType getAnimal() {
+        return Animal;
+    }
+
+    public ItemType getMedicine() {
+        return Medicine;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<ItemType> getItemType() {
+        return itemType;
+    }
 
 //	public void setItemType(Enum itemType) {
 //		this.itemType = itemType;
 //	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	
-	
-	public ArrayList<Condition> getCondition() {
-		return condition;
-	}
+    public ArrayList<Condition> getCondition() {
+        return condition;
+    }
 
 //	public void setCondition(Enum condition) {
 //		this.condition = condition;
 //	}
+    public double getPricePerUnit() {
+        return pricePerUnit;
+    }
 
-	public double getPricePerUnit() {
-		return pricePerUnit;
-	}
+    public void setPricePerUnit(double pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
+    }
 
-	public void setPricePerUnit(double pricePerUnit) {
-		this.pricePerUnit = pricePerUnit;
-	}
+    public String getAnimalType() {
+        return animalType;
+    }
 
-	public String getAnimalType() {
-		return animalType;
-	}
+    public void setAnimalType(String animalType) {
+        this.animalType = animalType;
+    }
 
-	public void setAnimalType(String animalType) {
-		this.animalType = animalType;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.itemType);
+        hash = 59 * hash + this.quantity;
+        hash = 59 * hash + Objects.hashCode(this.condition);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.pricePerUnit) ^ (Double.doubleToLongBits(this.pricePerUnit) >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.animalType);
+        hash = 59 * hash + this.age;
+        return hash;
+    }
 
-	@Override
-	public int hashCode() {
-		int hash = 5;
-		hash = 59 * hash + Objects.hashCode(this.name);
-		hash = 59 * hash + Objects.hashCode(this.itemType);
-		hash = 59 * hash + this.quantity;
-		hash = 59 * hash + Objects.hashCode(this.condition);
-		hash = 59 * hash + (int) (Double.doubleToLongBits(this.pricePerUnit) ^ (Double.doubleToLongBits(this.pricePerUnit) >>> 32));
-		hash = 59 * hash + Objects.hashCode(this.animalType);
-		hash = 59 * hash + this.age;
-		return hash;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final InventoryItem other = (InventoryItem) obj;
+        if (this.quantity != other.quantity) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.pricePerUnit) != Double.doubleToLongBits(other.pricePerUnit)) {
+            return false;
+        }
+        if (this.age != other.age) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.animalType, other.animalType)) {
+            return false;
+        }
+        if (this.itemType != other.itemType) {
+            return false;
+        }
+        if (this.condition != other.condition) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final InventoryItem other = (InventoryItem) obj;
-		if (this.quantity != other.quantity) {
-			return false;
-		}
-		if (Double.doubleToLongBits(this.pricePerUnit) != Double.doubleToLongBits(other.pricePerUnit)) {
-			return false;
-		}
-		if (this.age != other.age) {
-			return false;
-		}
-		if (!Objects.equals(this.name, other.name)) {
-			return false;
-		}
-		if (!Objects.equals(this.animalType, other.animalType)) {
-			return false;
-		}
-		if (this.itemType != other.itemType) {
-			return false;
-		}
-		if (this.condition != other.condition) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public String toString() {
+        return "InventoryItem{" + "name=" + name + ", itemType=" + itemType + ", quantity=" + quantity + ", condition=" + condition + ", pricePerUnit=" + pricePerUnit + ", animalType=" + animalType + ", age=" + age + '}';
+    }
 
-	@Override
-	public String toString() {
-		return "InventoryItem{" + "name=" + name + ", itemType=" + itemType + ", quantity=" + quantity + ", condition=" + condition + ", pricePerUnit=" + pricePerUnit + ", animalType=" + animalType + ", age=" + age + '}';
-	}
-	
-	
 }

@@ -13,18 +13,16 @@ import java.util.Objects;
  * @author benjaminlangston
  */
 public class Question implements Serializable {
-    
-    private String questionText;    
+
+    private String questionText;
     private String answer1;
     private String answer2;
     private String answer3;
     private String answer4;
     private int correctAnswer;
-   
 
     public Question() {
     }
-    
 
     public String getQuestionText() {
         return questionText;
@@ -73,7 +71,6 @@ public class Question implements Serializable {
     public void setCorrectAnswer(int correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
-
 
     @Override
     public int hashCode() {
@@ -124,9 +121,5 @@ public class Question implements Serializable {
     public String toString() {
         return "Question{" + "questionText=" + questionText + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4=" + answer4 + ", correctAnswer=" + correctAnswer + '}';
     }
-    
-    
 
-    
 }
-

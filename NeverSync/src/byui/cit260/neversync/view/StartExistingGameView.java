@@ -10,9 +10,9 @@ package byui.cit260.neversync.view;
  * @author Ben Langston and Jeff Ledbetter
  */
 public class StartExistingGameView {
-    
+
     public void displayStartExistingGameView() {
-    System.out.println("\ndisplayStartExistingGameView has been called ********\n");
+        System.out.println("\ndisplayStartExistingGameView has been called ********\n");
     }
-    
+
 }

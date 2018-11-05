@@ -6,24 +6,25 @@
 package cit260.neversync.model;
 
 import java.awt.Point;
+
 /**
  *
  * @author Langstons
  */
 public enum Condition {
-    
-    Good("Good", "The item is in good condition.", new Point (1, 1)),
-    Fair("Fair", "The item is in fair condition.", new Point (0, 1)),
-    Poor("Poor", "The item is in poor condition.", new Point (1, 2));
-    
- private String name;
- private String description;
- private Point coordinates;
 
-Condition(String name, String description, Point coordinates){
-    this.name = name;
-    this.description = description;
-    this.coordinates = coordinates;
+    Good("Good", "The item is in good condition.", new Point(1, 1)),
+    Fair("Fair", "The item is in fair condition.", new Point(0, 1)),
+    Poor("Poor", "The item is in poor condition.", new Point(1, 2));
+
+    private String name;
+    private String description;
+    private Point coordinates;
+
+    Condition(String name, String description, Point coordinates) {
+        this.name = name;
+        this.description = description;
+        this.coordinates = coordinates;
 
     }
 
@@ -55,6 +56,5 @@ Condition(String name, String description, Point coordinates){
     public String toString() {
         return "Condition{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + '}';
     }
-   
-  
+
 }
