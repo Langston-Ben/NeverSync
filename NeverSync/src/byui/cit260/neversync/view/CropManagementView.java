@@ -102,27 +102,38 @@ public class CropManagementView {
 
     private void buyLand() {
 
-        System.out.println("Buying land criteria goes here");
+        System.out.println("The Player will be required to enter a value for "
+                + "the number of acres to purchase. \nThis number must be a positive number.  "
+                + "\nThe player must have enough wheat in storage to make the land purchase. "
+                + "\nOne bushel of wheat is required for every 10 acres purchased."
+                + "\nThe city must have enough people to till the land. "
+                + "\nOne person can take care of 10 acres. \n");
         Random rand = new Random();
         int acresPrice = rand.nextInt((27 - 17) + 1) + 17;
         System.out.println("The price for an acre of land today is:\n"
                 + acresPrice);
-        System.out.println("\nEnter the number of acres owned:\n");
 
-        double currentPop = 20000;
+        double currentPop = 5000;
+        double acresOwnedinit = 1000;
+        double currentWheat = 2700;
+        System.out.println("\nThe Current Population of the City is: \n" + currentPop);
+
+        System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
+        System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
+
 //                double acresPrice = 20;
         // create an input file for the console
         Scanner inFile;
         inFile = new Scanner(System.in);
 
-        // this line will read the value of the next line typed in the console
-        double acresOwnedint = inFile.nextDouble();
-
-        // prompt to enter the wheat in storage
-        System.out.println("\nEnter The Current Wheat in Storage ");
-
-        // get the value for the wheat in storage
-        double currentWheat = inFile.nextDouble();
+//        // this line will read the value of the next line typed in the console
+//        double acresOwnedint = inFile.nextDouble();
+//
+//        // prompt to enter the wheat in storage
+//        System.out.println("\nEnter The Current Wheat in Storage ");
+//
+//        // get the value for the wheat in storage
+//        double currentWheat = inFile.nextDouble();
 
         // prompt to enter the number of acres to purchase
         System.out.println("\nEnter The Number of Acres to Purchase: ");
@@ -131,7 +142,7 @@ public class CropManagementView {
         double acresToPurchase = inFile.nextDouble();
 
         // pass the values to the function and assign the return to a variable
-        double land = BuyLandControl.calcLandPurchase(acresOwnedint,
+        double land = BuyLandControl.calcLandPurchase(acresOwnedinit,
                 currentPop, currentWheat, acresToPurchase, acresPrice);
 
         if (land == -1) {
@@ -186,7 +197,7 @@ public class CropManagementView {
 
         }
         // pass the values to 2nd function and assign the return to a variable
-        double wheat = BuyLandControl.calcWheatRemaining(acresOwnedint,
+        double wheat = BuyLandControl.calcWheatRemaining(acresOwnedinit,
                 currentPop, currentWheat, acresToPurchase, acresPrice);
 
         if (land == -1) {
