@@ -35,16 +35,10 @@ public class PlantCropsView {
 
         String[] input = new String[1];
         System.out.println("\n**********************************\n"
-                + "City Of Aaron Plant Crops Menu\n"
+                + "Plant Crops Menu\n"
                 + "**********************************\n");
         System.out.println(
-                "\nThe options on the main menu are: \n"
-                + "B - Buy Land\n"
-                + "S - Sell Land\n"
-                + "F - Feed the People\n"
-                + "P - Plant the Crops\n"
-                + "T - Pay Tithes and Offerings\n"
-                + "Q - Return to the game menu\n");
+                "\nHow many acres of land do you want to plant?");
 
         boolean valid = false;
 

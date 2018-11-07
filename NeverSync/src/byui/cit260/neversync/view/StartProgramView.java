@@ -91,7 +91,7 @@ public class StartProgramView {
 
             String gamePlayerName = input[0].trim();
 
-            if (gamePlayerName.length() < 1) {
+            if (gamePlayerName.length() < 3) {
                 System.out.println("You must enter a non-blank value");
                 continue;
             }

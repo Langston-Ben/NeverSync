@@ -263,8 +263,9 @@ public class CropManagementView {
     }
 
     private void plantCrops() {
-        System.out.println("Placeholder for plantCrops");
-    }
+		PlantCropsView plantCropsView = new PlantCropsView();
+        plantCropsView.displayPlantCropsView();    
+	}
 
     private void payTithes() {
         System.out.println("Placeholder for payTithes");

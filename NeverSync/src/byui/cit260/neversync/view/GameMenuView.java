@@ -123,7 +123,8 @@ public class GameMenuView {
     }
 
     private void reportMenu() {
-        System.out.println("placeholder for reportMenu");
+		ReportsMenuView reportsMenuView = new ReportsMenuView();
+        reportsMenuView.displayReportsMenuView();
     }
 
     private void saveGame() {
