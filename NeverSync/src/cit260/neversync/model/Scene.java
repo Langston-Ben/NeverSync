@@ -142,7 +142,8 @@ public class Scene implements Serializable {
 
     @Override
     public String toString() {
-        return "Scene{" + "name=" + name + ", description=" + description + ", question=" + question + ", item=" + item + '}';
+        return "Scene{" + "name=" + name + ", description=" + description + ", "
+                + "question=" + question + ", item=" + item + ", location=" + location + '}';
     }
 
 }
