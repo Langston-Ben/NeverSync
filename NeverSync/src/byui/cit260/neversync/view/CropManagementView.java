@@ -116,8 +116,8 @@ public class CropManagementView {
         double currentPop = 5000;
         double acresOwnedinit = 1000;
         double currentWheat = 2700;
+        
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
-
         System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
         System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
 

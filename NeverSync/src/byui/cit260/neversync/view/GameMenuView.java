@@ -110,7 +110,8 @@ public class GameMenuView {
     }
 
     private void moveNewLocation() {
-        System.out.println("placeholder for moveNewLocation");
+        MoveNewLocationView moveNewLocationView = new MoveNewLocationView();
+        moveNewLocationView.displayMoveNewLocationView();
     }
 
     private void manageCrops() {
