@@ -19,15 +19,15 @@ public class PlantControl {
         }
 
         if (acresToPlant < 100 || acresToPlant > 1000 || acresToPlant > acresOwned) {
-            return -1;
+            return -2;
         }
 
-        if (initWheatStorage * .90 < (.5 * acresToPlant) || initWheatStorage * .90 > 550) {
-            return -1;
+        if (initWheatStorage * .90 < (.5 * acresToPlant) || initWheatStorage * .90 > 3000) {
+            return -3;
         }
 
-        if (initWheatStorage < 110 || initWheatStorage > 600) {
-            return -1;
+        if (initWheatStorage < 110 || initWheatStorage > 3000) {
+            return -4;
         }
 
 //double bushelsToPlant = acresToPlant * .5;
