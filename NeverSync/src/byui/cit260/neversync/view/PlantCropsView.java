@@ -38,14 +38,14 @@ public class PlantCropsView {
                 + "Plant Crops Menu\n"
                 + "**********************************\n");
         System.out.println(
-                "\nHow many acres of land do you want to plant?");
+                "\nHow many bushels of wheat do you want to plant?");
 
         boolean valid = false;
 
         while (valid == false) {
             Scanner inFile;
             inFile = new Scanner(System.in);
-            System.out.println("\nPlease Enter Your Selection\n");
+			double bushelsToPlant = inFile.nextDouble();
 
             input[0] = inFile.nextLine();
 
@@ -62,38 +62,26 @@ public class PlantCropsView {
 
     }
 
-//    private boolean doAction(String[] input) {
-//
-//        input[0] = input[0].toUpperCase();
-//        String cropSelection = input[0];
-//
-//        switch (cropSelection) {
-//            case "B":
-//                buyLand();
-//                break;
-//            case "S":
-//                sellLand();
-//                break;
-//            case "F":
-//                feedPeople();
-//                break;
-//            case "P":
-//                plantCrops();
-//                break;
-//            case "T":
-//                payTithes();
-//                break;
-//            case "Q":
-//                return true;
-//
-//            default:
-//                System.out.println("\nInvalid Menu Item\n");
-//
-//        }
-//
-//        return false;
-//    }
+    private boolean doAction(String[] input) {
 
-    
+        return false;
+    }
+		private void plantCrops() {
+			 // prompt to enter the number of bushels to plant
+			System.out.println("\nEnter The Number of Bushels to Plant: ");
+
+			// get the value for the number of bushels to plant
+			double bushelsToPlant = inFile.nextDouble();
+			
+			double acresOwned = 1000;
+			double initWheatStorage = 2700;
+			
+			
+
+			// pass the values to the function and assign the return to a variable
+			double plantNum = PlantControl.calcBushelsToPlant(acresOwned,
+                acresToPlant, initWheatStorage);
+			
+		}
 }
 
