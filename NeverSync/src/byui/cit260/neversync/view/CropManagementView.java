@@ -6,6 +6,7 @@
 package byui.cit260.neversync.view;
 
 import cit260.neversync.control.BuyLandControl;
+import cit260.neversync.control.PlantControl;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -385,8 +386,102 @@ public class CropManagementView {
     }
 
     private void plantCrops() {
-        System.out.println("Placeholder for plantCrops");
-    }
+		System.out.println("The Player will be asked to enter a value for "
+                + "the number of acres to plant. \nThis number must be a positive number.  "
+                + "\nThe player must have enough wheat in storage. "
+                + "\nOne bushel of wheat is required for every 2 acres planted.");
+
+        double currentPop = 5000;
+        double acresOwned = 1000;
+        double initWheatStorage = 2700;
+        System.out.println("\nThe Current Population of the City is: \n" + currentPop);
+        System.out.println("\nCurrent number of acres owned:\n" + acresOwned);
+        System.out.println("\nCurrent wheat in storage:\n" + initWheatStorage);
+
+        // create an input file for the console
+        Scanner inFile;
+        inFile = new Scanner(System.in);
+
+        // prompt to enter the number of acres to be planted
+        System.out.println("\nEnter The Number of Acres to Plant: ");
+
+        // get the value for the number of acres to plant
+        double acresToPlant = inFile.nextDouble();
+
+        // pass the values to the function and assign the return to a variable
+        double landPlant = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+
+        if (landPlant == -1) {
+
+            System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("You must own more than 500 acres and no more than 2000 acres.");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+        } else if (landPlant == -2) {
+
+            System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("You must select land value greater than 100 acres and less than 1000.");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+
+        } else if (landPlant == -3) {
+
+            System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("You do not have enough wheat to plant that many acres.");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+			
+			 } else if (landPlant == -4) {
+
+            System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("Your wheat storage is outside the allowable range.");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+
+        } else {
+            System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("The amount of land planted this season is " + acresToPlant
+                    + " acres. ");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+			
+			System.out.println("\n-----------------------------"
+                    + "-------------------------"
+                    + "--------------");
+
+            System.out.println("You have " + landPlant + " bushels of wheat remaining.");
+
+            System.out.println("--------------------------------"
+                    + "-----------------------"
+                    + "-------------\n");
+
+        }
+	}
 
     private void payTithes() {
         System.out.println("Placeholder for payTithes");
