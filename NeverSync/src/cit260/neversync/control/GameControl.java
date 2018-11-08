@@ -7,6 +7,7 @@ package cit260.neversync.control;
 
 //import cit260.neversync.model.Player;
 import cit260.neversync.model.Player;
+import cit260.neversync.model.Scene;
 import neversync.NeverSync;
 
 /**
@@ -34,5 +35,9 @@ public class GameControl {
 
     public static void createNewGame(Player player) {
         System.out.println("\ncreateNewGame was called\n");
+    }
+    
+    public static void creatNewScene(Scene scene)  {
+       
     }
 }

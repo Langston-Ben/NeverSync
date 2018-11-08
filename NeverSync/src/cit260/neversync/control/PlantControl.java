@@ -11,7 +11,8 @@ package cit260.neversync.control;
  */
 public class PlantControl {
 
-    public static double calcBushelsToPlant(double acresOwned, double acresToPlant, double initWheatStorage) {
+    public static double calcBushelsToPlant(double acresOwned, 
+            double acresToPlant, double initWheatStorage) {
 
 //double currentWheatStorage = initWheatStorage * .90;
         if (acresOwned < 500 || acresOwned > 2000) {

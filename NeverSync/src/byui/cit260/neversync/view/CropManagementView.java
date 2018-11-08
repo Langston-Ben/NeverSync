@@ -116,7 +116,8 @@ public class CropManagementView {
         double currentPop = 5000;
         double acresOwnedinit = 1000;
         double currentWheat = 2700;
-        
+        boolean cNumber;
+
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
         System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
         System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
@@ -134,126 +135,247 @@ public class CropManagementView {
 //
 //        // get the value for the wheat in storage
 //        double currentWheat = inFile.nextDouble();
-
         // prompt to enter the number of acres to purchase
         System.out.println("\nEnter The Number of Acres to Purchase: ");
 
         // get the value for the number of acres to purchase
-        double acresToPurchase = inFile.nextDouble();
+        // do while loop to verify a numerical input
+        do {
 
-        // pass the values to the function and assign the return to a variable
-        double land = BuyLandControl.calcLandPurchase(acresOwnedinit,
-                currentPop, currentWheat, acresToPurchase, acresPrice);
+            if (inFile.hasNextDouble()) {
 
-        if (land == -1) {
+                double acresToPurchase = inFile.nextDouble();
+                cNumber = true;
+                double land = BuyLandControl.calcLandPurchase(acresOwnedinit,
+                        currentPop, currentWheat, acresToPurchase, acresPrice);
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                if (land == -1) {
 
-            System.out.println("The Value for a Land Purchase Must be a "
-                    + "Positive Number, Please Try Again.");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-        } else if (land == -2) {
+                    System.out.println("The Value for a Land Purchase Must be a "
+                            + "Positive Number, Please Try Again.");
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
+                } else if (land == -2) {
 
-            System.out.println("There is Not Enough Wheat in Storage for"
-                    + " the Land Purchase, Please use a lower value.");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("There is Not Enough Wheat in Storage for"
+                            + " the Land Purchase, Please use a lower value.");
 
-        } else if (land == -3) {
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                } else if (land == -3) {
 
-            System.out.println("Not Enough People to till the Land, Please "
-                    + "Select a Lower Number");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("Not Enough People to till the Land, Please "
+                            + "Select a Lower Number");
 
-        } else {
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
 
-            System.out.println("The new amount of land is " + land
-                    + " acres after the recent purchase");
+                } else {
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("The new amount of land is " + land
+                            + " acres after the recent purchase");
 
-        }
-        // pass the values to 2nd function and assign the return to a variable
-        double wheat = BuyLandControl.calcWheatRemaining(acresOwnedinit,
-                currentPop, currentWheat, acresToPurchase, acresPrice);
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
 
-        if (land == -1) {
+                }
+                // pass the values to 2nd function and assign the return to a variable
+                double wheat = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                        currentPop, currentWheat, acresToPurchase, acresPrice);
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                if (land == -1) {
 
-            System.out.println("The Value for a Land Purchase Must be a "
-                    + "Positive Number, Please Try Again.");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-        } else if (land == -2) {
+                    System.out.println("The Value for a Land Purchase Must be a "
+                            + "Positive Number, Please Try Again.");
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
+                } else if (land == -2) {
 
-            System.out.println("There is Not Enough Wheat in Storage for"
-                    + " the Land Purchase, Please use a lower value.");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("There is Not Enough Wheat in Storage for"
+                            + " the Land Purchase, Please use a lower value.");
 
-        } else if (land == -3) {
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                } else if (land == -3) {
 
-            System.out.println("Not Enough People to till the Land, Please "
-                    + "Select a Lower Number");
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("Not Enough People to till the Land, Please "
+                            + "Select a Lower Number");
 
-        } else {
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
 
-            System.out.println("The wheat remain is " + wheat
-                    + " bushels after the recent purchase");
+                } else {
+                    System.out.println("\n-----------------------------"
+                            + "-------------------------"
+                            + "--------------");
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+                    System.out.println("The wheat remain is " + wheat
+                            + " bushels after the recent purchase");
 
-        }
+                    System.out.println("--------------------------------"
+                            + "-----------------------"
+                            + "-------------\n");
+
+                }
+
+            } else {
+                System.out.println("You must enter a numerical value");
+                cNumber = false;
+                inFile.next();
+            }
+
+        } while (!(cNumber));
 
     }
 
+    // pass the values to the function and assign the return to a variable
+//        double land = BuyLandControl.calcLandPurchase(acresOwnedinit,
+//                currentPop, currentWheat, acresToPurchase, acresPrice);
+//        if (land == -1) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("The Value for a Land Purchase Must be a "
+//                    + "Positive Number, Please Try Again.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//        } else if (land == -2) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("There is Not Enough Wheat in Storage for"
+//                    + " the Land Purchase, Please use a lower value.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else if (land == -3) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("Not Enough People to till the Land, Please "
+//                    + "Select a Lower Number");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else {
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("The new amount of land is " + land
+//                    + " acres after the recent purchase");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        }
+//        // pass the values to 2nd function and assign the return to a variable
+//        double wheat = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+//                currentPop, currentWheat, acresToPurchase, acresPrice);
+//
+//        if (land == -1) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("The Value for a Land Purchase Must be a "
+//                    + "Positive Number, Please Try Again.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//        } else if (land == -2) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("There is Not Enough Wheat in Storage for"
+//                    + " the Land Purchase, Please use a lower value.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else if (land == -3) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("Not Enough People to till the Land, Please "
+//                    + "Select a Lower Number");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else {
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("The wheat remain is " + wheat
+//                    + " bushels after the recent purchase");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        }
+//    }
     private void sellLand() {
         System.out.println("Placeholder for sellLand");
     }

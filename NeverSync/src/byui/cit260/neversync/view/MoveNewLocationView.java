@@ -22,7 +22,7 @@ class MoveNewLocationView {
     private Location location;
 
     void displayMoveNewLocationView() {
- boolean endOfView = false;
+        boolean endOfView = false;
         do {
             String[] input = MoveNewLocationView.getInput();
             //input[0] = input[0].toUpperCase();
@@ -44,7 +44,8 @@ class MoveNewLocationView {
                 + "************************\n");
         System.out.println(
                 "\nThe options on the main menu are: \n"
-                + "N - Select New Scene\n");
+                + "N - Select New Scene\n"
+                + "Q - Back to previous Menu\n");
 
         boolean valid = false;
 
@@ -90,15 +91,17 @@ class MoveNewLocationView {
 
     private void newSceneSelection() {
         Scene scene = new Scene();
-        scene.setName("Beach");
-        scene.setDescription("Sandy");
+        InventoryItem inventoryItem = new InventoryItem();
+        scene.getItem();
+        scene.setName("The City of Aaron Town Square");
+        scene.setDescription("Town Square is the initial location of the game.\n"
+                + "Have a look around and decide where you would like to go "
+                + "next.\n");
         scene.setQuestion(question);
         scene.setItem(item);
         scene.setLocation(location);
-        
         System.out.println(scene);
-       
+
     }
-   
-    
+
 }
