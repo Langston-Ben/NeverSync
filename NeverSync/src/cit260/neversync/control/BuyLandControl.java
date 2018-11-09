@@ -15,7 +15,7 @@ public class BuyLandControl {
     public static double calcLandPurchase(double acresOwnedinit, double currentPop,
             double currentWheat, double acresToPurchase, double acresPrice) {
 
-//double acresPrice = 20;    
+//acresPrice = 20;    
         if (acresToPurchase < 0) {
             return -1;
         }
@@ -36,8 +36,7 @@ public class BuyLandControl {
 // function to determine the wheat remaining after a land purchase
     public static double calcWheatRemaining(double acresOwnedinit, double currentPop,
             double currentWheat, double acresToPurchase, double acresPrice) {
-
-//double acresPrice = 20;
+//acresPrice = 20;
         if (acresToPurchase < 0) {
             return -1;
         }

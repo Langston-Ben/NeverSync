@@ -49,7 +49,7 @@ public class PlantControlTest {
         acresOwned = 500;
         acresToPlant = 0;
         initWheatStorage = 300;
-        expResult = -1;
+        expResult = -2;
         result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
@@ -61,7 +61,7 @@ public class PlantControlTest {
         acresOwned = 500;
         acresToPlant = 1004;
         initWheatStorage = 5;
-        expResult = -1;
+        expResult = -2;
         result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
@@ -73,7 +73,7 @@ public class PlantControlTest {
         acresOwned = 500;
         acresToPlant = 300;
         initWheatStorage = 0;
-        expResult = -1;
+        expResult = -3;
         result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.

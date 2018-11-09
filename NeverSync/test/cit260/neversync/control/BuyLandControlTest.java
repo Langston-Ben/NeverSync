@@ -50,7 +50,7 @@ public class BuyLandControlTest {
         currentWheat = 4000;
         acresToPurchase = 100;
         acresPrice = 20;
-        expResult = -1;
+        expResult = -3;
         result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
         currentWheat, acresToPurchase, acresPrice);
         assertEquals(expResult, result, 0.0);
@@ -61,7 +61,7 @@ public class BuyLandControlTest {
         currentWheat = 20;
         acresToPurchase = 100;
         acresPrice = 20;
-        expResult = -1;
+        expResult = -2;
         result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
         currentWheat, acresToPurchase, acresPrice);
         assertEquals(expResult, result, 0.0);
@@ -72,7 +72,7 @@ public class BuyLandControlTest {
         currentWheat = 4000;
         acresToPurchase = 100;
         acresPrice = 20;
-        expResult = -1;
+        expResult = -3;
         result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
         currentWheat, acresToPurchase, acresPrice);
         assertEquals(expResult, result, 0.0);
@@ -146,7 +146,7 @@ public class BuyLandControlTest {
         currentWheat = 20;
         acresToPurchase = 100;
         acresPrice = 20;
-        expResult = -1;
+        expResult = -2;
         result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
         currentPop, currentWheat, acresToPurchase, acresPrice);
         assertEquals(expResult, result, 0.0);
@@ -157,7 +157,7 @@ public class BuyLandControlTest {
         currentWheat = 4000;
         acresToPurchase = 100;
         acresPrice = 20;
-        expResult = -1;
+        expResult = -3;
         result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
         currentPop, currentWheat, acresToPurchase, acresPrice);
         assertEquals(expResult, result, 0.0);

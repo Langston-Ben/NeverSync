@@ -6,9 +6,11 @@
 package byui.cit260.neversync.view;
 
 import cit260.neversync.model.InventoryItem;
+import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Question;
 import cit260.neversync.model.Scene;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -76,7 +78,7 @@ class MoveNewLocationView {
 
         switch (helpItem) {
             case "N":
-                newSceneSelection();
+                newScene();
                 break;
             case "Q":
                 return true;
@@ -89,18 +91,33 @@ class MoveNewLocationView {
         return false;
     }
 
-    private void newSceneSelection() {
-        Scene scene = new Scene();
-        InventoryItem inventoryItem = new InventoryItem();
-        scene.getItem();
-        scene.setName("The City of Aaron Town Square");
-        scene.setDescription("Town Square is the initial location of the game.\n"
+    private void newScene() {
+//        ItemType itemType = ItemType.Weapon;
+        String name = ItemType.Weapon.getName();
+        String desc = ItemType.Weapon.getDescription();
+        int age = ItemType.Weapon.getAge();
+        
+        Question questionOne = new Question();
+        questionOne.setQuestionText("Where would you like to go?\n");
+        questionOne.setAnswer1("1 - To the Farm\n");
+        questionOne.setAnswer2("2 - To the Store\n");
+        questionOne.setAnswer3("3 - To the Lake\n");
+        questionOne.setAnswer4("4 - To a New Location\n");
+        
+        Scene sceneOne = new Scene();
+        sceneOne.setName("\n\nWelcome to the City of Aaron Town Square\n");
+        sceneOne.setDescription(
+                  "The Town Square is the initial location of the game.\n"
                 + "Have a look around and decide where you would like to go "
                 + "next.\n");
-        scene.setQuestion(question);
-        scene.setItem(item);
-        scene.setLocation(location);
-        System.out.println(scene);
+        sceneOne.setQuestion(questionOne);
+        sceneOne.setLocation(location);
+        
+        System.out.println(sceneOne.getName() + sceneOne.getDescription());
+        System.out.println("Your current tool is a " + name + "\n" + desc + 
+                "\nIt is " + age + " years old\n");
+        System.out.println(questionOne.getQuestionText() + questionOne.getAnswer1()
+        + questionOne.getAnswer2() + questionOne.getAnswer3() + questionOne.getAnswer4());
 
     }
 
