@@ -92,10 +92,6 @@ class MoveNewLocationView {
     }
 
     private void newScene() {
-//        ItemType itemType = ItemType.Weapon;
-        String name = ItemType.Weapon.getName();
-        String desc = ItemType.Weapon.getDescription();
-        int age = ItemType.Weapon.getAge();
         
         Question questionOne = new Question();
         questionOne.setQuestionText("Where would you like to go?\n");
@@ -114,8 +110,9 @@ class MoveNewLocationView {
         sceneOne.setLocation(location);
         
         System.out.println(sceneOne.getName() + sceneOne.getDescription());
-        System.out.println("Your current tool is a " + name + "\n" + desc + 
-                "\nIt is " + age + " years old\n");
+        System.out.println("Your current tool is a " + ItemType.Weapon.getName() + 
+                "\n" + ItemType.Weapon.getDescription() + 
+                "\nIt is " + ItemType.Weapon.getAge() + " years old\n");
         System.out.println(questionOne.getQuestionText() + questionOne.getAnswer1()
         + questionOne.getAnswer2() + questionOne.getAnswer3() + questionOne.getAnswer4());
 

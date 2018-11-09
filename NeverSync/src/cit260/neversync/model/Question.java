@@ -22,6 +22,7 @@ public class Question implements Serializable {
     private int correctAnswer;
 
     public Question() {
+        
     }
 
     public String getQuestionText() {
