@@ -14,25 +14,26 @@ import java.util.Scanner;
  *
  * @author Ben Langston
  */
-public class CropManagementView {
+public class CropManagementView extends View {
 
-    public void displayCropManagementView() {
+//    public void displayCropManagementView() {
+//
+//        boolean endOfView = false;
+//        do {
+//            String[] input = CropManagementView.getInput();
+//            input[0] = input[0].toUpperCase();
+//            if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
+//
+//                return;
+//            } else {
+//                endOfView = doAction(input);
+//            }
+//        } while (endOfView != true);
+//
+//    }
 
-        boolean endOfView = false;
-        do {
-            String[] input = CropManagementView.getInput();
-            input[0] = input[0].toUpperCase();
-            if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
-
-                return;
-            } else {
-                endOfView = doAction(input);
-            }
-        } while (endOfView != true);
-
-    }
-
-    private static String[] getInput() {
+    @Override
+    public String[] getInputs() {
 
         String[] input = new String[1];
         System.out.println("\n**********************************\n"
@@ -47,29 +48,35 @@ public class CropManagementView {
                 + "T - Pay Tithes and Offerings\n"
                 + "Q - Return to the game menu\n");
 
-        boolean valid = false;
-
-        while (valid == false) {
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            System.out.println("\nPlease Enter Your Selection\n");
-
-            input[0] = inFile.nextLine();
-
-            String cropManagementSelection = input[0].trim();
-
-            if (cropManagementSelection.length() < 1) {
-                System.out.println("\nYou must specify a value\n");
-                continue;
-            }
+//        boolean valid = false;
+//
+//        while (valid == false) {
+//            Scanner inFile;
+//            inFile = new Scanner(System.in);
+//            System.out.println("\nPlease Enter Your Selection\n");
+//
+//            input[0] = inFile.nextLine();
+//
+//            String cropManagementSelection = input[0].trim();
+//
+//            if (cropManagementSelection.length() < 1) {
+//                System.out.println("\nYou must specify a value\n");
+//                continue;
+//            }
+//            input[0] = cropManagementSelection;
+//            valid = true;
+                
+            String cropManagementSelection = this.getInput("\nPlease enter your selection: ");
             input[0] = cropManagementSelection;
-            valid = true;
-        }
+
+
+        
         return input;
 
     }
 
-    private boolean doAction(String[] input) {
+    @Override
+    public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
         String cropSelection = input[0];
@@ -123,11 +130,9 @@ public class CropManagementView {
         System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
         System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
 
-//                double acresPrice = 20;
         // create an input file for the console
         Scanner inFile;
         inFile = new Scanner(System.in);
-
 
         System.out.println("\nEnter The Number of Acres to Purchase: ");
 
@@ -368,5 +373,6 @@ public class CropManagementView {
     private void payTithes() {
         System.out.println("Placeholder for payTithes");
     }
+
 
 }

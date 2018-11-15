@@ -65,7 +65,7 @@ public void displayReportsMenuView() {
 
     }
 
-    private boolean doAction(String[] input) {
+    public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
         String reportsItem = input[0];

@@ -6,34 +6,21 @@
 package byui.cit260.neversync.view;
 
 import cit260.neversync.control.GameControl;
-import java.util.Scanner;
+//import java.util.Scanner;
 import neversync.NeverSync;
 
 /**
  *
  * @author Ben Langston and Jeff Ledbetter
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
     public MainMenuView() {
     }
 
-    public void displayMainMenuView() {
-        boolean endOfView = false;
-        do {
-            String[] input = MainMenuView.getInput();
-            input[0] = input[0].toUpperCase();
-            if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
 
-                return;
-            } else {
-                endOfView = doAction(input);
-            }
-        } while (endOfView != true);
-
-    }
-
-    private static String[] getInput() {
+    @Override
+    public String[] getInputs() {
 
         String[] input = new String[1];
         System.out.println("Main Menu\n"
@@ -43,29 +30,15 @@ public class MainMenuView {
                 + "H - Help\n"
                 + "Q - Quit");
 
-        boolean valid = false;
-
-        while (valid == false) {
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            System.out.println("\nPlease Enter Your Selection\n");
-
-            input[0] = inFile.nextLine();
-
-            String gameMenuSelection = input[0].trim();
-
-            if (gameMenuSelection.length() < 1) {
-                System.out.println("\nYou must specify a value\n");
-                continue;
-            }
+            String gameMenuSelection = this.getInput("\nPlease enter your selection: ");
             input[0] = gameMenuSelection;
-            valid = true;
-        }
+        
         return input;
 
     }
 
-    private boolean doAction(String[] input) {
+    @Override
+    public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
         String menuItem = input[0];
@@ -95,7 +68,7 @@ public class MainMenuView {
 
         GameControl.createNewGame(NeverSync.getPlayer());
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
 
     private void restartGame() {
@@ -105,7 +78,7 @@ public class MainMenuView {
 
     private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
 
 }

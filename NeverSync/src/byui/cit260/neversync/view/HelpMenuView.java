@@ -5,31 +5,16 @@
  */
 package byui.cit260.neversync.view;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  *
  * @author Ben Langston and Jeff Ledbetter
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
 
-    public void displayHelpMenuView() {
-
-        boolean endOfView = false;
-        do {
-            String[] input = HelpMenuView.getInput();
-            //input[0] = input[0].toUpperCase();
-            if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
-
-                return;
-            } else {
-                endOfView = doAction(input);
-            }
-        } while (endOfView != true);
-
-    }
-
-    private static String[] getInput() {
+    @Override
+    public String[] getInputs() {
 
         String[] input = new String[1];
         System.out.println("\n************************\n"
@@ -44,29 +29,15 @@ public class HelpMenuView {
                 + "W - How is the game won?\n"
                 + "Q - Q the help menu\n");
 
-        boolean valid = false;
-
-        while (valid == false) {
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            System.out.println("\nPlease Enter Your Selection\n");
-
-            input[0] = inFile.nextLine();
-
-            String helpMenuSelection = input[0].trim();
-
-            if (helpMenuSelection.length() < 1) {
-                System.out.println("\nYou must specify a value\n");
-                continue;
-            }
+            String helpMenuSelection = this.getInput("\nPlease enter your selection: ");
             input[0] = helpMenuSelection;
-            valid = true;
-        }
+        
         return input;
 
     }
 
-    private boolean doAction(String[] input) {
+    @Override
+    public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
         String helpItem = input[0];
