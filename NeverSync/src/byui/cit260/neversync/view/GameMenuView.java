@@ -96,7 +96,7 @@ public class GameMenuView extends View {
 
     private void reportMenu() {
 		ReportsMenuView reportsMenuView = new ReportsMenuView();
-        reportsMenuView.displayReportsMenuView();
+        reportsMenuView.display();
     }
 
     private void saveGame() {
