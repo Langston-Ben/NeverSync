@@ -5,31 +5,17 @@
  */
 package byui.cit260.neversync.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author jeffledbetter
  */
-public class ReportsMenuView {
+public class ReportsMenuView extends View {
 	
-public void displayReportsMenuView() {
+	public ReportsMenuView() {
+	}
 
-        boolean endOfView = false;
-        do {
-            String[] input = ReportsMenuView.getInput();
-            //input[0] = input[0].toUpperCase();
-            if (input[0] == null || input.length < 1 || input[0].equals("Q")) {
-
-                return;
-            } else {
-                endOfView = doAction(input);
-            }
-        } while (endOfView != true);
-
-    }
-
-    private static String[] getInput() {
+	@Override
+    public String[] getInputs() {
 
         String[] input = new String[1];
         System.out.println("\n************************\n"
@@ -42,29 +28,15 @@ public void displayReportsMenuView() {
                 + "P - View the PROVISIONS in the storehouse\n"
                 + "W - View the AUTHORS of the game\n"
                 + "Q - Quit the Reports Menu\n");
-
-        boolean valid = false;
-
-        while (valid == false) {
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            System.out.println("\nPlease Enter Your Selection\n");
-
-            input[0] = inFile.nextLine();
-
-            String reportsMenuSelection = input[0].trim();
-
-            if (reportsMenuSelection.length() < 1) {
-                System.out.println("\nYou must specify a value\n");
-                continue;
-            }
-            input[0] = reportsMenuSelection;
-            valid = true;
-        }
-        return input;
+       
+		String reportsMenuSelection = this.getInput("\nPlease enter your selection: ");
+		input[0] = reportsMenuSelection;
+		
+    return input;
 
     }
 
+	@Override
     public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
