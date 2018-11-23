@@ -7,7 +7,8 @@ package cit260.neversync.model;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Arrays;
+//import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -16,28 +17,41 @@ import java.util.Objects;
  */
 public class Map implements Serializable {
 
-    private ArrayList locations;
-    private Point currentLocation;
+    private Location[][] locations;
+    private Location currentLocation;  // change this
+    private String description;
     private int rows;
     private int columns;
 
     public Map() {
     }
+//
+//   
 
-    public ArrayList getLocations() {
+    public Location[][] getLocations() {
         return locations;
     }
 
-    public void setLocations(ArrayList locations) {
+    public void setLocations(Location[][] locations) {
         this.locations = locations;
     }
 
-    public Point getCurrentLocation() {
+    public Location getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(Point currentLocation) {
+    public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getRows() {
@@ -59,10 +73,11 @@ public class Map implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.locations);
-        hash = 67 * hash + Objects.hashCode(this.currentLocation);
-        hash = 67 * hash + this.rows;
-        hash = 67 * hash + this.columns;
+        hash = 41 * hash + Arrays.deepHashCode(this.locations);
+        hash = 41 * hash + Objects.hashCode(this.currentLocation);
+        hash = 41 * hash + Objects.hashCode(this.description);
+        hash = 41 * hash + this.rows;
+        hash = 41 * hash + this.columns;
         return hash;
     }
 
@@ -84,7 +99,10 @@ public class Map implements Serializable {
         if (this.columns != other.columns) {
             return false;
         }
-        if (!Objects.equals(this.locations, other.locations)) {
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
             return false;
         }
         if (!Objects.equals(this.currentLocation, other.currentLocation)) {
@@ -92,10 +110,6 @@ public class Map implements Serializable {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Map{" + "locations=" + locations + ", currentLocation=" + currentLocation + ", rows=" + rows + ", columns=" + columns + '}';
-    }
+    
 
 }

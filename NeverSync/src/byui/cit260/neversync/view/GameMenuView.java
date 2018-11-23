@@ -33,7 +33,7 @@ public class GameMenuView extends View {
                 + "S - Save Game\n"
                 + "Q - Return to the main menu\n");
 
-        String helpMenuSelection = this.getInput("\nPlease enter your name: ");
+        String helpMenuSelection = this.getInput("\nPlease enter your selection: ");
         input[0] = helpMenuSelection;
         
         return input;
@@ -49,6 +49,12 @@ public class GameMenuView extends View {
         switch (helpItem) {
             case "V":
                 viewMap();
+                break;
+            case "I":
+                viewItemInventory();
+                break;
+            case "A":
+                viewActors();
                 break;
             case "M":
                 moveNewLocation();
@@ -77,7 +83,8 @@ public class GameMenuView extends View {
     }
 
     private void viewMap() {
-        System.out.println("placeholder for viewMap");
+        MapView mapView = new MapView();
+        mapView.displayMap();
     }
 
     private void moveNewLocation() {
@@ -101,6 +108,14 @@ public class GameMenuView extends View {
 
     private void saveGame() {
         System.out.println("placeholder for saveGame");
+    }
+
+    private void viewActors() {
+        
+    }
+
+    private void viewItemInventory() {
+       
     }
 
 }

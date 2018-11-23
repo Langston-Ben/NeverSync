@@ -19,8 +19,29 @@ public class Scene implements Serializable {
     private Question question;
     private InventoryItem item;
     private Location location;
+    private String displaySymbol;
+//    private final ArrayList<Actor> actor = new ArrayList<>();
+    private Actor actor;
+//    private final ArrayList<InventoryItem> item = new ArrayList<>();
+   
 
     public Scene() {
+    }
+
+    public String getDisplaySymbol() {
+        return displaySymbol;
+    }
+
+    public void setDisplaySymbol(String displaySymbol) {
+        this.displaySymbol = displaySymbol;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
     }
 
     public Location getLocation() {
@@ -146,4 +167,5 @@ public class Scene implements Serializable {
                 + "question=" + question + ", item=" + item + ", location=" + location + '}';
     }
 
+    
 }

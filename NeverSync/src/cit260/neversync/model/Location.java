@@ -6,6 +6,7 @@
 package cit260.neversync.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -15,96 +16,104 @@ import java.util.Objects;
 public class Location implements Serializable {
     
     private int row;        
-    private int column;   
+    private int column; 
+    private String description;
     private boolean visited;   
-    private Scene scene;
-
+    public Scene scene;
+    private boolean blocked;
+    private String displaySymbol;
+//    private final ArrayList<Actor> actor = new ArrayList<>();
+    private Actor actor;
+//    private final ArrayList<InventoryItem> item = new ArrayList<>();
+    private InventoryItem item;
+    
     public Location() {
     }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public InventoryItem getItem() {
+        return item;
+    }
+
+    public void setItem(InventoryItem item) {
+        this.item = item;
+    }
     
-
-    /**
-     * Get the value of scene
-     *
-     * @return the value of scene
-     */
-    public Scene getScene() {
-        return scene;
-    }
-
-    /**
-     * Set the value of scene
-     *
-     * @param scene new value of scene
-     */
-    public void setScene(Scene scene) {
-        this.scene = scene;
-    }
-
-
-    /**
-     * Get the value of visited
-     *
-     * @return the value of visited
-     */
-    public boolean isVisited() {
-        return visited;
-    }
-
-    /**
-     * Set the value of visited
-     *
-     * @param visited new value of visited
-     */
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
-
-    /**
-     * Get the value of column
-     *
-     * @return the value of column
-     */
-    public int getColumn() {
-        return column;
-    }
-
-    /**
-     * Set the value of column
-     *
-     * @param column new value of column
-     */
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
-
-    /**
-     * Get the value of row
-     *
-     * @return the value of row
-     */
+    
+    
     public int getRow() {
         return row;
     }
 
-    /**
-     * Set the value of row
-     *
-     * @param row new value of row
-     */
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public String getDisplaySymbol() {
+        return displaySymbol;
+    }
+
+    public void setDisplaySymbol(String displaySymbol) {
+        this.displaySymbol = displaySymbol;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + this.row;
-        hash = 67 * hash + this.column;
-        hash = 67 * hash + (this.visited ? 1 : 0);
-        hash = 67 * hash + Objects.hashCode(this.scene);
+        hash = 53 * hash + this.row;
+        hash = 53 * hash + this.column;
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + (this.visited ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.scene);
+        hash = 53 * hash + (this.blocked ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.displaySymbol);
         return hash;
     }
 
@@ -129,17 +138,23 @@ public class Location implements Serializable {
         if (this.visited != other.visited) {
             return false;
         }
+        if (this.blocked != other.blocked) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
+            return false;
+        }
         if (!Objects.equals(this.scene, other.scene)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scene + '}';
-    }
-
+   
     
+
 }
 

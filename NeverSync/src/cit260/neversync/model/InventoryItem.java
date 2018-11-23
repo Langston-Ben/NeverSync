@@ -8,10 +8,10 @@ package cit260.neversync.model;
 import static cit260.neversync.model.Condition.Fair;
 import static cit260.neversync.model.Condition.Good;
 import static cit260.neversync.model.Condition.Poor;
-import static cit260.neversync.model.ItemType.Animal;
-import static cit260.neversync.model.ItemType.Food;
-import static cit260.neversync.model.ItemType.Medicine;
-import static cit260.neversync.model.ItemType.Tool;
+//import static cit260.neversync.model.ItemType.Animal;
+//import static cit260.neversync.model.ItemType.Food;
+//import static cit260.neversync.model.ItemType.Medicine;
+//import static cit260.neversync.model.ItemType.Tool;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -23,14 +23,44 @@ import java.util.Objects;
 public class InventoryItem implements Serializable {
 
     private String name;
-    private ArrayList<ItemType> itemType = new ArrayList<ItemType>();
+
+    public int getRequiredAmount() {
+        return requiredAmount;
+    }
+
+    public void setRequiredAmount(int requiredAmount) {
+        this.requiredAmount = requiredAmount;
+    }
+   
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+    
+    private String itemType;
+//    private final ArrayList<ItemType> itemType = new ArrayList<>();
     private int quantity;
-    private ArrayList<Condition> condition = new ArrayList<Condition>();
+    private final ArrayList<Condition> condition = new ArrayList<>();
     private double pricePerUnit;
+    private int requiredAmount;
     private String animalType;
+    private int quantityInStock;
     private int age;
+    
 
     public InventoryItem() {
+    }
+
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+
+    public void setQuantityInStock(int quantityInStock) {
+        this.quantityInStock = quantityInStock;
     }
 
     public Condition getGood() {
@@ -45,29 +75,29 @@ public class InventoryItem implements Serializable {
         return Poor;
     }
 
-    public ItemType getTool() {
-        return Tool;
-    }
-
-    public ItemType getFood() {
-        return Food;
-    }
-
-    public ItemType getAnimal() {
-        return Animal;
-    }
-
-    public ItemType getMedicine() {
-        return Medicine;
-    }
+//    public ItemType getTool() {
+//        return Tool;
+//    }
+//
+//    public ItemType getFood() {
+//        return Food;
+//    }
+//
+//    public ItemType getAnimal() {
+//        return Animal;
+//    }
+//
+//    public ItemType getMedicine() {
+//        return Medicine;
+//    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public ArrayList<ItemType> getItemType() {
-        return itemType;
-    }
+//    public ArrayList<ItemType> getItemType() {
+//        return itemType;
+//    }
 
 //	public void setItemType(Enum itemType) {
 //		this.itemType = itemType;

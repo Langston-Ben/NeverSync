@@ -6,6 +6,7 @@
 package cit260.neversync.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -18,7 +19,11 @@ public class Player implements Serializable {
     private String name;
     private Double time;
     private Game game;
+    private final ArrayList<Actor> actor = new ArrayList<>();
 
+    public ArrayList<Actor> getActor() {
+        return actor;
+    }
     // Constructor
     public Player() {
     }
@@ -84,6 +89,10 @@ public class Player implements Serializable {
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", time=" + time + ", game=" + game + '}';
+    }
+
+    public void setName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

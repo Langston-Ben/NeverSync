@@ -35,6 +35,8 @@ public class NeverSync {
 
     public static void setCurrentGame(Game currentGame) {
         NeverSync.currentGame = currentGame;
+        
+        
     }
 
     public static Player getPlayer() {
@@ -79,6 +81,8 @@ public class NeverSync {
              
 
     }    
+
+   
                
 }
         

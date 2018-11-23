@@ -73,7 +73,7 @@ class MoveNewLocationView extends View {
 
     private void mapScene() {
         MapView mapView = new MapView();
-        mapView.display();
+        mapView.displayMap();
     }
 
 }

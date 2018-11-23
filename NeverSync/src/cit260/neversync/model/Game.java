@@ -10,13 +10,14 @@ import java.util.Objects;
 
 /**
  *
- * @author Langstons
+ * @author Ben Langston
  */
 public class Game implements Serializable {
 
     // class instance variables
     private String thePlayer;
-    private String theMap;
+    private InventoryItem[] inventory;
+    private Map map;
     private String theStorehouse;
     private int currentPopulation;
     private int acresOwned;
@@ -42,13 +43,13 @@ public class Game implements Serializable {
         this.thePlayer = thePlayer;
     }
 
-    public String getTheMap() {
-        return theMap;
-    }
-
-    public void setTheMap(String theMap) {
-        this.theMap = theMap;
-    }
+////    public String getTheMap() {
+////        return theMap;
+////    }
+////
+////    public void setTheMap(String theMap) {
+////        this.theMap = theMap;
+//    }
 
     public String getTheStorehouse() {
         return theStorehouse;
@@ -80,13 +81,34 @@ public class Game implements Serializable {
 
     public void setWheatInStorage(int wheatInStorage) {
         this.wheatInStorage = wheatInStorage;
+        
+        
+        
+        
+        
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + Objects.hashCode(this.thePlayer);
-        hash = 13 * hash + Objects.hashCode(this.theMap);
+//        hash = 13 * hash + Objects.hashCode(this.theMap);
         hash = 13 * hash + Objects.hashCode(this.theStorehouse);
         hash = 13 * hash + this.currentPopulation;
         hash = 13 * hash + this.acresOwned;
@@ -118,9 +140,9 @@ public class Game implements Serializable {
         if (!Objects.equals(this.thePlayer, other.thePlayer)) {
             return false;
         }
-        if (!Objects.equals(this.theMap, other.theMap)) {
-            return false;
-        }
+//        if (!Objects.equals(this.theMap, other.theMap)) {
+//            return false;
+//        }
         if (!Objects.equals(this.theStorehouse, other.theStorehouse)) {
             return false;
         }
@@ -129,7 +151,11 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "Game{" + "thePlayer=" + thePlayer + ", theMap=" + theMap + ", theStorehouse=" + theStorehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + '}';
+        return "Game{" + "thePlayer=" + thePlayer + ", theMap="  + ", theStorehouse=" + theStorehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + '}';
     }
+
+//    public void setItems(InventoryItem[] createItems) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

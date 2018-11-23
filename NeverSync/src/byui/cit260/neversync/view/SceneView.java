@@ -84,11 +84,12 @@ Question questionOne = new Question();
         sceneOne.setQuestion(questionOne);
         sceneOne.setLocation(location);
         
-        System.out.println(sceneOne.getName() + sceneOne.getDescription());
-        System.out.println("Your current tool is a " + ItemType.Weapon.getName() + 
-                "\n" + ItemType.Weapon.getDescription() + 
-                "\nIt is " + ItemType.Weapon.getAge() + " years old\n");
-        System.out.println(questionOne.getQuestionText() + questionOne.getAnswer1()
-        + questionOne.getAnswer2() + questionOne.getAnswer3() + questionOne.getAnswer4());
+//        System.out.println(sceneOne.getName() + sceneOne.getDescription());
+//        System.out.println("Your current tool is a " + ItemType.Weapon.getName() + 
+//                "\n" + ItemType.Weapon.getDescription() + 
+//                "\nIt is " + ItemType.Weapon.getAge() + " years old\n");
+//        System.out.println(questionOne.getQuestionText() + questionOne.getAnswer1()
+//        + questionOne.getAnswer2() + questionOne.getAnswer3() + questionOne.getAnswer4());
+//}
 }
 }
