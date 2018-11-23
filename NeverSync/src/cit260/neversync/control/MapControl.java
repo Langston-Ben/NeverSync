@@ -51,11 +51,11 @@ if (game == null || noOfRows < 1 || noOfColumns < 1) {
 map.setLocations(createLocations(noOfRows, noOfColumns));
 
 //     
-//assignActorsToLocations(createLocations(noOfRows, noOfColumns));
+assignActorsToLocations(createLocations(noOfRows, noOfColumns));
 //
 //
 ////
-//assignItemsToLocations(createLocations(noOfRows, noOfColumns),(GameControl.createItems()));
+assignItemsToLocations(createLocations(noOfRows, noOfColumns),(GameControl.createItems()));
 
 return map;
 
@@ -70,189 +70,234 @@ public static Location[][] createLocations(int row, int column) {
     }
 //        Location location = new Location();
 
-        System.out.println("createLocations has been called.");
+//        System.out.println("createLocations has been called.");
         
         Location location = new Location();
         Location[][] locations = new Location[row][column];
             
                     location.setRow(0);
                     location.setColumn(0);
-                    location.setVisited(true);
+                    location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("~~~~");
+                    location.setDisplaySymbol("RV");
                     location.setDescription("This is a river");
-//                    
+                    locations[0][0] = location;
+//                  
+                    location = new Location();   
                     location.setRow(0);
                     location.setColumn(1);
                     location.setDescription("This is a wheat field");
-                    location.setVisited(true);
+                    location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("WH");
+                    locations[0][1] = location;
                     
+                    location = new Location();
                     location.setRow(0);
                     location.setColumn(2);
                     location.setDescription("This is the storehouse");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("ST");
+                    locations[0][2] = location;
                     
+                    location = new Location();
                     location.setRow(0);
                     location.setColumn(3);
                     location.setDescription("This is city square");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("SQ");
+                    locations[0][3] = location;
                     
+                    location = new Location();
                     location.setRow(0);
                     location.setColumn(4);
                     location.setDescription("This is the medical office");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("MO");
+                    locations[0][4] = location;
                     
+                    location = new Location();
                     location.setRow(1);
                     location.setColumn(0);
                     location.setDescription("This is the river bank");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("RB");
+                    locations[1][0] = location;
                     
+                    location = new Location();
                     location.setRow(1);
                     location.setColumn(1);
                     location.setDescription("This is the hospital");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("HO");
+                    locations[1][1] = location;
                     
+                    location = new Location();
                     location.setRow(1);
                     location.setColumn(2);
                     location.setDescription("This is the church");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("CH");
+                    locations[1][2] = location;
                     
+                    location = new Location();
                     location.setRow(1);
                     location.setColumn(3);
                     location.setDescription("This is the playhouse");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("PL");
+                    locations[1][3] = location;
                     
+                    location = new Location();
                     location.setRow(1);
                     location.setColumn(4);
                     location.setDescription("This is the animal shed");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AS");
+                    locations[1][4] = location;
                     
+                    location = new Location();
                     location.setRow(2);
                     location.setColumn(0);
                     location.setDescription("This is the farm");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("FR");
+                    locations[2][0] = location;
                     
+                    location = new Location();
                     location.setRow(2);
                     location.setColumn(1);
                     location.setDescription("Location 12");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("FS");
+                    locations[2][1] = location;
                     
+                    location = new Location();
                     location.setRow(2);
                     location.setColumn(2);
                     location.setDescription("Location 13");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AZ");
+                    locations[2][2] = location;
                     
+                    location = new Location();
                     location.setRow(2);
                     location.setColumn(3);
                     location.setDescription("Location 14");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AC");
+                    locations[2][3] = location;
                     
+                    location = new Location();
                     location.setRow(2);
                     location.setColumn(4);
                     location.setDescription("Location 15");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AV");
+                    locations[2][4] = location;
                     
+                    location = new Location();
                     location.setRow(3);
                     location.setColumn(0);
                     location.setDescription("Location 16");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AB");
+                    locations[3][0] = location;
                     
+                    location = new Location();
                     location.setRow(3);
                     location.setColumn(1);
                     location.setDescription("Location 17");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AN");
+                    locations[3][1] = location;
                     
+                    location = new Location();
                     location.setRow(3);
                     location.setColumn(2);
                     location.setDescription("Location 18");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AM");
+                    locations[3][2] = location;
                     
+                    location = new Location();
                     location.setRow(3);
                     location.setColumn(3);
                     location.setDescription("Location 19");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("ER");
+                    locations[3][3] = location;
                     
+                    location = new Location();
                     location.setRow(3);
                     location.setColumn(4);
                     location.setDescription("Location 20");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("TY");
+                    locations[3][4] = location;
                     
+                    location = new Location();
                     location.setRow(4);
                     location.setColumn(0);
                     location.setDescription("Location 21");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("YU");
+                    locations[4][0] = location;
                     
+                    location = new Location();
                     location.setRow(4);
                     location.setColumn(1);
                     location.setDescription("Location 22");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("HH");
+                    locations[4][1] = location;
                     
+                    location = new Location();
                     location.setRow(4);
                     location.setColumn(2);
                     location.setDescription("Location 23");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("DE");
+                    locations[4][2] = location;
                     
+                    location = new Location();
                     location.setRow(4);
                     location.setColumn(3);
                     location.setDescription("Location 24");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("GT");
+                    locations[4][3] = location;
                     
+                    location = new Location();
                     location.setRow(4);
                     location.setColumn(4);
                     location.setDescription("Location 25");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("SD");
-                    
-                    
-                   
-                    System.out.println("locations called" + Arrays.toString(locations));
+                    locations[4][4] = location;
                     
                     return locations;
 }
@@ -269,51 +314,59 @@ private static int assignActorsToLocations(Location[][] locations){
    
     Location location = locations[1][1];
     location.setActor(Actor.Nephi);
-    Point actorCoordinates = Actor.Nephi.getCoordinates();
-    actorCoordinates.x = 1;
-    actorCoordinates.y = 1;
+//    Point actorCoordinates = Actor.Nephi.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[1][1]= location;
     
     location = locations[2][1];
     location.setActor(Actor.Lehi);
-    actorCoordinates = Actor.Lehi.getCoordinates();
-    actorCoordinates.x = 2;
-    actorCoordinates.y = 1;
+//    actorCoordinates = Actor.Lehi.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[2][1] = location;
     
     location = locations[3][1];
     location.setActor(Actor.Sarah);
-    actorCoordinates = Actor.Sarah.getCoordinates();
-    actorCoordinates.x = 3;
-    actorCoordinates.y = 1;
+//    actorCoordinates = Actor.Sarah.getCoordinates();
+//     actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[3][1] = location;
     
     location = locations[4][1];
     location.setActor(Actor.Jacob);
-    actorCoordinates = Actor.Jacob.getCoordinates();
-    actorCoordinates.x = 4;
-    actorCoordinates.y = 1;
+//    actorCoordinates = Actor.Jacob.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[4][1] = location;
     
     location = locations[0][1];
     location.setActor(Actor.Sam);
-    actorCoordinates = Actor.Sam.getCoordinates();
-    actorCoordinates.x = 0;
-    actorCoordinates.y = 1;
+//    actorCoordinates = Actor.Sam.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[0][1] = location;
     
     location = locations[1][2];
     location.setActor(Actor.Laman);
-    actorCoordinates = Actor.Laman.getCoordinates();
-    actorCoordinates.x = 1;
-    actorCoordinates.y = 2;
+//    actorCoordinates = Actor.Laman.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[1][2] = location;
     
     location = locations[1][3];
     location.setActor(Actor.Lemuel);
-    actorCoordinates = Actor.Lemuel.getCoordinates();
-    actorCoordinates.x = 1;
-    actorCoordinates.y = 3;
+//    actorCoordinates = Actor.Lemuel.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[1][3] = location;
     
     location = locations[1][4];
     location.setActor(Actor.Zoram);
-    actorCoordinates = Actor.Zoram.getCoordinates();
-    actorCoordinates.x = 2;
-    actorCoordinates.y = 1;
+//    actorCoordinates = Actor.Zoram.getCoordinates();
+//    actorCoordinates.x = location.getRow();
+//    actorCoordinates.y = location.getColumn();
+    locations[1][4] = location;
     
     
     return 1;
@@ -373,42 +426,16 @@ private static int assignActorsToLocations(Location[][] locations){
     return 0;
 }
 
-
-
+public static void movePlayerToStartingLocation(Map map) {
+     // If starting location is not supposed to be 0,0 then use the correct values here.
+     movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
+}
+public static void movePlayer(Map map, int row, int column) {
+   map.setCurrentLocation(map.getLocations()[row][column]);
+   map.getCurrentLocation().setVisited(true);
+   map.setCurrentRow(row);
+   map.setCurrentColumn(column);
+}
+    
 }
 
-
-
-//}
-
-
-
-
-
-
-
-
-//locations = createLocations(noOfRows, noOfColumns)
-
-//call setter to save a locations array in the map object
-// assign actors and items to locations
-
-
-//success = assignActorsToLocations(locations)
-//if (success < 0) then
-// return null
-//endif
-//success = assignIemsToLocations(locations)
-//if (success < 0) then
-// return null
-//endif
-//
-//private static int assignItemsToLocations(
-// Location[][] locations,
-// InventoryItem[] itemsInGame)
-//// Assign all other types objects to locations (e.g., questions, spells)
-//…
-//return map
-//}
-//    
-//}

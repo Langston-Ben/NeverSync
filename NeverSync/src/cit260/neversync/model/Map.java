@@ -22,11 +22,29 @@ public class Map implements Serializable {
     private String description;
     private int rows;
     private int columns;
+    private int currentRow = 0;
+    private int currentColumn = 0;
 
     public Map() {
     }
 //
 //   
+
+    public int getCurrentRow() {
+        return currentRow;
+    }
+
+    public void setCurrentRow(int currentRow) {
+        this.currentRow = currentRow;
+    }
+
+    public int getCurrentColumn() {
+        return currentColumn;
+    }
+
+    public void setCurrentColumn(int currentColumn) {
+        this.currentColumn = currentColumn;
+    }
 
     public Location[][] getLocations() {
         return locations;

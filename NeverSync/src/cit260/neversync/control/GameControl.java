@@ -73,17 +73,6 @@ public class GameControl {
       
     }
     
-////    public static Map createMap(Game game, int noOfRows, int noOfColumns) {
-////    System.out.println("createMap method called");
-////     Map map = new Map();
-////     map.setRows(noOfRows);
-////     map.setColumns(noOfColumns);
-////     
-////     
-////     return map;
-//    
-//    
-//    }
     
     public static InventoryItem[] createItems() {
         
@@ -96,96 +85,89 @@ public class GameControl {
         item.setRequiredAmount(150);
         items[ItemType.oil.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Lumber");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.lumber.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Ore");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.ore.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Grain");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.grain.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Legume");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.legume.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Water");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.water.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Honey");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.honey.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Salt");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.salt.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Axe");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.axe.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Hammer");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.hammer.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Drill");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.drill.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Shovel");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.shovel.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Sickle");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.sickle.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Saw\n");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.saw.ordinal()] = item;
         
+        item = new InventoryItem();
         item.setItemType("Nails");
         item.setQuantity(0);
         item.setRequiredAmount(150);
         items[ItemType.nails.ordinal()] = item;
-        
-        
-//        i = ItemList.lumber.ordinal();
-//        items[i] =  new InventoryItem();
-//        items[i] = setQuanity(2);
-//        items[i] = setInventoryType("inventory");
-//        items[i] = setAge(4);
-//        items[i] = setname("axe");
-// 
-//              for (item : items) 
-////        
-//              System.out.println(item);
-    
-            
-            System.out.println("createItems called \n" );
-            
-            
-            
-        
-        
-        
         
         return items;
     
