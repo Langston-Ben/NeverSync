@@ -23,6 +23,15 @@ import java.util.Objects;
 public class InventoryItem implements Serializable {
 
     private String name;
+    private String itemType;
+//  private final ArrayList<ItemType> itemType = new ArrayList<>();
+    private int quantity;
+    private final ArrayList<Condition> condition = new ArrayList<>();
+    private double pricePerUnit;
+    private int requiredAmount;
+    private String animalType;
+    private int quantityInStock;
+    private int age;
 
     public int getRequiredAmount() {
         return requiredAmount;
@@ -41,15 +50,7 @@ public class InventoryItem implements Serializable {
         this.itemType = itemType;
     }
     
-    private String itemType;
-//    private final ArrayList<ItemType> itemType = new ArrayList<>();
-    private int quantity;
-    private final ArrayList<Condition> condition = new ArrayList<>();
-    private double pricePerUnit;
-    private int requiredAmount;
-    private String animalType;
-    private int quantityInStock;
-    private int age;
+   
     
 
     public InventoryItem() {

@@ -54,7 +54,8 @@ public class MoveNewLocationView extends View {
                     if (mapOption.equals(locations[row][column].getDisplaySymbol())) {
                          MapControl.movePlayer(map, row, column);
                          
-                         System.out.println("Move successful, you are now at "
+                         System.out.println("Move successful, Description of "
+                                 + "current location:  "
                          + map.getCurrentLocation().getDescription() + ".");
                          return true;
                     }

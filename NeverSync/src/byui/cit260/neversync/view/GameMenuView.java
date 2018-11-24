@@ -26,6 +26,7 @@ public class GameMenuView extends View {
         System.out.println(
                 "\nWhat Would You Like To Do?\n"
                 + "\nV - View the Map\n"
+                + "I - View Current Items\n"        
                 + "M - Move to a New Location\n"
                 + "C - Manage the Crops\n"
                 + "L - Live the Year\n"
@@ -51,7 +52,7 @@ public class GameMenuView extends View {
                 viewMap();
                 break;
             case "I":
-                viewItemInventory();
+                ItemInventory();
                 break;
             case "A":
                 viewActors();
@@ -114,7 +115,11 @@ public class GameMenuView extends View {
         
     }
 
-    private void viewItemInventory() {
+    private void ItemInventory() {
+        
+                ItemInventoryView itemInventoryView = new ItemInventoryView();
+                itemInventoryView.displayItemInventoryView();
+                
        
     }
 
