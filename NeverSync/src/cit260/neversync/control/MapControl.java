@@ -176,7 +176,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(1);
-                    location.setDescription("Animal Doctor");
+                    location.setDescription("This is the Animal Doctor");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("AD");
@@ -185,7 +185,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(2);
-                    location.setDescription("Library");
+                    location.setDescription("This is the Library");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("LB");
@@ -194,7 +194,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(3);
-                    location.setDescription("Law Enforcement");
+                    location.setDescription("This is the Law Enforcement");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("LE");
@@ -203,7 +203,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(4);
-                    location.setDescription("Judge");
+                    location.setDescription("This is the Judge");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("JD");
@@ -212,7 +212,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(0);
-                    location.setDescription("Bakey");
+                    location.setDescription("This is the Bakey");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("BK");
@@ -221,7 +221,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(1);
-                    location.setDescription("Butcher");
+                    location.setDescription("This is the Butcher");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("BX");
@@ -230,7 +230,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(2);
-                    location.setDescription("Seamstress");
+                    location.setDescription(" This is the Seamstress");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("SM");
@@ -239,7 +239,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(3);
-                    location.setDescription("Boot Maker");
+                    location.setDescription("This is the Boot Maker");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("BM");
@@ -248,7 +248,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(4);
-                    location.setDescription("Pottery Store");
+                    location.setDescription("This is the Pottery Store");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("PS");
@@ -257,7 +257,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(0);
-                    location.setDescription("Iron Smith");
+                    location.setDescription("This is the Iron Smith");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("IS");
@@ -266,7 +266,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(1);
-                    location.setDescription("Carpenter");
+                    location.setDescription("This is the Carpenter");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("CP");
@@ -275,7 +275,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(2);
-                    location.setDescription("Cemetery");
+                    location.setDescription("This is the Cemetery");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("CY");
@@ -284,7 +284,7 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(3);
-                    location.setDescription("Grain Mill");
+                    location.setDescription("This is the Grain Mill");
                     location.setVisited(false);
                     location.setBlocked(false);
                     location.setDisplaySymbol("GM");
@@ -293,10 +293,10 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(4);
-                    location.setDescription("Orchard");
+                    location.setDescription("This is the Orchard");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("SD");
+                    location.setDisplaySymbol("OR");
                     locations[4][4] = location;
                     
                     return locations;
