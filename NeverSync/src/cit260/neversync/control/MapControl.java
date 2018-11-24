@@ -176,127 +176,127 @@ public static Location[][] createLocations(int row, int column) {
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(1);
-                    location.setDescription("Location 12");
+                    location.setDescription("This is the Animal Doctor");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("FS");
+                    location.setDisplaySymbol("AD");
                     locations[2][1] = location;
                     
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(2);
-                    location.setDescription("Location 13");
+                    location.setDescription("This is the Library");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AZ");
+                    location.setDisplaySymbol("LB");
                     locations[2][2] = location;
                     
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(3);
-                    location.setDescription("Location 14");
+                    location.setDescription("This is the Law Enforcement");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AC");
+                    location.setDisplaySymbol("LE");
                     locations[2][3] = location;
                     
                     location = new Location();
                     location.setRow(2);
                     location.setColumn(4);
-                    location.setDescription("Location 15");
+                    location.setDescription("This is the Judge");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AV");
+                    location.setDisplaySymbol("JD");
                     locations[2][4] = location;
                     
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(0);
-                    location.setDescription("Location 16");
+                    location.setDescription("This is the Bakey");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AB");
+                    location.setDisplaySymbol("BK");
                     locations[3][0] = location;
                     
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(1);
-                    location.setDescription("Location 17");
+                    location.setDescription("This is the Butcher");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AN");
+                    location.setDisplaySymbol("BX");
                     locations[3][1] = location;
                     
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(2);
-                    location.setDescription("Location 18");
+                    location.setDescription(" This is the Seamstress");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("AM");
+                    location.setDisplaySymbol("SM");
                     locations[3][2] = location;
                     
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(3);
-                    location.setDescription("Location 19");
+                    location.setDescription("This is the Boot Maker");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("ER");
+                    location.setDisplaySymbol("BM");
                     locations[3][3] = location;
                     
                     location = new Location();
                     location.setRow(3);
                     location.setColumn(4);
-                    location.setDescription("Location 20");
+                    location.setDescription("This is the Pottery Store");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("TY");
+                    location.setDisplaySymbol("PS");
                     locations[3][4] = location;
                     
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(0);
-                    location.setDescription("Location 21");
+                    location.setDescription("This is the Iron Smith");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("YU");
+                    location.setDisplaySymbol("IS");
                     locations[4][0] = location;
                     
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(1);
-                    location.setDescription("Location 22");
+                    location.setDescription("This is the Carpenter");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("HH");
+                    location.setDisplaySymbol("CP");
                     locations[4][1] = location;
                     
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(2);
-                    location.setDescription("Location 23");
+                    location.setDescription("This is the Cemetery");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("DE");
+                    location.setDisplaySymbol("CY");
                     locations[4][2] = location;
                     
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(3);
-                    location.setDescription("Location 24");
+                    location.setDescription("This is the Grain Mill");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("GT");
+                    location.setDisplaySymbol("GM");
                     locations[4][3] = location;
                     
                     location = new Location();
                     location.setRow(4);
                     location.setColumn(4);
-                    location.setDescription("Location 25");
+                    location.setDescription("This is the Orchard");
                     location.setVisited(false);
                     location.setBlocked(false);
-                    location.setDisplaySymbol("SD");
+                    location.setDisplaySymbol("OR");
                     locations[4][4] = location;
                     
                     return locations;
