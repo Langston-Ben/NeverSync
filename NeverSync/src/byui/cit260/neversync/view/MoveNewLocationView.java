@@ -7,10 +7,8 @@ package byui.cit260.neversync.view;
 
 import cit260.neversync.control.MapControl;
 import cit260.neversync.model.Game;
-import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
-import cit260.neversync.model.Question;
 import neversync.NeverSync;
 
 /**
@@ -55,14 +53,14 @@ public class MoveNewLocationView extends View {
                          MapControl.movePlayer(map, row, column);
                          
                          System.out.println("Move successful, Description of "
-                                 + "current location:  "
+                                 + "current location:  \n"
                          + map.getCurrentLocation().getDescription() + ".");
                          return true;
                     }
                  }
             }
      }
-     System.out.println("\n*** Invalid selection *** Try Again later");
+     System.out.println("\n*** Invalid selection *** Please Try Again");
      return false;
    }
 

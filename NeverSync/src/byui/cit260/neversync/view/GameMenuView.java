@@ -26,7 +26,7 @@ public class GameMenuView extends View {
         System.out.println(
                 "\nWhat Would You Like To Do?\n"
                 + "\nV - View the Map\n"
-                + "I - View Current Items\n"        
+                + "I - View and Purchase Current Items\n"        
                 + "M - Move to a New Location\n"
                 + "C - Manage the Crops\n"
                 + "L - Live the Year\n"
