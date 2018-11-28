@@ -13,58 +13,43 @@ import java.awt.Point;
  */
 public enum Actor {
     
-    Lehi("He is the prophet and leader of the family."),
-    Sarah("She is Lehi's wife and mother of the family."),
-    Nephi("Faithful son oand later the prophet leader of the Nephites."),
-    Jacob("Nephi's faithful brother, prophet, and successor to Nephi."),
-    Sam("The youngest boy and faithful brother of Nephi."),
-    Laman("The oldest rebellious brother and leader of the Lamanites."),
-    Lemuel("The 2nd oldest rebellious brother who went with Laman."),
-    Zoram("Laban's servant that became a faithful follower of Nephi.");
+    Lehi("Lehi","He is the prophet and leader of the family."),
+    Sarah("Sarah", "She is Lehi's wife and mother of the family."),
+    Nephi("Nephi", "Faithful son oand later the prophet leader of the Nephites."),
+    Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi."),
+    Sam("Sam", "The youngest boy and faithful brother of Nephi."),
+    Laman("Laman", "The oldest rebellious brother and leader of the Lamanites."),
+    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman."),
+    Zoram("Zoram","Laban's servant that became a faithful follower of Nephi.");
+    
+   
 
-    public static Actor getLehi() {
-        return Lehi;
-    }
-
-    public static Actor getSarah() {
-        return Sarah;
-    }
-
-    public static Actor getNephi() {
-        return Nephi;
-    }
-
-    public static Actor getJacob() {
-        return Jacob;
-    }
-
-    public static Actor getSam() {
-        return Sam;
-    }
-
-    public static Actor getLaman() {
-        return Laman;
-    }
-
-    public static Actor getLemuel() {
-        return Lemuel;
-    }
-
-    public static Actor getZoram() {
-        return Zoram;
-    }
-
-    private Actor(String description, Player player) {
+    private Actor(String name, String description) {
+        this.name = name;
         this.description = description;
-        this.player = player;
+        
     }
+    
+    
     private String name;
-    private Point coordinates;
     private final String description;
+    private Point coordinates;
     private Player player;
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public String getName() {
@@ -75,29 +60,15 @@ public enum Actor {
         this.name = name;
     }
 
-    public Point getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
-    }
-
-   
-    
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-   
-    Actor(String description) {
-        this.description = description;
-    }
-    
     public String getDescription() {
         return description;
-    
-    
-    
     }
+    
+    
+
+    
+    
+    
+    
+    
 }

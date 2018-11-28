@@ -66,9 +66,15 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
 
-        GameControl.createNewGame(NeverSync.getPlayer());
-        GameMenuView gameMenuView = new GameMenuView();
+        int ret = GameControl.createNewGame(NeverSync.getPlayer());
+        if (ret == 1) {
+            GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
+        
+        }
+        else {
+        System.out.println("Start New Game Failed");
+        }
     }
 
     private void restartGame() {

@@ -5,12 +5,15 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.MapControlException;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import cit260.neversync.model.Player;
+import neversync.NeverSync;
 
 /**
  *
@@ -20,7 +23,7 @@ public class MapControl {
 
     public static Map createMap(Game game,
             int noOfRows,
-            int noOfColumns) {
+            int noOfColumns) throws MapControlException {
 
         // check for invalid inputs 
         if (game == null || noOfRows < 0 || noOfColumns < 0) {
@@ -45,8 +48,16 @@ public class MapControl {
         }
 
         map.setLocations(createLocations(noOfRows, noOfColumns));
-        assignActorsToLocations(createLocations(noOfRows, noOfColumns));
-        assignItemsToLocations(createLocations(noOfRows, noOfColumns), (GameControl.createItems()));
+        
+        
+        
+        
+        MapControl.assignActorsToLocations(map.getLocations());
+        MapControl.assignItemsToLocations(map.getLocations(), 
+                game.getInventory());
+        
+        
+        MapControl.movePlayerToStartingLocation(map);
 
         return map;
 
@@ -412,16 +423,53 @@ public class MapControl {
         return 0;
     }
 
-    public static void movePlayerToStartingLocation(Map map) {
+    public static void movePlayerToStartingLocation(Map map) 
+    throws MapControlException {
         // If starting location is not supposed to be 0,0 then use the correct values here.
         movePlayer(map, 0, 0); // or instead of 0,0 you can select a different starting location
     }
 
-    public static void movePlayer(Map map, int row, int column) {
+    public static void movePlayer(Map map, int row, int column) 
+        throws MapControlException {
+        
         map.setCurrentLocation(map.getLocations()[row][column]);
         map.getCurrentLocation().setVisited(true);
         map.setCurrentRow(row);
         map.setCurrentColumn(column);
+        
     }
-
+    
+    
+//public static Location moveActor(Player player, int newRow, int newColumn)  
+//        throws MapControlException {
+//       
+//    
+//        if (player == null) {
+//        throw new MapControlException("\nPlayer cannot be null");
+//        }
+//        Game game = new Game();
+//        game = NeverSync.getCurrentGame();
+//        
+//        Map map = game.getMap();
+//        
+//        Location[][] locations = map.getLocations();
+//        
+//        if (newRow < 1 || newRow > map.getRows() || newColumn < 1 
+//                || newColumn > map.getColumns()) {
+//        throw new MapControlException();
+//        }
+//            
+//        int currentRow = map.getCurrentRow();
+//        int currentColumn = map.getCurrentColumn();
+//        
+//        map.getCurrentLocation().setVisited(true);
+//        
+//        Location[][] newLocation = map.setCurrentRow(newRow);
+//        
+//        map.setCurrentRow(newRow);
+//        map.setCurrentColumn(newColumn);
+//        
+//        
+// return newLocation;
+//}
 }

@@ -67,7 +67,9 @@ public class MapView {
                 }
             }
             System.out.println("|");
+            
         }
+        System.out.println("\nYour current location is: \n" + map.getCurrentLocation().getDescription());
     }
 
 }

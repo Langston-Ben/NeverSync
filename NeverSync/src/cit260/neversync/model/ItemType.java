@@ -25,20 +25,9 @@ public enum ItemType {
     sickle,
     saw,
     nails;
-    
-    
-    
-    
+  
 }
- 
-    
-    
-    
-    
-    
-    
-    
-    
+   
 
 //    Tool("Machete", "A large heavy knife used for cutting through thick vegetation", 1),
 //    Food("Bread", "Loaf of bread. Energy boosting and great tasting", 1),

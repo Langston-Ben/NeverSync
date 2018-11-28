@@ -5,6 +5,9 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.PlantControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,7 +41,12 @@ public class PlantControlTest {
         double acresToPlant = 400;
         double initWheatStorage = 300;
         double expResult = 70.0;
-        double result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        double result = -1;
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -50,7 +58,11 @@ public class PlantControlTest {
         acresToPlant = 0;
         initWheatStorage = 300;
         expResult = -2;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -62,7 +74,11 @@ public class PlantControlTest {
         acresToPlant = 1004;
         initWheatStorage = 5;
         expResult = -2;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -74,7 +90,11 @@ public class PlantControlTest {
         acresToPlant = 300;
         initWheatStorage = 0;
         expResult = -3;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -85,7 +105,11 @@ public class PlantControlTest {
         acresToPlant = 100;
         initWheatStorage = 110;
         expResult = 49;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -97,7 +121,11 @@ public class PlantControlTest {
         acresToPlant = 1000;
         initWheatStorage = 560;
         expResult = 4;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -109,7 +137,11 @@ public class PlantControlTest {
         acresToPlant = 1000;
         initWheatStorage = 600;
         expResult = 40;
-        result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        try {
+            result = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            Logger.getLogger(PlantControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

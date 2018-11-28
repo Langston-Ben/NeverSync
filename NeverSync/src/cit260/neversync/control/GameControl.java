@@ -5,12 +5,15 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.MapControlException;
+import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Map;
 import cit260.neversync.model.Player;
 import cit260.neversync.model.Question;
+import java.util.ArrayList;
 import neversync.NeverSync;
 
 /**
@@ -33,6 +36,8 @@ public class GameControl {
 
     }
 
+    
+
     public GameControl() {
     }
 
@@ -47,14 +52,24 @@ public class GameControl {
         NeverSync.setCurrentGame(game);
         game.setPlayer(player);
         game.setInventory(GameControl.createItems());
+        ArrayList<Actor> Actors = createActors(); 
+        game.setActors(Actors);
+        
+//      game.setInventoryType.items;
         Map map = new Map();
-        game.setMap(MapControl.createMap(game, 5, 5));
+        try {
+            game.setMap(MapControl.createMap(game, 5, 5));
+        } catch (MapControlException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         if (map == null) {
 
             System.out.println("createMap failed");
             return -2;
         } else {
+            
+            
             return 1;
         }
 
@@ -175,6 +190,21 @@ public class GameControl {
 
     public static Question createQuestion() {
         return null;
+    }
+    
+    public static ArrayList<Actor> createActors() {
+        
+       ArrayList<Actor> actors = new ArrayList<>();
+        actors.add(Actor.Lehi);
+        actors.add(Actor.Jacob);
+        actors.add(Actor.Laman);
+        actors.add(Actor.Lemuel);
+        actors.add(Actor.Zoram);
+        actors.add(Actor.Sam);
+        actors.add(Actor.Sarah);
+        actors.add(Actor.Nephi);
+        
+        return actors;
     }
 
 }

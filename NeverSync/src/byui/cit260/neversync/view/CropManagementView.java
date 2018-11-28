@@ -5,6 +5,7 @@
  */
 package byui.cit260.neversync.view;
 
+import byui.cit260.neversync.exceptions.PlantControlException;
 import cit260.neversync.control.BuyLandControl;
 import cit260.neversync.control.PlantControl;
 import cit260.neversync.control.SellLandControl;
@@ -32,10 +33,10 @@ public class CropManagementView extends View {
                 + "P - Plant the Crops\n"
                 + "T - Pay Tithes and Offerings\n"
                 + "Q - Return to the game menu\n");
-                
-            String cropManagementSelection = this.getInput("\nPlease enter your selection: ");
-            input[0] = cropManagementSelection;
-        
+
+        String cropManagementSelection = this.getInput("\nPlease enter your selection: ");
+        input[0] = cropManagementSelection;
+
         return input;
 
     }
@@ -231,7 +232,7 @@ public class CropManagementView extends View {
 
     private void sellLand() {
 //        System.out.println("Placeholder for sellLand");
-        
+
         System.out.println("The Player will be required to enter a value for "
                 + "the number of acres to sell. \nThis number must be a positive number.  "
                 + "\nThe player must have enough land to sell.\n");
@@ -289,7 +290,6 @@ public class CropManagementView extends View {
                             + "-----------------------"
                             + "-------------\n");
 
-
                 } else {
                     System.out.println("\n-----------------------------"
                             + "-------------------------"
@@ -332,7 +332,6 @@ public class CropManagementView extends View {
                             + "-----------------------"
                             + "-------------\n");
 
-
                 } else {
                     System.out.println("\n-----------------------------"
                             + "-------------------------"
@@ -355,7 +354,6 @@ public class CropManagementView extends View {
 
         } while (!(cNumber));
 
-    
     }
 
     private void feedPeople() {
@@ -363,7 +361,7 @@ public class CropManagementView extends View {
     }
 
     private void plantCrops() {
-		System.out.println("The Player will be asked to enter a value for "
+        System.out.println("The Player will be asked to enter a value for "
                 + "the number of acres to plant. \nThis number must be a positive number.  "
                 + "\nThe player must have enough wheat in storage. "
                 + "\nOne bushel of wheat is required for every 2 acres planted.");
@@ -371,98 +369,115 @@ public class CropManagementView extends View {
         double currentPop = 5000;
         double acresOwned = 1000;
         double initWheatStorage = 2700;
+
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
         System.out.println("\nCurrent number of acres owned:\n" + acresOwned);
         System.out.println("\nCurrent wheat in storage:\n" + initWheatStorage);
 
-        // create an input file for the console
-        Scanner inFile;
-        inFile = new Scanner(System.in);
-
         // prompt to enter the number of acres to be planted
         System.out.println("\nEnter The Number of Acres to Plant: ");
 
-        // get the value for the number of acres to plant
-        double acresToPlant = inFile.nextDouble();
+        Double acresToPlant = null;
+        Scanner inFile;
+        inFile = new Scanner(System.in);
 
-        // pass the values to the function and assign the return to a variable
-        double landPlant = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        while (acresToPlant == null) {
+            String value = inFile.nextLine();
+            value = value.trim().toUpperCase();
 
-        if (landPlant == -1) {
+            if (value.equals("Q")) {
+                return;
+            }
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+            try {
 
-            System.out.println("You must own more than 500 acres and no more than 2000 acres.");
+                acresToPlant = Double.parseDouble(value);
 
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-        } else if (landPlant == -2) {
+            } catch (NumberFormatException nfe) {
 
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
+                System.out.println(nfe + "\n\nYou must enter a numerical value");
+                return;
 
-            System.out.println("You must select land value greater than 100 acres and less than 1000.");
-
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-
-        } else if (landPlant == -3) {
-
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
-
-            System.out.println("You do not have enough wheat to plant that many acres.");
-
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-			
-			 } else if (landPlant == -4) {
-
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
-
-            System.out.println("Your wheat storage is outside the allowable range.");
-
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-
-        } else {
-            System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
-
-            System.out.println("The amount of land planted this season is " + acresToPlant
-                    + " acres. ");
-
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
-			
-			System.out.println("\n-----------------------------"
-                    + "-------------------------"
-                    + "--------------");
-
-            System.out.println("You have " + landPlant + " bushels of wheat remaining.");
-
-            System.out.println("--------------------------------"
-                    + "-----------------------"
-                    + "-------------\n");
+            }
 
         }
-	}
+
+        double landPlant = 0;
+
+        try {
+            landPlant = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            System.out.println(ex);
+            return;
+
+        }
+
+        // previous code moved to the bottom in case of need....
+        System.out.println("\n******************************************************\n"+
+                "The amount of land planted this season is " + acresToPlant
+                + " acres. "+ "\n******************************************************\n");
+
+        System.out.println("\n*******************************************\n"
+                + "You have " + landPlant + " "
+                + "bushels of wheat remaining." 
+                + "\n*******************************************\n");
+
+    }
 
     private void payTithes() {
         System.out.println("Placeholder for payTithes");
     }
 
-
 }
+
+//        if (landPlant == -1) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("You must own more than 500 acres and no more than 2000 acres.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//        } else if (landPlant == -2) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("You must select land value greater than 100 acres and less than 1000.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else if (landPlant == -3) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("You do not have enough wheat to plant that many acres.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//			
+//			 } else if (landPlant == -4) {
+//
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");
+//
+//            System.out.println("Your wheat storage is outside the allowable range.");
+//
+//            System.out.println("--------------------------------"
+//                    + "-----------------------"
+//                    + "-------------\n");
+//
+//        } else {
+//            System.out.println("\n-----------------------------"
+//                    + "-------------------------"
+//                    + "--------------");

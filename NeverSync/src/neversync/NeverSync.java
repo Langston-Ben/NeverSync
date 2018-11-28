@@ -51,9 +51,20 @@ public class NeverSync {
     
 	public static void main(String[] args) {
             
+            try {
+                
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
-//            startProgramView.displayMainMenuView();
+//          }  startProgramView.displayMainMenuView();
+//            } catch (Exception e) {
+//             
+//            System.out.println("Exception: "+ e.getMessage());   
+            
+            } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+         
+            }
             
             
             
