@@ -17,7 +17,7 @@ public enum Actor {
     Sarah("She is Lehi's wife and mother of the family."),
     Nephi("Faithful son oand later the prophet leader of the Nephites."),
     Jacob("Nephi's faithful brother, prophet, and successor to Nephi."),
-    Sam("The youngest boy and faithful brother of Nephi."),
+    Sam("The 3rd oldest and faithful brother of Nephi."),
     Laman("The oldest rebellious brother and leader of the Lamanites."),
     Lemuel("The 2nd oldest rebellious brother who went with Laman."),
     Zoram("Laban's servant that became a faithful follower of Nephi.");

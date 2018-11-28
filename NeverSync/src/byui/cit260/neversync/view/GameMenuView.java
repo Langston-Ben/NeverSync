@@ -26,7 +26,8 @@ public class GameMenuView extends View {
         System.out.println(
                 "\nWhat Would You Like To Do?\n"
                 + "\nV - View the Map\n"
-                + "I - View and Purchase Current Items\n"        
+                + "I - View and Purchase Current Items\n"
+				+ "A - View Actor Info and Locations\n"
                 + "M - Move to a New Location\n"
                 + "C - Manage the Crops\n"
                 + "L - Live the Year\n"
@@ -112,7 +113,9 @@ public class GameMenuView extends View {
     }
 
     private void viewActors() {
-        
+        System.out.println("placeholder for ViewActor");
+		ActorView actorView = new ActorView();
+		actorView.displayActorGuide();
     }
 
     private void ItemInventory() {
