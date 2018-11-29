@@ -9,26 +9,27 @@ package byui.cit260.neversync.exceptions;
  *
  * @author benjaminlangston
  */
-public class PlantControlException extends Exception {
+public class BuyLandControlException extends Exception {
 
-    public PlantControlException() {
+    public BuyLandControlException() {
     }
 
-    public PlantControlException(String message) {
-    
+    public BuyLandControlException(String message) {
         super(message);
     }
 
-    public PlantControlException(String message, Throwable cause) {
+    public BuyLandControlException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public PlantControlException(Throwable cause) {
+    public BuyLandControlException(Throwable cause) {
         super(cause);
     }
 
-    public PlantControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public BuyLandControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+    
+    
     
 }

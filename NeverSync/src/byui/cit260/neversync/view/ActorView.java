@@ -8,6 +8,8 @@ package byui.cit260.neversync.view;
 import cit260.neversync.control.GameControl;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
+import cit260.neversync.model.Location;
+import cit260.neversync.model.Map;
 import java.util.ArrayList;
 import java.util.Collections;
 //import java.util.Comparator;
@@ -25,11 +27,6 @@ public class ActorView {
      
          Game game = new Game();
         ArrayList<Actor> actors = game.getActors();
-       
-        
-     
-        
-        
         
         actors.add(Actor.Lehi);
         actors.add(Actor.Jacob);

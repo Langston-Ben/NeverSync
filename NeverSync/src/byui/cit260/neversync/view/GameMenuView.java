@@ -9,7 +9,9 @@ package byui.cit260.neversync.view;
 
 import byui.cit260.neversync.exceptions.MapControlException;
 import cit260.neversync.control.MapControl;
+import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
+import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -138,6 +140,7 @@ public class GameMenuView extends View {
         
         Map map = game.getMap();
         
+       
         MapControl.movePlayer(map, iRow, iColumn);
         MoveNewLocationView moveNewLocationView = new MoveNewLocationView();
         moveNewLocationView.display();

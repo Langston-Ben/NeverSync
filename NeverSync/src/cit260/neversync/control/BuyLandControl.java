@@ -5,6 +5,8 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.BuyLandControlException;
+
 /**
  *
  * @author benjaminlangston
@@ -13,19 +15,24 @@ public class BuyLandControl {
 
 // function to determine land ownership after a purchase
     public static double calcLandPurchase(double acresOwnedinit, double currentPop,
-            double currentWheat, double acresToPurchase, double acresPrice) {
+            double currentWheat, double acresToPurchase, double acresPrice) 
+        throws BuyLandControlException {
 
 //acresPrice = 20;    
         if (acresToPurchase < 0) {
-            return -1;
+            throw new BuyLandControlException("\nThe Value for a Land Purchase must "
+                    + "be a Positive Number, Please Try Again.");
         }
 
         if (currentWheat < (acresToPurchase * acresPrice)) {
-            return -2;
+            throw new BuyLandControlException("\n\nThere is Not Enough Wheat in "
+                    + "Storage for the Land Purchase, Please use a lower "
+                    + "value.");
         }
 
         if (currentPop < (acresOwnedinit + acresToPurchase) / 10) {
-            return -3;
+            throw new BuyLandControlException("Not Enough People to till the Land, "
+                    + "Please Select a Lower Number");
         }
 
         double acresOwnedNew = acresOwnedinit + acresToPurchase;
@@ -35,18 +42,22 @@ public class BuyLandControl {
 
 // function to determine the wheat remaining after a land purchase
     public static double calcWheatRemaining(double acresOwnedinit, double currentPop,
-            double currentWheat, double acresToPurchase, double acresPrice) {
+            double currentWheat, double acresToPurchase, double acresPrice) 
+            throws BuyLandControlException {
 //acresPrice = 20;
         if (acresToPurchase < 0) {
-            return -1;
+            throw new BuyLandControlException("The Value for a Land Purchase Must be a "
+                            + "Positive Number, Please Try Again.");
         }
 
         if (currentWheat < (acresToPurchase * acresPrice)) {
-            return -2;
+            throw new BuyLandControlException("There is Not Enough Wheat in Storage for"
+                            + " the Land Purchase, Please use a lower value.");
         }
 
         if (currentPop < (acresOwnedinit + acresToPurchase) / 10) {
-            return -3;
+            throw new BuyLandControlException("Not Enough People to till the Land, Please "
+                            + "Select a Lower Number");
         }
 
 //double acresOwnedNew = acresOwnedinit + acresToPurchase;

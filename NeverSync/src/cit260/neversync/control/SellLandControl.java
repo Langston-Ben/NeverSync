@@ -5,6 +5,8 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.SellLandControlException;
+
 /**
  *
  * @author benjaminlangston
@@ -15,15 +17,20 @@ public class SellLandControl {
 
 // function to determine land ownership after a purchase
     public static double calcLandSold(double acresOwnedinit,
-            double currentWheat, double acresToSell, double acresPrice) {
+            double currentWheat, double acresToSell, double acresPrice) 
+            throws SellLandControlException {
 
 //acresPrice = 20;    
         if (acresToSell < 0) {
-            return -1;
+            throw new SellLandControlException("\n\nThe Value for a Land Purchase Must be a "
+                            + "Positive Number, Please Try Again");
+        
+        
         }
 
         if (acresToSell > acresOwnedinit) {
-            return -2;
+            throw new SellLandControlException("\n\nLand sold cannot be more than"
+                            + " land owned. Please use a lower value.");
         }
 
         double acresOwnedNew = acresOwnedinit - acresToSell;
@@ -32,14 +39,17 @@ public class SellLandControl {
     }
     
     public static double calcWheatRemaining(double acresOwnedinit,
-            double currentWheat, double acresToSell, double acresPrice) {
+            double currentWheat, double acresToSell, double acresPrice)
+            throws SellLandControlException {
 //acresPrice = 20;
         if (acresToSell < 0) {
-            return -1;
+            throw new SellLandControlException("\n\nThe Value for a Land Purchase Must be a "
+                            + "Positive Number, Please Try Again.");
         }
 
         if (acresToSell > acresOwnedinit) {
-            return -2;
+            throw new SellLandControlException("\n\nLand sold cannot be more than"
+                            + " land owned. Please use a lower value.");
         }
 
        

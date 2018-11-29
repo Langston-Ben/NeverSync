@@ -24,11 +24,20 @@ public class Map implements Serializable {
     private int columns;
     private int currentRow = 0;
     private int currentColumn = 0;
+    private InventoryItem item;
 
     public Map() {
     }
 //
 //   
+
+    public InventoryItem getItem() {
+        return item;
+    }
+
+    public void setItem(InventoryItem item) {
+        this.item = item;
+    }
 
     public int getCurrentRow() {
         return currentRow;

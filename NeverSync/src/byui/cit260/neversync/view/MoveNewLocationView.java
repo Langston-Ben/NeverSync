@@ -7,6 +7,7 @@ package byui.cit260.neversync.view;
 
 import byui.cit260.neversync.exceptions.MapControlException;
 import cit260.neversync.control.MapControl;
+import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
@@ -60,6 +61,8 @@ public class MoveNewLocationView extends View {
 //                         System.out.println("Move successful, Description of "
 //                                 + "current location:  \n"
 //                         + map.getCurrentLocation().getDescription() + ".");
+                        
+
                         MapView mapView = new MapView();
                         mapView.displayMap();
                         MainMenuView mainMenuView = new MainMenuView();

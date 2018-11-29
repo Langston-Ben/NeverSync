@@ -5,7 +5,10 @@
 // */
 package byui.cit260.neversync.view;
 
+import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
+import cit260.neversync.model.InventoryItem;
+import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
 import neversync.NeverSync;
@@ -70,6 +73,31 @@ public class MapView {
             
         }
         System.out.println("\nYour current location is: \n" + map.getCurrentLocation().getDescription());
+        
+        
+        
+        InventoryItem currentItems = map.getCurrentLocation().getItem();
+        
+        if (currentItems != null) {
+        
+       
+            String one = currentItems.getItemType();
+            
+            
+
+            System.out.println("You have found " + one + " at this location."
+                    + "\nWould you like to add it to your backpack?");
+
+        }
+        
+        
+        
+//        System.out.println(type);
+        Actor currentActor = map.getCurrentLocation().getActor();
+        if (currentActor == null) {
+        return;
+        }
+        System.out.println(currentActor + " is here to help you, do you have a question to ask?");
     }
 
 }

@@ -26,6 +26,8 @@ public class ItemInventoryView {
 
         Game game = new Game();
         game.setInventory(GameControl.createItems());
+        
+        
         InventoryItem[] tools = game.getInventory();
         System.out.println("========================\n"
                 + "Current Items Available\n"
