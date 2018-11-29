@@ -15,19 +15,19 @@ public enum Actor {
     
     Lehi("Lehi","He is the prophet and leader of the family."),
     Sarah("Sarah", "She is Lehi's wife and mother of the family."),
-    Nephi("Nephi", "Faithful son oand later the prophet leader of the Nephites."),
+    Nephi("Nephi", "Faithful son and later the prophet leader of the Nephites."),
     Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi."),
-    Sam("Sam", "The youngest boy and faithful brother of Nephi."),
+    Sam("Sam", "The 3rd oldest and faithful brother of Nephi."),
     Laman("Laman", "The oldest rebellious brother and leader of the Lamanites."),
     Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman."),
-    Zoram("Zoram","Laban's servant that became a faithful follower of Nephi.");
+    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.");
     
    
 
     private Actor(String name, String description) {
         this.name = name;
         this.description = description;
-        
+	//	this.coordinates = coordinates;
     }
     
     
