@@ -14,14 +14,14 @@ import java.util.Collections;
 
 /**
  *
- * @author benjaminlangston
+ * @author Ben Langston & Jeff Ledbetter
  */
 public class ActorView {
 
     public ActorView() {
     }
 
-   public void displayActorView() {
+   public void displayActorView () {
      
          Game game = new Game();
         ArrayList<Actor> actors = game.getActors();
@@ -46,12 +46,15 @@ public class ActorView {
             System.out.println(actor.getName() + " - " + actor.getDescription());
            
             }
-                
-      
-            
-         Collections.sort(actors);
-         System.out.println("\n" + actors);
-        
+		System.out.println("\nOriginal Order:");
+        System.out.println(actors);
+		System.out.println("\nReversed List:");
+		Collections.sort(actors, Collections.reverseOrder());
+		System.out.println(actors);
+		
+		System.out.println("\nStay tuned for sort by location feature!");
+
+		 
    }
 
     
