@@ -17,17 +17,29 @@ public class PlantControl {
             double acresToPlant, double initWheatStorage)
             throws PlantControlException {
 //       
-            if (acresOwned < 500 || acresOwned > 2000) {
-                throw new PlantControlException("The input cannot be negative. "
-                        + " \nThe acres owned cannot exceed 2000.");
+            if (acresToPlant< 0) {
+                throw new PlantControlException("\n\nThe input cannot be negative.");
+                        
+            }
+            if (acresOwned > 2000) {
+                throw new PlantControlException("\n\nThe acres owned cannot "
+                        + "exceed 2000.");
             }
 
-            if (acresToPlant < 100 || acresToPlant > 1000 || acresToPlant > acresOwned) {
-                throw new PlantControlException("\nThe input cannot be negative"
-                        + "\nThe acres to plant must be greater than 100. "
-                        + "\nThe acres to plant must be less than 1000."
-                        + "\nThe acres to plant cannot exceed the current acres owned");
+            if (acresToPlant < 100) {
+                throw new PlantControlException("\n\nThe acres to plant must be greater "
+                        + "than 100.");
             }
+            
+            if (acresToPlant > 1000 || acresToPlant > acresOwned) {
+                throw new PlantControlException("\n\nThe acres to plant must be less than "
+                        + "1000.");
+            }
+            if (acresToPlant > acresOwned) {
+                throw new PlantControlException("\n\nThe acres to plant cannot "
+                        + "exceed the current acres owned");
+            }
+            
 
             if (initWheatStorage * .90 < (.5 * acresToPlant) || initWheatStorage * .90 > 3000) {
                 throw new PlantControlException("\nYou do not have enough wheat to plant that many acres.\"");
