@@ -5,6 +5,7 @@
  */
 package neversync;
 
+//import byui.cit260.neversync.exceptions.MapControlException;
 import byui.cit260.neversync.view.StartProgramView;
 ////import cit260.neversync.model.Condition;
 import cit260.neversync.model.Game;
@@ -13,6 +14,7 @@ import cit260.neversync.model.Game;
 //import cit260.neversync.model.Location;
 //import cit260.neversync.model.Map;
 import cit260.neversync.model.Player;
+//import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 //import cit260.neversync.model.Question;
 //import cit260.neversync.model.Scene;
 //import cit260.neversync.model.StoreHouse;
@@ -50,20 +52,28 @@ public class NeverSync {
         
     
 	public static void main(String[] args) {
-            
+            boolean showCallStack = false;
             try {
-                
+//              int x = 10/0;   
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
-//          }  startProgramView.displayMainMenuView();
-//            } catch (Exception e) {
-//             
-//            System.out.println("Exception: "+ e.getMessage());   
             
-            } catch (Throwable te) {
+            } catch (Exception e) {
+            showCallStack = true;   
+            System.out.println("Exception: "+ e.getMessage());  
+            e.printStackTrace(); 
+            return;
+            
+            } catch (Throwable te) { 
+            showCallStack = true;    
             System.out.println(te.getMessage());
             te.printStackTrace();
-         
+            return;
+            } 
+                
+            }
+            
+            
             }
             
             
@@ -91,11 +101,11 @@ public class NeverSync {
                       
              
 
-    }    
+       
 
    
                
-}
+
         
         
 	

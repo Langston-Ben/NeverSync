@@ -62,7 +62,7 @@ public class BuyLandControl {
 
 //double acresOwnedNew = acresOwnedinit + acresToPurchase;
         double wheatNew = currentWheat - (acresPrice * acresToPurchase);
-
+//        int x = 10/0;
         return wheatNew;
 
     }

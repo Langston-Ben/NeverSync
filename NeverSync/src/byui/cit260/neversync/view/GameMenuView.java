@@ -70,13 +70,7 @@ public class GameMenuView extends View {
                 viewActors();
                 break;
             case "M":
-        {
-            try {
-                moveNewLocation();
-            } catch (MapControlException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
+              moveNewLocation();
                 break;
             case "C":
                 manageCrops();
@@ -106,7 +100,7 @@ public class GameMenuView extends View {
         mapView.displayMap();
     }
 
-    private void moveNewLocation() throws MapControlException {
+    private void moveNewLocation() {
         
         MapView mapView = new MapView();
         mapView.displayMap();
@@ -141,7 +135,17 @@ public class GameMenuView extends View {
         Map map = game.getMap();
         
        
-        MapControl.movePlayer(map, iRow, iColumn);
+        try {
+            try {
+                MapControl.movePlayer(map, iRow, iColumn);
+            } catch (MapControlException ex) {
+                System.out.println(ex + "\n\nInvalid Entry");
+                return;
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex + "\n\nInvalid Entry");
+            return;
+        }
         MoveNewLocationView moveNewLocationView = new MoveNewLocationView();
         moveNewLocationView.display();
     }
@@ -161,6 +165,7 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
+//        throw new RuntimeException("Test runtime exception");
         System.out.println("placeholder for saveGame");
     }
 

@@ -24,9 +24,12 @@ public class ActorView {
     }
 
    public void displayActorView () {
-     
-         Game game = new Game();
+        
+
+        Game game = new Game();
         ArrayList<Actor> actors = game.getActors();
+
+        
         
         actors.add(Actor.Lehi);
         actors.add(Actor.Jacob);
@@ -44,12 +47,13 @@ public class ActorView {
            
             }
 		System.out.println("\nOriginal Order:");
-        System.out.println(actors);
+                System.out.println(actors);
 		System.out.println("\nReversed List:");
 		Collections.sort(actors, Collections.reverseOrder());
 		System.out.println(actors);
 		
 		System.out.println("\nStay tuned for sort by location feature!");
+                
 
 		 
    }

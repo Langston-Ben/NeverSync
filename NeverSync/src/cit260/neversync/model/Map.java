@@ -25,11 +25,20 @@ public class Map implements Serializable {
     private int currentRow = 0;
     private int currentColumn = 0;
     private InventoryItem item;
+    private Actor actor;
 
     public Map() {
     }
 //
 //   
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
 
     public InventoryItem getItem() {
         return item;
