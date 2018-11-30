@@ -41,11 +41,11 @@ public class PlantControl {
             }
             
 
-            if (initWheatStorage * .90 < (.5 * acresToPlant) || initWheatStorage * .90 > 3000) {
+            if (initWheatStorage * .90 < (.5 * acresToPlant) || initWheatStorage * .90 > 10000) {
                 throw new PlantControlException("\nYou do not have enough wheat to plant that many acres.\"");
             }
 
-            if (initWheatStorage < 110 || initWheatStorage > 3000) {
+            if (initWheatStorage < 110 || initWheatStorage > 10000) {
                 throw new PlantControlException("\nYour wheat storage is outside the allowable range.");
             }
 

@@ -7,6 +7,7 @@ package cit260.neversync.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -20,38 +21,14 @@ public class Game implements Serializable {
     private InventoryItem[] inventory;
     private Map map;
     private String theStorehouse;
-    private int currentPopulation;
-    private int acresOwned;
-    private int wheatInStorage;
+    private double currentPopulation;
+    private double acresOwned;
+    private double wheatInStorage;
     private Player player;
     private Actor actor;
     private ArrayList<Actor> Actors = new ArrayList<>();
 
     public Game() {
-    }
-
-    public ArrayList<Actor> getActors() {
-        return Actors;
-    }
-
-    public void setActors(ArrayList<Actor> Actors) {
-        this.Actors = Actors;
-    }
-
-    public Actor getActor() {
-        return actor;
-    }
-
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public String getThePlayer() {
@@ -60,51 +37,6 @@ public class Game implements Serializable {
 
     public void setThePlayer(String thePlayer) {
         this.thePlayer = thePlayer;
-    }
-
-////    public String getTheMap() {
-////        return theMap;
-////    }
-////
-////    public void setTheMap(String theMap) {
-////        this.theMap = theMap;
-//    }
-
-    public String getTheStorehouse() {
-        return theStorehouse;
-    }
-
-    public void setTheStorehouse(String theStorehouse) {
-        this.theStorehouse = theStorehouse;
-    }
-
-    public int getCurrentPopulation() {
-        return currentPopulation;
-    }
-
-    public void setCurrentPopulation(int currentPopulation) {
-        this.currentPopulation = currentPopulation;
-    }
-
-    public int getAcresOwned() {
-        return acresOwned;
-    }
-
-    public void setAcresOwned(int acresOwned) {
-        this.acresOwned = acresOwned;
-    }
-
-    public int getWheatInStorage() {
-        return wheatInStorage;
-    }
-
-    public void setWheatInStorage(int wheatInStorage) {
-        this.wheatInStorage = wheatInStorage;
-        
-        
-        
-        
-        
     }
 
     public InventoryItem[] getInventory() {
@@ -123,15 +55,75 @@ public class Game implements Serializable {
         this.map = map;
     }
 
+    public String getTheStorehouse() {
+        return theStorehouse;
+    }
+
+    public void setTheStorehouse(String theStorehouse) {
+        this.theStorehouse = theStorehouse;
+    }
+
+    public double getCurrentPopulation() {
+        return currentPopulation;
+    }
+
+    public void setCurrentPopulation(double currentPopulation) {
+        this.currentPopulation = currentPopulation;
+    }
+
+    public double getAcresOwned() {
+        return acresOwned;
+    }
+
+    public void setAcresOwned(double acresOwned) {
+        this.acresOwned = acresOwned;
+    }
+
+    public double getWheatInStorage() {
+        return wheatInStorage;
+    }
+
+    public void setWheatInStorage(double wheatInStorage) {
+        this.wheatInStorage = wheatInStorage;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return Actors;
+    }
+
+    public void setActors(ArrayList<Actor> Actors) {
+        this.Actors = Actors;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.thePlayer);
-//        hash = 13 * hash + Objects.hashCode(this.theMap);
-        hash = 13 * hash + Objects.hashCode(this.theStorehouse);
-        hash = 13 * hash + this.currentPopulation;
-        hash = 13 * hash + this.acresOwned;
-        hash = 13 * hash + this.wheatInStorage;
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.thePlayer);
+        hash = 23 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 23 * hash + Objects.hashCode(this.map);
+        hash = 23 * hash + Objects.hashCode(this.theStorehouse);
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.currentPopulation) ^ (Double.doubleToLongBits(this.currentPopulation) >>> 32));
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.acresOwned) ^ (Double.doubleToLongBits(this.acresOwned) >>> 32));
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.wheatInStorage) ^ (Double.doubleToLongBits(this.wheatInStorage) >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.player);
+        hash = 23 * hash + Objects.hashCode(this.actor);
+        hash = 23 * hash + Objects.hashCode(this.Actors);
         return hash;
     }
 
@@ -147,38 +139,38 @@ public class Game implements Serializable {
             return false;
         }
         final Game other = (Game) obj;
-        if (this.currentPopulation != other.currentPopulation) {
+        if (Double.doubleToLongBits(this.currentPopulation) != Double.doubleToLongBits(other.currentPopulation)) {
             return false;
         }
-        if (this.acresOwned != other.acresOwned) {
+        if (Double.doubleToLongBits(this.acresOwned) != Double.doubleToLongBits(other.acresOwned)) {
             return false;
         }
-        if (this.wheatInStorage != other.wheatInStorage) {
+        if (Double.doubleToLongBits(this.wheatInStorage) != Double.doubleToLongBits(other.wheatInStorage)) {
             return false;
         }
         if (!Objects.equals(this.thePlayer, other.thePlayer)) {
             return false;
         }
-//        if (!Objects.equals(this.theMap, other.theMap)) {
-//            return false;
-//        }
         if (!Objects.equals(this.theStorehouse, other.theStorehouse)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (this.actor != other.actor) {
+            return false;
+        }
+        if (!Objects.equals(this.Actors, other.Actors)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Game{" + "thePlayer=" + thePlayer + ", theMap="  + ", theStorehouse=" + theStorehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + '}';
-    }
-
-//    public void setItems(InventoryItem[] createItems) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-
     
-
     
-
 }

@@ -11,8 +11,10 @@ import byui.cit260.neversync.exceptions.SellLandControlException;
 import cit260.neversync.control.BuyLandControl;
 import cit260.neversync.control.PlantControl;
 import cit260.neversync.control.SellLandControl;
+import cit260.neversync.model.Game;
 import java.util.Random;
 import java.util.Scanner;
+import neversync.NeverSync;
 
 /**
  *
@@ -76,6 +78,8 @@ public class CropManagementView extends View {
     }
 
     private void buyLand() {
+        
+        Game game = NeverSync.getCurrentGame();
 
         System.out.println("The Player will be required to enter a value for "
                 + "the number of acres to purchase. \nThis number must be a positive number.  "
@@ -88,10 +92,10 @@ public class CropManagementView extends View {
         System.out.println("The price for an acre of land today is:\n"
                 + acresPrice);
 
-        double currentPop = 5000;
-        double acresOwnedinit = 1000;
-        double currentWheat = 2700;
-//        boolean cNumber;
+        double currentPop = game.getCurrentPopulation();
+        double acresOwnedinit = game.getAcresOwned();
+        double currentWheat = game.getWheatInStorage();
+
 
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
         System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
@@ -174,11 +178,14 @@ public class CropManagementView extends View {
                     + "-------------\n");
 
         }
-
+             game.setAcresOwned(toPurchase);
+             game.setWheatInStorage(wheat);
     }
 
     private void sellLand() {
 //        System.out.println("Placeholder for sellLand");
+        
+        Game game = NeverSync.getCurrentGame();
 
         System.out.println("The Player will be required to enter a value for "
                 + "the number of acres to sell. \nThis number must be a positive number.  "
@@ -188,8 +195,8 @@ public class CropManagementView extends View {
         System.out.println("The price for an acre of land today is:\n"
                 + acresPrice);
 
-        double acresOwnedinit = 1000;
-        double currentWheat = 2700;
+        double acresOwnedinit = game.getAcresOwned();
+        double currentWheat = game.getWheatInStorage();
 //        boolean cNumber;
 
         System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
@@ -237,6 +244,7 @@ public class CropManagementView extends View {
             System.out.println("--------------------------------"
                     + "-----------------------"
                     + "-------------\n");
+            game.setAcresOwned(landToSell);
 
         }
         // pass the values to 2nd function and assign the return to a variable
@@ -262,6 +270,8 @@ public class CropManagementView extends View {
                     + "-------------\n");
 
         }
+        
+        game.setWheatInStorage(wheat);
     }
 
     private void feedPeople() {
@@ -269,14 +279,16 @@ public class CropManagementView extends View {
     }
 
     private void plantCrops() {
+        Game game = NeverSync.getCurrentGame();
+        
         System.out.println("The Player will be asked to enter a value for "
                 + "the number of acres to plant. \nThis number must be a positive number.  "
                 + "\nThe player must have enough wheat in storage. "
                 + "\nOne bushel of wheat is required for every 2 acres planted.");
 
-        double currentPop = 5000;
-        double acresOwned = 1000;
-        double initWheatStorage = 2700;
+        double currentPop = game.getCurrentPopulation();
+        double acresOwned = game.getAcresOwned();
+        double initWheatStorage = game.getWheatInStorage();
 
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
         System.out.println("\nCurrent number of acres owned:\n" + acresOwned);
@@ -329,7 +341,8 @@ public class CropManagementView extends View {
                 + "You have " + landPlant + " "
                 + "bushels of wheat remaining."
                 + "\n*******************************************\n");
-
+        game.setAcresOwned(acresToPlant);
+        game.setWheatInStorage(landPlant);
     }
 
     private void payTithes() {

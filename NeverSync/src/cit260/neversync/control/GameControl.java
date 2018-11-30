@@ -55,6 +55,11 @@ public class GameControl {
         ArrayList<Actor> Actors = createActors(); 
         game.setActors(Actors);
         
+        // set initial values 
+        game.setAcresOwned(1000);
+        game.setCurrentPopulation(5000);
+        game.setWheatInStorage(2700);
+        
 //      game.setInventoryType.items;
         Map map = new Map();
         try {

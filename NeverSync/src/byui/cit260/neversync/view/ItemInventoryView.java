@@ -5,13 +5,13 @@
  */
 package byui.cit260.neversync.view;
 
-
-import cit260.neversync.control.GameControl;
+import byui.cit260.neversync.exceptions.StoreHouseException;
+//import cit260.neversync.control.GameControl;
 import cit260.neversync.control.StoreHouseControl;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
 import java.util.Scanner;
-
+import neversync.NeverSync;
 
 /**
  *
@@ -24,10 +24,11 @@ public class ItemInventoryView {
 
     public void displayItemInventoryView() {
 
-        Game game = new Game();
-        game.setInventory(GameControl.createItems());
-        
-        
+//        Game game = new Game();
+//        game.setInventory(GameControl.createItems());
+        Game game = NeverSync.getCurrentGame();
+        game.getInventory();
+
         InventoryItem[] tools = game.getInventory();
         System.out.println("========================\n"
                 + "Current Items Available\n"
@@ -45,9 +46,8 @@ public class ItemInventoryView {
 
         System.out.println("\n\nEnter the item to purchase from the list above: ");
 
-        // need validation statements.
         String toBuy = toolToBuy.nextLine().toLowerCase();
-        
+
         if (toBuy.equalsIgnoreCase("Q")) {
             return;
         }
@@ -72,57 +72,68 @@ public class ItemInventoryView {
                             + "the Storehouse");
 
                     System.out.println("\n\nEnter the quantity for your purchase");
-                    Scanner quantityToBuy;
-                   
-                    quantityToBuy = new Scanner(System.in);
-                    
-                     
-                    boolean cNumber;
 
-                    do {
+                    Integer quantityToBuy = null;
 
-                        if (quantityToBuy.hasNextDouble()) {
+                    Scanner inFile;
 
-                            cNumber = true;
-                            double quanToBuy = quantityToBuy.nextDouble();
-                            double purchase = StoreHouseControl.calTotalSale(price, inStock, quanToBuy);
-                            double remaining = StoreHouseControl.calQuanRem(inStock, quanToBuy);
-                            
+                    inFile = new Scanner(System.in);
 
-                            if (purchase == -1 || remaining == -1) {
-                                System.out.println("The Storehouse does not have enough inventory"
-                                        + " for your purchase.\n"
-                                        + "Please enter a lower number.");
-                                break;
-                            } else {
+                    while (quantityToBuy == null) {
+                        String value = inFile.nextLine();
+                        value = value.trim().toUpperCase();
 
-                                System.out.println("\nThe price for your purchase of " + two + " today is "
-                                        + purchase);
-
-                                System.out.println("\nThere are " + remaining + " " + two + " items in the"
-                                        + " Storehouse after your purchase.");
-                                ItemType.setItemType(one);
-                                ItemType.setQuantity((int) quanToBuy);
-                                ItemType.setQuantityInStock((int) remaining);
-
-                                return;
-                            }
-                        } else {
-                            System.out.println("You must enter a numerical value.");
-                            cNumber = false;
-                            quantityToBuy.next();
+                        if (value.equals("Q")) {
+                            return;
                         }
 
-                    } while (!(cNumber));
+                        try {
+                            quantityToBuy = Integer.parseInt(value);
+                        } catch (NumberFormatException nfe) {
 
+                            System.out.println(nfe + "\n\nYou must enter a numerical value.");
+                            return;
+                        }
+
+                        double purchase = 0;
+                        double remaining = 0;
+
+                        try {
+                            purchase = StoreHouseControl.calTotalSale(price, inStock,
+                                    quantityToBuy);
+                        } catch (StoreHouseException sh) {
+                            System.out.println(sh);
+                            return;
+                        }
+
+                        try {
+                            remaining = StoreHouseControl.calQuanRem(inStock, quantityToBuy);
+                        } catch (StoreHouseException sh) {
+                            System.out.println(sh);
+                            return;
+                        }
+
+                        System.out.println("\nThe price for your purchase of " + two + " today is "
+                                + purchase);
+
+                        System.out.println("\nThere are " + remaining + " " + two + " items in the"
+                                + " Storehouse after your purchase.");
+                        ItemType.setItemType(one);
+                        ItemType.setQuantity((int) quantityToBuy);
+                        ItemType.setQuantityInStock((int) remaining);
+
+                        return;
+                    }
+//                       
                 }
 
             }
 
-        } else {
-            System.out.println("Invalid Input");
+//        } else {
+//            System.out.println("\nYou must enter an item on the list!!");
+//            return;
         }
-        System.out.println("Invalid Input");
-
+        System.out.println("\nYou must enter an item on the list!!");
+        
     }
 }

@@ -79,7 +79,8 @@ public class MapControl {
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("RV");
-        location.setDescription("This is a river");
+        location.setDescription("This is a river Aaron.\nThis is your starting"
+                + " point in the game.\nPlease select your next location carefully!");
         locations[0][0] = location;
 //                  
         location = new Location();
