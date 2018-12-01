@@ -291,7 +291,7 @@ public class CropManagementView extends View {
         double initWheatStorage = game.getWheatInStorage();
 
         System.out.println("\nThe Current Population of the City is: \n" + currentPop);
-        System.out.println("\nCurrent number of acres owned:\n" + acresOwned);
+        System.out.println("\nCurrent number of acres to plant:\n" + acresOwned);
         System.out.println("\nCurrent wheat in storage:\n" + initWheatStorage);
 
         // prompt to enter the number of acres to be planted
@@ -331,17 +331,27 @@ public class CropManagementView extends View {
             return;
 
         }
+        
+        double landPlanted = 0;
+
+        try {
+            landPlanted = PlantControl.calcAcresRemaining(acresOwned, acresToPlant, initWheatStorage);
+        } catch (PlantControlException ex) {
+            System.out.println(ex);
+            return;
+
+        }
 
         // previous code moved to the bottom in case of need....
         System.out.println("\n******************************************************\n"
-                + "The amount of land planted this season is " + acresToPlant
+                + "The amount of land planted this season is " + landPlanted
                 + " acres. " + "\n******************************************************\n");
 
         System.out.println("\n*******************************************\n"
                 + "You have " + landPlant + " "
                 + "bushels of wheat remaining."
                 + "\n*******************************************\n");
-        game.setAcresOwned(acresToPlant);
+        game.setAcresOwned(landPlanted);
         game.setWheatInStorage(landPlant);
     }
 
