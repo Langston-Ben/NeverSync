@@ -24,12 +24,97 @@ public class Game implements Serializable {
     private double currentPopulation;
     private double acresOwned;
     private double wheatInStorage;
+    private double acresPlanted;
+    private int year;
+    private int starved;
+    private int newPopulation;
+    private double wheatFedToPeople;
+    private double bushelsHarvested;
+    private double bushelsInTithes;
+    private double wheatEatenByRats;
+    private double bushelsPerAcreHarvested;
+    
+    
     private Player player;
     private Actor actor;
     private ArrayList<Actor> Actors = new ArrayList<>();
 
     public Game() {
     }
+
+    public double getWheatFedToPeople() {
+        return wheatFedToPeople;
+    }
+
+    public void setWheatFedToPeople(double wheatFedToPeople) {
+        this.wheatFedToPeople = wheatFedToPeople;
+    }
+
+    public double getAcresPlanted() {
+        return acresPlanted;
+    }
+
+    public void setAcresPlanted(double acresPlanted) {
+        this.acresPlanted = acresPlanted;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getStarved() {
+        return starved;
+    }
+
+    public void setStarved(int starved) {
+        this.starved = starved;
+    }
+
+    public int getNewPopulation() {
+        return newPopulation;
+    }
+
+    public void setNewPopulation(int newPopulation) {
+        this.newPopulation = newPopulation;
+    }
+
+    public double getBushelsHarvested() {
+        return bushelsHarvested;
+    }
+
+    public void setBushelsHarvested(double bushelsHarvested) {
+        this.bushelsHarvested = bushelsHarvested;
+    }
+
+    public double getBushelsInTithes() {
+        return bushelsInTithes;
+    }
+
+    public void setBushelsInTithes(double bushelsInTithes) {
+        this.bushelsInTithes = bushelsInTithes;
+    }
+
+    public double getWheatEatenByRats() {
+        return wheatEatenByRats;
+    }
+
+    public void setWheatEatenByRats(double wheatEatenByRats) {
+        this.wheatEatenByRats = wheatEatenByRats;
+    }
+
+    public double getBushelsPerAcreHarvested() {
+        return bushelsPerAcreHarvested;
+    }
+
+    public void setBushelsPerAcreHarvested(double bushelsPerAcreHarvested) {
+        this.bushelsPerAcreHarvested = bushelsPerAcreHarvested;
+    }
+    
+    
 
     public String getThePlayer() {
         return thePlayer;

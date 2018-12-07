@@ -11,6 +11,8 @@ import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import neversync.NeverSync;
 
 /**
@@ -18,6 +20,12 @@ import neversync.NeverSync;
  * @author benjaminlangston
  */
 public class MapView {
+    
+    private String message;
+
+    protected final BufferedReader keyboard = NeverSync.getInFile();
+    protected final PrintWriter console = NeverSync.getOutFile();
+
 
     public MapView() {
 
@@ -25,11 +33,11 @@ public class MapView {
 
     public void displayMap() {
 
-        System.out.println("\n=============================");
-        System.out.println("=============================");
-        System.out.println("This is the City of Aaron Map");
-        System.out.println("=============================");
-        System.out.println("=============================\n");
+        this.console.println("\n=============================");
+        this.console.println("=============================");
+        this.console.println("This is the City of Aaron Map");
+        this.console.println("=============================");
+        this.console.println("=============================\n");
         String leftIndicator;
         String rightIndicator;
         Game game = NeverSync.getCurrentGame(); // retreive the game
@@ -37,15 +45,15 @@ public class MapView {
         Location[][] locations = map.getLocations(); // retreive the locations from map
         // Build the heading of the map
         
-        System.out.print("  |");
+        this.console.print("  |");
         for (int column = 0; column < locations[0].length; column++) {
             // print col numbers to side of map
-            System.out.print("  " + column + " |");
+            this.console.print("  " + column + " |");
         }
         // Now build the map.  For each row, show the column information
-        System.out.println();
+        this.console.println();
         for (int row = 0; row < locations.length; row++) {
-            System.out.print(row + " "); // print row numbers to side of map
+            this.console.print(row + " "); // print row numbers to side of map
             for (int column = 0; column < locations[row].length; column++) {
                 // set default indicators as blanks
                 leftIndicator = " ";
@@ -59,20 +67,20 @@ public class MapView {
                     leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
                     rightIndicator = "<"; // same as above
                 }
-                System.out.print("|"); // start map with a |
+                this.console.print("|"); // start map with a |
                 if (locations[row][column] == null) {
                     // No scene assigned here so use ?? for the symbol
-                    System.out.print(leftIndicator + "??" + rightIndicator);
+                    this.console.print(leftIndicator + "??" + rightIndicator);
                 } else {
-                    System.out.print(leftIndicator
+                    this.console.print(leftIndicator
                             + locations[row][column].getDisplaySymbol()
                             + rightIndicator);
                 }
             }
-            System.out.println("|");
+            this.console.println("|");
             
         }
-        System.out.println("\nYour current location is: \n" + map.getCurrentLocation().getDescription());
+        this.console.println("\nYour current location is: \n" + map.getCurrentLocation().getDescription());
         
         
         
@@ -85,19 +93,18 @@ public class MapView {
             
             
 
-            System.out.println("You have found " + one + " at this location."
+            this.console.println("You have found " + one + " at this location."
                     + "\nWould you like to add it to your backpack?");
 
         }
         
         
         
-//        System.out.println(type);
         Actor currentActor = map.getCurrentLocation().getActor();
         if (currentActor == null) {
         return;
         }
-        System.out.println(currentActor + " is here to help you, do you have a question to ask?");
+        this.console.println(currentActor + " is here to help you, do you have a question to ask?");
     }
 
 }

@@ -27,10 +27,10 @@ public class SceneView extends View {
     public String[] getInputs() {
 
         String[] input = new String[1];
-        System.out.println("\n************************\n"
+        this.console.println("\n************************\n"
                 + "City Of Aaron Scene Menu\n"
                 + "************************\n");
-        System.out.println(
+        this.console.println(
                 "\nThe options on the main menu are: \n"
                 + "V - View Current Scene\n"
                 + "Q - Back to previous Menu\n");
@@ -55,7 +55,7 @@ public class SceneView extends View {
                 return true;
 
             default:
-                System.out.println("\nInvalid Menu Item\n");
+                this.console.println("\nInvalid Menu Item\n");
 
         }
 
@@ -84,11 +84,11 @@ Question questionOne = new Question();
         sceneOne.setQuestion(questionOne);
         sceneOne.setLocation(location);
         
-//        System.out.println(sceneOne.getName() + sceneOne.getDescription());
-//        System.out.println("Your current tool is a " + ItemType.Weapon.getName() + 
+//        this.console.println(sceneOne.getName() + sceneOne.getDescription());
+//        this.console.println("Your current tool is a " + ItemType.Weapon.getName() + 
 //                "\n" + ItemType.Weapon.getDescription() + 
 //                "\nIt is " + ItemType.Weapon.getAge() + " years old\n");
-//        System.out.println(questionOne.getQuestionText() + questionOne.getAnswer1()
+//        this.console.println(questionOne.getQuestionText() + questionOne.getAnswer1()
 //        + questionOne.getAnswer2() + questionOne.getAnswer3() + questionOne.getAnswer4());
 //}
 }

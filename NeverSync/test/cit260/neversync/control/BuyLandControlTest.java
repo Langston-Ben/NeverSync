@@ -5,6 +5,9 @@
  */
 package cit260.neversync.control;
 
+import byui.cit260.neversync.exceptions.BuyLandControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,8 +43,13 @@ public class BuyLandControlTest {
         double acresToPurchase = 100;
         double acresPrice = 20;
         double expResult = 600;
-        double result = BuyLandControl.calcLandPurchase(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        double result = 0;
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, 
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #2");
@@ -51,8 +59,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = -3;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #3");
@@ -62,8 +74,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = -2;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #4");
@@ -73,8 +89,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = -3;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #5");
@@ -84,8 +104,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = 2100;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #6");
@@ -95,8 +119,12 @@ public class BuyLandControlTest {
         acresToPurchase = 200;
         acresPrice = 20;
         expResult = 2200;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #7");
@@ -106,8 +134,12 @@ public class BuyLandControlTest {
         acresToPurchase = 500;
         acresPrice = 20;
         expResult = 2500;
-        result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop, 
-        currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcLandPurchase(acresOwnedinit, currentPop,
+                    currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
     }
@@ -125,8 +157,13 @@ public class BuyLandControlTest {
         double acresToPurchase = 100;
         double acresPrice = 20;
         double expResult = 2000;
-        double result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        double result = 0;
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #2");
@@ -136,8 +173,12 @@ public class BuyLandControlTest {
         acresToPurchase = -1;
         acresPrice = 20;
         expResult = -1;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #3");
@@ -147,8 +188,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = -2;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #4");
@@ -158,8 +203,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = -3;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         
@@ -170,8 +219,12 @@ public class BuyLandControlTest {
         acresToPurchase = 100;
         acresPrice = 20;
         expResult = 0;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #6");
@@ -181,8 +234,12 @@ public class BuyLandControlTest {
         acresToPurchase = 200;
         acresPrice = 20;
         expResult = 0;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
         
         System.out.println("\tTest Case #7");
@@ -192,8 +249,12 @@ public class BuyLandControlTest {
         acresToPurchase = 500;
         acresPrice = 20;
         expResult = 0;
-        result = BuyLandControl.calcWheatRemaining(acresOwnedinit, 
-        currentPop, currentWheat, acresToPurchase, acresPrice);
+        try {
+            result = BuyLandControl.calcWheatRemaining(acresOwnedinit,
+                    currentPop, currentWheat, acresToPurchase, acresPrice);
+        } catch (BuyLandControlException ex) {
+            Logger.getLogger(BuyLandControlTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertEquals(expResult, result, 0.0);
 
 

@@ -5,18 +5,18 @@
  */
 package byui.cit260.neversync.view;
 
-import byui.cit260.neversync.exceptions.GameControlException;
-import cit260.neversync.control.GameControl;
-import cit260.neversync.model.Game;
+import byui.cit260.neversync.exceptions.ReportsControlException;
+import cit260.neversync.control.ReportsControl;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import neversync.NeverSync;
 
 /**
  *
- * @author Ben Langston and Jeff Ledbetter
+ * @author benjaminlangston
  */
-public class StartExistingGameView extends View {
+class LocationsReportView extends View {
+
   
     private String message;
     protected final BufferedReader keyboard = NeverSync.getInFile();
@@ -33,12 +33,11 @@ public class StartExistingGameView extends View {
 
         String[] input = new String[1];
         this.console.println("\n************************\n"
-                + "City Of Aaron Start Saved Game Menu\n"
+                + "Locations Report List\n"
                 + "************************\n");
 
         String saveGameSelection = this.getInput(
-                "\nPlease Enter The Path To Start" 
-                        + " A Saved Game");
+                "\nEnter Filename for Location Report");
         input[0] = saveGameSelection;
         
         return input;
@@ -49,19 +48,22 @@ public class StartExistingGameView extends View {
     public boolean doAction(String[] input) {
 
         input[0] = input[0].toUpperCase();
-        String filePath = input[0];
+        String locationReport = input[0];
         
-//        Game game = NeverSync.getCurrentGame();
-        
+        if (locationReport == null) {
+        ErrorView.display(this.getClass().getName(), "You Must Enter a Value");
+        }
         try {
-        GameControl.getGame(filePath);
+        ReportsControl.printLocationReport(locationReport);
         
-        } catch (GameControlException e) {
+        } catch (ReportsControlException e) {
             ErrorView.display(this.getClass().getName(), 
                    "Error: " + e.getMessage());
             return false;
         }
+        
         {
+        this.console.println("Your report has been created");    
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
         return true;
@@ -70,17 +72,7 @@ public class StartExistingGameView extends View {
     }
 }
         
-        
-        
+    
 
-        
-        
-        
-      
+    
 
-//
-//    public void displayStartExistingGameView() {
-//        this.console.println("\ndisplay StartExistingGameView has been called ********\n");
-//    }
-
-//}

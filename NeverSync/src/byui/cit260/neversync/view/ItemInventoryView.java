@@ -10,7 +10,12 @@ import byui.cit260.neversync.exceptions.StoreHouseException;
 import cit260.neversync.control.StoreHouseControl;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+//import java.util.Scanner;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import neversync.NeverSync;
 
 /**
@@ -18,6 +23,11 @@ import neversync.NeverSync;
  * @author ben langston
  */
 public class ItemInventoryView {
+    
+    private String message;
+
+    protected final BufferedReader keyboard = NeverSync.getInFile();
+    protected final PrintWriter console = NeverSync.getOutFile();
 
     public ItemInventoryView() {
     }
@@ -30,26 +40,31 @@ public class ItemInventoryView {
         game.getInventory();
 
         InventoryItem[] tools = game.getInventory();
-        System.out.println("========================\n"
+        this.console.println("========================\n"
                 + "Current Items Available\n"
                 + "========================\n");
         for (InventoryItem ItemType : tools) {
 
             String one = ItemType.getItemType();
 
-            System.out.println(one);
+            this.console.println(one);
 
         }
+        
+        String toBuy = null;
+        this.console.println("\n\nEnter the item to purchase from the list above: ");
+        
 
-        Scanner toolToBuy;
-        toolToBuy = new Scanner(System.in);
-
-        System.out.println("\n\nEnter the item to purchase from the list above: ");
-
-        String toBuy = toolToBuy.nextLine().toLowerCase();
+        try {
+            toBuy = this.keyboard.readLine();
+        
+               toBuy = toBuy.trim().toLowerCase();
 
         if (toBuy.equalsIgnoreCase("Q")) {
             return;
+        }
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "Error Reading Input: ");
         }
 
         // check for a string input
@@ -66,21 +81,20 @@ public class ItemInventoryView {
                     double price = ItemType.getPricePerUnit();
                     double inStock = ItemType.getQuantityInStock();
 
-                    System.out.println("\nYour Item Choice: " + two);
-                    System.out.println("\nThe Purchase Price = : " + price);
-                    System.out.println("\nThere are Currently " + inStock + " at "
+                    this.console.println("\nYour Item Choice: " + two);
+                    this.console.println("\nThe Purchase Price = : " + price);
+                    this.console.println("\nThere are Currently " + inStock + " at "
                             + "the Storehouse");
 
-                    System.out.println("\n\nEnter the quantity for your purchase");
+                    this.console.println("\n\nEnter the quantity for your purchase");
 
                     Integer quantityToBuy = null;
 
-                    Scanner inFile;
-
-                    inFile = new Scanner(System.in);
-
                     while (quantityToBuy == null) {
-                        String value = inFile.nextLine();
+                        String value;
+                        try {
+                            value = this.keyboard.readLine();
+                        
                         value = value.trim().toUpperCase();
 
                         if (value.equals("Q")) {
@@ -90,9 +104,13 @@ public class ItemInventoryView {
                         try {
                             quantityToBuy = Integer.parseInt(value);
                         } catch (NumberFormatException nfe) {
-
-                            System.out.println(nfe + "\n\nYou must enter a numerical value.");
+                            
+                            ErrorView.display(getClass().getName(), 
+                                    "\n\nYou must enter a numerical value.");
                             return;
+                        }
+                        } catch (IOException ex) {
+                            ErrorView.display(getClass().getName(), "Error Reading Input: ");
                         }
 
                         double purchase = 0;
@@ -102,21 +120,21 @@ public class ItemInventoryView {
                             purchase = StoreHouseControl.calTotalSale(price, inStock,
                                     quantityToBuy);
                         } catch (StoreHouseException sh) {
-                            System.out.println(sh);
+                            ErrorView.display(this.getClass().getName(), sh.getMessage());
                             return;
                         }
 
                         try {
                             remaining = StoreHouseControl.calQuanRem(inStock, quantityToBuy);
                         } catch (StoreHouseException sh) {
-                            System.out.println(sh);
+                            ErrorView.display(this.getClass().getName(), sh.getMessage());
                             return;
                         }
 
-                        System.out.println("\nThe price for your purchase of " + two + " today is "
+                        this.console.println("\nThe price for your purchase of " + two + " today is "
                                 + purchase);
 
-                        System.out.println("\nThere are " + remaining + " " + two + " items in the"
+                        this.console.println("\nThere are " + remaining + " " + two + " items in the"
                                 + " Storehouse after your purchase.");
                         ItemType.setItemType(one);
                         ItemType.setQuantity((int) quantityToBuy);
@@ -124,16 +142,13 @@ public class ItemInventoryView {
 
                         return;
                     }
-//                       
+                    
                 }
 
             }
 
-//        } else {
-//            System.out.println("\nYou must enter an item on the list!!");
-//            return;
         }
-        System.out.println("\nYou must enter an item on the list!!");
+        ErrorView.display(this.getClass().getName(), "\nYou must enter an item on the list!!");
         
     }
 }

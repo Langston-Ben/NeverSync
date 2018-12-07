@@ -6,6 +6,7 @@
 package byui.cit260.neversync.view;
 
 import cit260.neversync.control.GameControl;
+import cit260.neversync.model.Game;
 //import java.util.Scanner;
 import neversync.NeverSync;
 
@@ -23,7 +24,7 @@ public class MainMenuView extends View {
     public String[] getInputs() {
 
         String[] input = new String[1];
-        System.out.println("Main Menu\n"
+        this.console.println("Main Menu\n"
                 + "\nThe options on the main menu are: \n"
                 + "S - Start a New Game\n"
                 + "L - Load a Saved Game\n"
@@ -48,7 +49,7 @@ public class MainMenuView extends View {
                 startNewGame();
                 break;
             case "L":
-                restartGame();
+                startSavedGame();
                 break;
             case "H":
                 getHelp();
@@ -57,7 +58,7 @@ public class MainMenuView extends View {
                 return true;
 
             default:
-                System.out.println("\nInvalid Menu Item\n");
+                this.console.println("\nInvalid Menu Item\n");
 
         }
 
@@ -65,21 +66,23 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-
+        
         int ret = GameControl.createNewGame(NeverSync.getPlayer());
         if (ret == 1) {
             GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
         
+        
+        
         }
         else {
-        System.out.println("Start New Game Failed");
+        this.console.println("Start New Game Failed");
         }
     }
 
-    private void restartGame() {
+    private void startSavedGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
+        startExistingGameView.display();
     }
 
     private void getHelp() {

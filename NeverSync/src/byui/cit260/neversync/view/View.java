@@ -6,7 +6,13 @@
 package byui.cit260.neversync.view;
 
 //import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import neversync.NeverSync;
 
 /**
  *
@@ -14,9 +20,14 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
+    private String message;
+
+    protected final BufferedReader keyboard = NeverSync.getInFile();
+    protected final PrintWriter console = NeverSync.getOutFile();
+
     public View() {
     }
-    
+
     @Override
     public void display() {
         boolean endOfView = false;
@@ -31,40 +42,35 @@ public abstract class View implements ViewInterface {
         } while (endOfView != true);
 
     }
-    
+
     @Override
     public String getInput(String promptMessage) {
-    
-    String[] inputs = new String[1];
+
+//        String[] inputs = new String[1];
         boolean valid = false;
+        String selection = null;
 
         while (valid == false) {
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-            System.out.println(promptMessage);
+            try {
+                this.console.println(promptMessage);
 
-            inputs[0] = inFile.nextLine();
+                selection = this.keyboard.readLine();
+                selection = selection.trim();
 
-            String selection = inputs[0].trim();
 
-            if (selection.length() < 1) {
-                System.out.println("\nYou must specify a value\n");
-                continue;
+                if (selection.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "\nYou must specify a value\n");
+                    continue;
+                }
+
+                break;
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), "Error Reading input: " 
+                        + e.getMessage());
             }
-            inputs[0] = selection;
-            valid = true;
         }
-        return inputs[0];
-    
-    
-    }
-    
-    
-    
 
+            return selection;
     }
 
-    
-    
-    
-
+}

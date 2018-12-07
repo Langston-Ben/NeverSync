@@ -10,8 +10,11 @@ import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import neversync.NeverSync;
 //import java.util.Comparator;
 
 /**
@@ -19,12 +22,17 @@ import java.util.Collections;
  * @author Ben Langston & Jeff Ledbetter
  */
 public class ActorView {
+    private String message;
+
+    protected final BufferedReader keyboard = NeverSync.getInFile();
+    protected final PrintWriter console = NeverSync.getOutFile();
 
     public ActorView() {
     }
 
    public void displayActorView () {
         
+       
 
         Game game = new Game();
         ArrayList<Actor> actors = game.getActors();
@@ -43,16 +51,16 @@ public class ActorView {
                 
             for (Actor actor : actors) {
          
-            System.out.println(actor.getName() + " - " + actor.getDescription());
+            this.console.println(actor.getName() + " - " + actor.getDescription());
            
             }
-		System.out.println("\nOriginal Order:");
-                System.out.println(actors);
-		System.out.println("\nReversed List:");
+		this.console.println("\nOriginal Order:");
+                this.console.println(actors);
+		this.console.println("\nReversed List:");
 		Collections.sort(actors, Collections.reverseOrder());
-		System.out.println(actors);
+		this.console.println(actors);
 		
-		System.out.println("\nStay tuned for sort by location feature!");
+		this.console.println("\nStay tuned for sort by location feature!");
                 
 
 		 

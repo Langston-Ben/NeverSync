@@ -1,0 +1,21 @@
+
+
+            Inventory Report
+
+Description           Quantity     Price
+-----------           --------     -----
+lumber                   10         5.00
+ore                      10        10.00
+grain                   100         2.00
+legume                   20         2.50
+oil                      10         1.50
+water                   100         1.00
+honey                   200         2.00
+salt                    200         1.25
+axe                      10         3.00
+hammer                   10         3.00
+drill                    10         4.50
+shovel                   10         2.50
+sickle                   10         5.00
+saw                      10         2.50
+nails                    50         1.50

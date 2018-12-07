@@ -27,8 +27,8 @@ public class MapControl {
 
         // check for invalid inputs 
         if (game == null || noOfRows < 0 || noOfColumns < 0) {
-
-            return null;
+           throw new MapControlException("You must enter a value");
+            
         }
 // create the map object and assign values to it
 
@@ -43,8 +43,7 @@ public class MapControl {
 
         createLocations(noOfRows, noOfColumns);
         if (game == null || noOfRows < 1 || noOfColumns < 1) {
-            System.out.println("createLocations Failed");
-            return null;
+            throw new MapControlException("You Must Enter a Value");
         }
 
         map.setLocations(createLocations(noOfRows, noOfColumns));
@@ -64,11 +63,11 @@ public class MapControl {
     }
 // create a two-dimensional array of locations and assign array to the map
 
-    public static Location[][] createLocations(int row, int column) {
+    public static Location[][] createLocations(int row, int column) throws
+            MapControlException {
 
         if (row < 1 || column < 1) {
-            System.out.println("**** createMap failed *******");
-            return null;
+            throw new MapControlException("Your Entry is not valid");
         }
 
         Location location = new Location();
@@ -432,6 +431,9 @@ public class MapControl {
 
     public static void movePlayer(Map map, int row, int column) 
         throws MapControlException {
+        
+        if (map == null || row < 0 || column < 0)
+            throw new MapControlException("MovePlayer Failed");
         
         map.setCurrentLocation(map.getLocations()[row][column]);
         map.getCurrentLocation().setVisited(true);

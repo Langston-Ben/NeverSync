@@ -6,14 +6,19 @@
 package byui.cit260.neversync.view;
 
 import byui.cit260.neversync.exceptions.BuyLandControlException;
+import byui.cit260.neversync.exceptions.CropControlException;
 import byui.cit260.neversync.exceptions.PlantControlException;
 import byui.cit260.neversync.exceptions.SellLandControlException;
 import cit260.neversync.control.BuyLandControl;
+import cit260.neversync.control.CropControl;
 import cit260.neversync.control.PlantControl;
 import cit260.neversync.control.SellLandControl;
 import cit260.neversync.model.Game;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import neversync.NeverSync;
 
 /**
@@ -26,10 +31,12 @@ public class CropManagementView extends View {
     public String[] getInputs() {
 
         String[] input = new String[1];
-        System.out.println("\n**********************************\n"
+
+
+        this.console.println("\n**********************************\n"
                 + "City Of Aaron Crop Management Menu\n"
                 + "**********************************\n");
-        System.out.println(
+        this.console.println(
                 "\nThe options on the main menu are: \n"
                 + "B - Buy Land\n"
                 + "S - Sell Land\n"
@@ -70,7 +77,7 @@ public class CropManagementView extends View {
                 return true;
 
             default:
-                System.out.println("\nInvalid Menu Item\n");
+                this.console.println("\nInvalid Menu Item\n");
 
         }
 
@@ -78,10 +85,10 @@ public class CropManagementView extends View {
     }
 
     private void buyLand() {
-        
+
         Game game = NeverSync.getCurrentGame();
 
-        System.out.println("The Player will be required to enter a value for "
+        this.console.println("The Player will be required to enter a value for "
                 + "the number of acres to purchase. \nThis number must be a positive number.  "
                 + "\nThe player must have enough wheat in storage to make the land purchase. "
                 + "\nOne bushel of wheat is required for every 10 acres purchased."
@@ -89,64 +96,72 @@ public class CropManagementView extends View {
                 + "\nOne person can take care of 10 acres. \n");
         Random rand = new Random();
         int acresPrice = rand.nextInt((27 - 17) + 1) + 17;
-        System.out.println("The price for an acre of land today is:\n"
+        this.console.println("The price for an acre of land today is:\n"
                 + acresPrice);
 
         double currentPop = game.getCurrentPopulation();
         double acresOwnedinit = game.getAcresOwned();
         double currentWheat = game.getWheatInStorage();
 
-
-        System.out.println("\nThe Current Population of the City is: \n" + currentPop);
-        System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
-        System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
+        this.console.println("\nThe Current Population of the City is: \n" + currentPop);
+        this.console.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
+        this.console.println("\nCurrent wheat in storage:\n" + currentWheat);
 
         // create an input file for the console
         Double acresToPurchase = null;
-        Scanner inFile;
-        inFile = new Scanner(System.in);
 
-        System.out.println("\nEnter The Number of Acres to Purchase: ");
+        String selection = null;
+
+        this.console.println("\nEnter The Number of Acres to Purchase: ");
 
         // get the value for the number of acres to purchase
         while (acresToPurchase == null) {
-            String value = inFile.nextLine();
-            value = value.trim().toUpperCase();
-
-            if (value.equals("Q")) {
-                return;
-            }
 
             try {
+                selection = this.keyboard.readLine();
 
-                acresToPurchase = Double.parseDouble(value);
+                selection = selection.trim().toUpperCase();
 
-            } catch (NumberFormatException nfe) {
+//            String value = inFile.nextLine();
+//            value = value.trim().toUpperCase();
+                if (selection.equals("Q")) {
+                    return;
+                }
 
-                System.out.println(nfe + "\n\nYou must enter a numerical value");
+                try {
+
+                    acresToPurchase = Double.parseDouble(selection);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value");
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                        "Error Reading Input: " + ex.getMessage());
             }
         }
         double toPurchase = 0;
-//                cNumber = true;
 
         try {
 
             toPurchase = BuyLandControl.calcLandPurchase(acresOwnedinit,
                     currentPop, currentWheat, acresToPurchase, acresPrice);
         } catch (BuyLandControlException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
         }
 
         {
-            System.out.println("\n-----------------------------"
+            this.console.println("\n-----------------------------"
                     + "-------------------------"
                     + "--------------");
 
-            System.out.println("The new amount of land is " + toPurchase
+            this.console.println("The new amount of land is " + toPurchase
                     + " acres after the recent purchase");
 
-            System.out.println("--------------------------------"
+            this.console.println("--------------------------------"
                     + "-----------------------"
                     + "-------------\n");
 
@@ -160,72 +175,76 @@ public class CropManagementView extends View {
             wheat = BuyLandControl.calcWheatRemaining(acresOwnedinit,
                     currentPop, currentWheat, acresToPurchase, acresPrice);
         } catch (BuyLandControlException bex) {
-            System.out.println(bex);
+            ErrorView.display(this.getClass().getName(), bex.getMessage());
             return;
 
         }
 
         {
-            System.out.println("\n-----------------------------"
+            this.console.println("\n-----------------------------"
                     + "-------------------------"
                     + "--------------");
 
-            System.out.println("The wheat remaining is " + wheat
+            this.console.println("The wheat remaining is " + wheat
                     + " bushels after the recent purchase");
 
-            System.out.println("--------------------------------"
+            this.console.println("--------------------------------"
                     + "-----------------------"
                     + "-------------\n");
 
         }
-             game.setAcresOwned(toPurchase);
-             game.setWheatInStorage(wheat);
+//        game.setAcresOwned(toPurchase);
+//        game.setWheatInStorage(wheat);
     }
 
     private void sellLand() {
-//        System.out.println("Placeholder for sellLand");
-        
+
         Game game = NeverSync.getCurrentGame();
 
-        System.out.println("The Player will be required to enter a value for "
+        this.console.println("The Player will be required to enter a value for "
                 + "the number of acres to sell. \nThis number must be a positive number.  "
                 + "\nThe player must have enough land to sell.\n");
         Random rand = new Random();
         int acresPrice = rand.nextInt((30 - 15) + 1) + 15;
-        System.out.println("The price for an acre of land today is:\n"
+        this.console.println("The price for an acre of land today is:\n"
                 + acresPrice);
 
         double acresOwnedinit = game.getAcresOwned();
         double currentWheat = game.getWheatInStorage();
 //        boolean cNumber;
 
-        System.out.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
-        System.out.println("\nCurrent wheat in storage:\n" + currentWheat);
+        this.console.println("\nCurrent number of acres owned:\n" + acresOwnedinit);
+        this.console.println("\nCurrent wheat in storage:\n" + currentWheat);
 
         // create an input file for the console
-        System.out.println("\nHow many acres of land would you like to sell today? ");
+        this.console.println("\nHow many acres of land would you like to sell today? ");
 
         Double acresToSell = null;
-        Scanner inFile;
-        inFile = new Scanner(System.in);
 
         // get the value for the number of acres to purchase
         while (acresToSell == null) {
-            String value = inFile.nextLine();
-            value = value.trim().toUpperCase();
-
-            if (value.equals("Q")) {
-                return;
-            }
-
+            String value;
             try {
+                value = this.keyboard.readLine();
 
-                acresToSell = Double.parseDouble(value);
-            } catch (NumberFormatException nfe) {
+                value = value.trim().toUpperCase();
 
-                System.out.println(nfe + "\n\nYou Must Enter a Numerical Value");
-                return;
+                if (value.equals("Q")) {
+                    return;
+                }
 
+                try {
+
+                    acresToSell = Double.parseDouble(value);
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(), 
+                            "\n\nYou Must Enter a Numerical Value");
+                    return;
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
             }
 
             double landToSell = 0;
@@ -234,14 +253,14 @@ public class CropManagementView extends View {
                 landToSell = SellLandControl.calcLandSold(acresOwnedinit,
                         currentWheat, acresToSell, acresPrice);
             } catch (SellLandControlException ex) {
-                System.out.println(ex);
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
                 return;
             }
 
-            System.out.println("The new amount of land is " + landToSell
+            this.console.println("The new amount of land is " + landToSell
                     + " acres after the land sale");
 
-            System.out.println("--------------------------------"
+            this.console.println("--------------------------------"
                     + "-----------------------"
                     + "-------------\n");
             game.setAcresOwned(landToSell);
@@ -253,71 +272,124 @@ public class CropManagementView extends View {
             wheat = SellLandControl.calcWheatRemaining(acresOwnedinit,
                     currentWheat, acresToSell, acresPrice);
         } catch (SellLandControlException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
         }
 
         {
-            System.out.println("\n-----------------------------"
+            this.console.println("\n-----------------------------"
                     + "-------------------------"
                     + "--------------");
 
-            System.out.println("The new value of wheat is " + wheat
+            this.console.println("The new value of wheat is " + wheat
                     + " bushels after the recent land sale");
 
-            System.out.println("--------------------------------"
+            this.console.println("--------------------------------"
                     + "-----------------------"
                     + "-------------\n");
 
         }
-        
-        game.setWheatInStorage(wheat);
+
     }
 
     private void feedPeople() {
-        System.out.println("Placeholder for feedPeople");
+
+        Game game = NeverSync.getCurrentGame();
+
+        double initWheatStorage = game.getWheatInStorage();
+        this.console.println("\nCurrent wheat in storage:\n" + initWheatStorage);
+
+        this.console.println("\nHow many bushels of grain do you want to give to the people? ");
+
+        Double bushelsToFeed = null;
+
+        while (bushelsToFeed == null) {
+            String value;
+            try {
+                value = this.keyboard.readLine();
+
+                value = value.trim().toUpperCase();
+
+                if (value.equals("Q")) {
+                    return;
+                }
+
+                try {
+
+                    bushelsToFeed = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value" + nfe);
+                    return;
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+            }
+
+        }
+        double bushelsFed = 0;
+
+        try {
+            bushelsFed = CropControl.calcBushelsToFeedThePeople(bushelsToFeed, initWheatStorage);
+        } catch (CropControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+            return;
+        }
+
+        this.console.println("\n******************************************************\n"
+                + "The amount of remaining after feeding the people is " + bushelsFed
+                + " bushels. " + "\n******************************************************\n");
+
     }
 
     private void plantCrops() {
         Game game = NeverSync.getCurrentGame();
-        
-        System.out.println("The Player will be asked to enter a value for "
+
+        this.console.println("Please enter a value for "
                 + "the number of acres to plant. \nThis number must be a positive number.  "
-                + "\nThe player must have enough wheat in storage. "
+                + "\nYou must have enough wheat in storage. "
                 + "\nOne bushel of wheat is required for every 2 acres planted.");
 
         double currentPop = game.getCurrentPopulation();
         double acresOwned = game.getAcresOwned();
         double initWheatStorage = game.getWheatInStorage();
 
-        System.out.println("\nThe Current Population of the City is: \n" + currentPop);
-        System.out.println("\nCurrent number of acres to plant:\n" + acresOwned);
-        System.out.println("\nCurrent wheat in storage:\n" + initWheatStorage);
+        this.console.println("\nThe Current Population of the City is: \n" + currentPop);
+        this.console.println("\nCurrent number of acres to plant:\n" + acresOwned);
+        this.console.println("\nCurrent wheat in storage:\n" + initWheatStorage);
 
         // prompt to enter the number of acres to be planted
-        System.out.println("\nEnter The Number of Acres to Plant: ");
+        this.console.println("\nEnter The Number of Acres to Plant: ");
 
         Double acresToPlant = null;
-        Scanner inFile;
-        inFile = new Scanner(System.in);
 
         while (acresToPlant == null) {
-            String value = inFile.nextLine();
-            value = value.trim().toUpperCase();
-
-            if (value.equals("Q")) {
-                return;
-            }
-
+            String value;
             try {
+                value = this.keyboard.readLine();
 
-                acresToPlant = Double.parseDouble(value);
+                value = value.trim().toUpperCase();
 
-            } catch (NumberFormatException nfe) {
+                if (value.equals("Q")) {
+                    return;
+                }
 
-                System.out.println(nfe + "\n\nYou must enter a numerical value");
-                return;
+                try {
 
+                    acresToPlant = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value" + nfe);
+                    return;
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
             }
 
         }
@@ -327,221 +399,87 @@ public class CropManagementView extends View {
         try {
             landPlant = PlantControl.calcBushelsToPlant(acresOwned, acresToPlant, initWheatStorage);
         } catch (PlantControlException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
 
         }
-        
+
         double landPlanted = 0;
 
         try {
             landPlanted = PlantControl.calcAcresRemaining(acresOwned, acresToPlant, initWheatStorage);
         } catch (PlantControlException ex) {
-            System.out.println(ex);
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return;
 
         }
 
-        // previous code moved to the bottom in case of need....
-        System.out.println("\n******************************************************\n"
-                + "The amount of land planted this season is " + landPlanted
+        this.console.println("\n******************************************************\n"
+                + "The amount of land planted this season is " + acresToPlant
                 + " acres. " + "\n******************************************************\n");
 
-        System.out.println("\n*******************************************\n"
+        this.console.println("\n*******************************************\n"
                 + "You have " + landPlant + " "
                 + "bushels of wheat remaining."
                 + "\n*******************************************\n");
-        game.setAcresOwned(landPlanted);
-        game.setWheatInStorage(landPlant);
+
+        this.console.println("\n******************************************************\n"
+                + "The amount of land not planted this season is " + landPlanted
+                + " acres. " + "\n******************************************************\n");
     }
 
     private void payTithes() {
-        System.out.println("Placeholder for payTithes");
+      
+        this.console.println("Please enter a value to "
+                + "pay tithes and offerings as a percent.\nThis number must be a positive number.  "
+                + "\nThe percent cannot be greater than 100. ");
+
+        // prompt to enter the number for tithes and offerings
+        this.console.println("\nEnter The Percentage of Tithes and Offerings: ");
+
+        Double tithingPercent = null;
+
+        while (tithingPercent == null) {
+            String value;
+            try {
+                value = this.keyboard.readLine();
+
+                value = value.trim().toUpperCase();
+
+                if (value.equals("Q")) {
+                    return;
+                }
+
+                try {
+
+                    tithingPercent = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value" + nfe);
+                    return;
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+            }
+
+        }
+
+        double harvest = 0;
+
+        try {
+            harvest = CropControl.calcCropYield(tithingPercent);
+        } catch (CropControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+            return;
+
+        }
+
+        this.console.println("\n******************************************************\n"
+                + "The the crop yield this season is " + harvest
+                + " bushels. " + "\n******************************************************\n");
     }
 
 }
-
-//        if (landPlant == -1) {
-//
-//            System.out.println("\n-----------------------------"
-//                    + "-------------------------"
-//                    + "--------------");
-//
-//            System.out.println("You must own more than 500 acres and no more than 2000 acres.");
-//
-//            System.out.println("--------------------------------"
-//                    + "-----------------------"
-//                    + "-------------\n");
-//        } else if (landPlant == -2) {
-//
-//            System.out.println("\n-----------------------------"
-//                    + "-------------------------"
-//                    + "--------------");
-//
-//            System.out.println("You must select land value greater than 100 acres and less than 1000.");
-//
-//            System.out.println("--------------------------------"
-//                    + "-----------------------"
-//                    + "-------------\n");
-//
-//        } else if (landPlant == -3) {
-//
-//            System.out.println("\n-----------------------------"
-//                    + "-------------------------"
-//                    + "--------------");
-//
-//            System.out.println("You do not have enough wheat to plant that many acres.");
-//
-//            System.out.println("--------------------------------"
-//                    + "-----------------------"
-//                    + "-------------\n");
-//			
-//			 } else if (landPlant == -4) {
-//
-//            System.out.println("\n-----------------------------"
-//                    + "-------------------------"
-//                    + "--------------");
-//
-//            System.out.println("Your wheat storage is outside the allowable range.");
-//
-//            System.out.println("--------------------------------"
-//                    + "-----------------------"
-//                    + "-------------\n");
-//
-//        } else {
-//            System.out.println("\n-----------------------------"
-//                    + "-------------------------"
-//                    + "--------------");
-//                if (land == -1) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("The Value for a Land Purchase Must be a "
-//                            + "Positive Number, Please Try Again.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//                } else if (land == -2) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("There is Not Enough Wheat in Storage for"
-//                            + " the Land Purchase, Please use a lower value.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else if (land == -3) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("Not Enough People to till the Land, Please "
-//                            + "Select a Lower Number");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else {
-//  if (land == -1) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("The Value for a Land Purchase Must be a "
-//                            + "Positive Number, Please Try Again.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//                } else if (land == -2) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("There is Not Enough Wheat in Storage for"
-//                            + " the Land Purchase, Please use a lower value.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else if (land == -3) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("Not Enough People to till the Land, Please "
-//                            + "Select a Lower Number");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else 
-//   if (land == -1) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("The Value for a Land Purchase Must be a "
-//                            + "Positive Number, Please Try Again.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//                } else if (land == -2) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("Land sold cannot be more than"
-//                            + "land owned. Please use a lower value.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else {
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-// if (land == -1) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("The Value for a Land Purchase Must be a "
-//                            + "Positive Number, Please Try Again.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//                } else if (land == -2) {
-//
-//                    System.out.println("\n-----------------------------"
-//                            + "-------------------------"
-//                            + "--------------");
-//
-//                    System.out.println("Land sold cannot be more than"
-//                            + "land owned. Please use a lower value.");
-//
-//                    System.out.println("--------------------------------"
-//                            + "-----------------------"
-//                            + "-------------\n");
-//
-//                } else 

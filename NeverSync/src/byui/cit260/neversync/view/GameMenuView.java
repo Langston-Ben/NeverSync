@@ -28,13 +28,38 @@ public class GameMenuView extends View {
     }
 
     @Override
+    
+    
     public String[] getInputs() {
-
+        
+        Game game = NeverSync.getCurrentGame();
+            this.console.println("\n\n              Annual Report"          );
+            this.console.printf("%n%-30s%10s", "Item", "Quantity");
+            this.console.printf("%n%-30s%10s", "----", "  --------\n\r");
+            
+            this.console.printf("%n%-30s%10s", "Current Year:" ,game.getYear(),"\n");
+            this.console.printf("%n%-30s%10s", "People Starved:" ,game.getStarved(),"\n");
+            this.console.printf("%n%-30s%10s", "New Population:" ,game.getNewPopulation(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Population:" 
+                    ,game.getCurrentPopulation(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Acres Owned:" ,game.getAcresOwned(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Bushels Per Acre:" 
+                    ,game.getBushelsPerAcreHarvested(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Bushels Harvested:" 
+                    ,game.getBushelsHarvested(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Bushels Tithed:" 
+                    ,game.getBushelsInTithes(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Wheat Eaten By Rats:" 
+                    ,game.getWheatEatenByRats(),"\n");
+            this.console.printf("%n%-30s%10s", "Current Wheat:" 
+                    ,game.getWheatInStorage(),"\n");
+            
+//          
         String[] input = new String[1];
-        System.out.println("\n************************\n"
+        this.console.println("\n\n************************\n"
                 + "City Of Aaron Game Menu\n"
                 + "************************\n");
-        System.out.println(
+        this.console.println(
                 "\nWhat Would You Like To Do?\n"
                 + "\nV - View the Map\n"
                 + "I - View and Purchase Current Items\n"     
@@ -88,7 +113,7 @@ public class GameMenuView extends View {
                 return true;
 
             default:
-                System.out.println("\nInvalid Menu Item\n");
+                this.console.println("\nInvalid Menu Item\n");
 
         }
 
@@ -109,12 +134,12 @@ public class GameMenuView extends View {
        
           
         if (row.toUpperCase().trim().equals("Q")) {
-            System.out.println("About to quit");
+            this.console.println("About to quit");
             return;
         }
         String column = getInput("Enter Column(Q to quit): ");
         if (column.toUpperCase().trim().equals("Q")) {
-            System.out.println("About to quit");
+            this.console.println("About to quit");
             return;
         }
         
@@ -126,7 +151,7 @@ public class GameMenuView extends View {
             iRow = Integer.parseInt(row);
             iColumn = Integer.parseInt(column);
             } catch (NumberFormatException e) {
-            System.out.println("Invalid Entry, must be a number");
+            ErrorView.display(this.getClass().getName(), "Invalid Entry, must be a number");
             return;
             }
         
@@ -139,15 +164,16 @@ public class GameMenuView extends View {
             try {
                 MapControl.movePlayer(map, iRow, iColumn);
             } catch (MapControlException ex) {
-                System.out.println(ex + "\n\nInvalid Entry");
+                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
                 return;
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(ex + "\n\nInvalid Entry");
+                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
             return;
         }
         MoveNewLocationView moveNewLocationView = new MoveNewLocationView();
         moveNewLocationView.display();
+        return;
     }
 
     private void manageCrops() {
@@ -156,7 +182,7 @@ public class GameMenuView extends View {
     }
 
     private void liveYear() {
-        System.out.println("placeholder for liveYear");
+        this.console.println("placeholder for liveYear");
     }
 
     private void reportMenu() {
@@ -165,13 +191,12 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
-//        throw new RuntimeException("Test runtime exception");
-        System.out.println("placeholder for saveGame");
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
     }
 
     private void viewActors() {
         
-//        System.out.println("placeholder for viewActors");
             ActorView actorView = new ActorView();
             actorView.displayActorView();
         

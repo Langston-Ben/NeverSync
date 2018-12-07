@@ -6,6 +6,8 @@
 package cit260.neversync.control;
 
 import byui.cit260.neversync.exceptions.BuyLandControlException;
+import cit260.neversync.model.Game;
+import neversync.NeverSync;
 
 /**
  *
@@ -17,7 +19,7 @@ public class BuyLandControl {
     public static double calcLandPurchase(double acresOwnedinit, double currentPop,
             double currentWheat, double acresToPurchase, double acresPrice) 
         throws BuyLandControlException {
-
+        Game game = NeverSync.getCurrentGame();
 //acresPrice = 20;    
         if (acresToPurchase < 0) {
             throw new BuyLandControlException("\nThe Value for a Land Purchase must "
@@ -36,7 +38,8 @@ public class BuyLandControl {
         }
 
         double acresOwnedNew = acresOwnedinit + acresToPurchase;
-
+        game.setAcresOwned(acresOwnedNew);
+       
         return acresOwnedNew;
     }
 
@@ -44,6 +47,7 @@ public class BuyLandControl {
     public static double calcWheatRemaining(double acresOwnedinit, double currentPop,
             double currentWheat, double acresToPurchase, double acresPrice) 
             throws BuyLandControlException {
+        Game game = NeverSync.getCurrentGame();
 //acresPrice = 20;
         if (acresToPurchase < 0) {
             throw new BuyLandControlException("The Value for a Land Purchase Must be a "
@@ -63,6 +67,8 @@ public class BuyLandControl {
 //double acresOwnedNew = acresOwnedinit + acresToPurchase;
         double wheatNew = currentWheat - (acresPrice * acresToPurchase);
 //        int x = 10/0;
+
+        game.setWheatInStorage(wheatNew);
         return wheatNew;
 
     }

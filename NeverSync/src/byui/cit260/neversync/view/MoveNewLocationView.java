@@ -23,10 +23,10 @@ public class MoveNewLocationView extends View {
     public String[] getInputs() {
 
         String[] input = new String[2];
-        System.out.println("\n************************\n"
+        this.console.println("\n************************\n"
                 + "City Of Aaron Scene Menu\n"
                 + "************************\n");
-        System.out.println(
+        this.console.println(
                 "************************\n"
                 + "Enter your desired location\n"
                 + "************************\n"
@@ -55,13 +55,8 @@ public class MoveNewLocationView extends View {
                         try {
                             MapControl.movePlayer(map, row, column);
                         } catch (MapControlException ex) {
-                            System.out.println(ex.getMessage());
+                            ErrorView.display(this.getClass().getName(), ex.getMessage());
                         }
-
-//                         System.out.println("Move successful, Description of "
-//                                 + "current location:  \n"
-//                         + map.getCurrentLocation().getDescription() + ".");
-                        
 
                         MapView mapView = new MapView();
                         mapView.displayMap();
@@ -72,20 +67,8 @@ public class MoveNewLocationView extends View {
                 }
             }
         }
-        System.out.println("\n*** Invalid selection *** Please Try Again");
+        this.console.println("\n*** Invalid selection *** Please Try Again");
         return false;
     }
 
-//
-//    private void newScene() {
-//        
-//        SceneView sceneView = new SceneView();
-//        sceneView.display();
-//
-//    }
-//
-//    private void mapScene() {
-//        MapView mapView = new MapView();
-//        mapView.displayMap();
-//    }
 }

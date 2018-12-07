@@ -17,10 +17,10 @@ public class HelpMenuView extends View {
     public String[] getInputs() {
 
         String[] input = new String[1];
-        System.out.println("\n************************\n"
+        this.console.println("\n************************\n"
                 + "City Of Aaron Help Menu\n"
                 + "************************\n");
-        System.out.println(
+        this.console.println(
                 "\nThe options on the main menu are: \n"
                 + "C - Crop management resources\n"
                 + "G - The theme of the game\n"
@@ -62,7 +62,7 @@ public class HelpMenuView extends View {
                 return true;
 
             default:
-                System.out.println("\nInvalid Menu Item\n");
+                this.console.println("\nInvalid Menu Item\n");
 
         }
 
@@ -70,8 +70,8 @@ public class HelpMenuView extends View {
     }
 
     private void cropHarvestHelp() {
-        System.out.println("\nCrop Management Resources:");
-        System.out.println("\n"
+        this.console.println("\nCrop Management Resources:");
+        this.console.println("\n"
                 + "You are given 2700 bushels of wheat to begin the game. "
                 + "\nEach person consumes 3 bushels per year."
                 + "\nEach year you are allowed to decide how much is set aside to pay tithing, "
@@ -84,8 +84,8 @@ public class HelpMenuView extends View {
     }
 
     private void themeHelp() {
-        System.out.println("\nThe Theme of the Game");
-        System.out.println("\n"
+        this.console.println("\nThe Theme of the Game");
+        this.console.println("\n"
                 + "The theme or goal of the game is to lead the city of NeverSync "
                 + "in prosperous living."
                 + "\nYou are presented with multiple choices round by round "
@@ -96,8 +96,8 @@ public class HelpMenuView extends View {
     }
 
     private void moveHelp() {
-        System.out.println("\nHow to Move Through the Game:");
-        System.out.println("\n"
+        this.console.println("\nHow to Move Through the Game:");
+        this.console.println("\n"
                 + "The game has many scenes or locations."
                 + "\nYou move by picking your desired destination."
                 + "\nYou can choose from scenes such as the Temple, Storehouse, or Wheat Storage."
@@ -105,8 +105,8 @@ public class HelpMenuView extends View {
     }
 
     private void storeHouseHelp() {
-        System.out.println("\nUtilizing the Storehouse");
-        System.out.println("\n"
+        this.console.println("\nUtilizing the Storehouse");
+        this.console.println("\n"
                 + "The storehouse serves two primary functions."
                 + "\nIt is the place where you store your excess wheat."
                 + "\nIt is also a mercantile, where needed tools and items can be purchased."
@@ -115,8 +115,8 @@ public class HelpMenuView extends View {
     }
 
     private void playHelp() {
-        System.out.println("\nHow to WIN the Game:");
-        System.out.println("\n"
+        this.console.println("\nHow to WIN the Game:");
+        this.console.println("\n"
                 + "The game is lost by allowing over 50% of your original population "
                 + "to die from starvation at any point in the game."
                 + "\nThe game is won by growing your population, avoiding starvation, "

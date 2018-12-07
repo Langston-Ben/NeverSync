@@ -8,37 +8,25 @@ package byui.cit260.neversync.view;
 import byui.cit260.neversync.exceptions.GameControlException;
 import cit260.neversync.control.GameControl;
 import cit260.neversync.model.Game;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
 import neversync.NeverSync;
 
 /**
  *
- * @author Ben Langston and Jeff Ledbetter
+ * @author benjaminlangston
  */
-public class StartExistingGameView extends View {
-  
-    private String message;
-    protected final BufferedReader keyboard = NeverSync.getInFile();
-    protected final PrintWriter console = NeverSync.getOutFile();
+public class SaveGameView extends View {
     
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-  
        @Override
     public String[] getInputs() {
 
         String[] input = new String[1];
         this.console.println("\n************************\n"
-                + "City Of Aaron Start Saved Game Menu\n"
+                + "City Of Aaron Save Game Menu\n"
                 + "************************\n");
 
         String saveGameSelection = this.getInput(
-                "\nPlease Enter The Path To Start" 
-                        + " A Saved Game");
+                "\nPlease Enter The Path To Save" 
+                        + " The Current Game");
         input[0] = saveGameSelection;
         
         return input;
@@ -51,10 +39,10 @@ public class StartExistingGameView extends View {
         input[0] = input[0].toUpperCase();
         String filePath = input[0];
         
-//        Game game = NeverSync.getCurrentGame();
+        Game game = NeverSync.getCurrentGame();
         
         try {
-        GameControl.getGame(filePath);
+        GameControl.saveGame(game, filePath);
         
         } catch (GameControlException e) {
             ErrorView.display(this.getClass().getName(), 
@@ -62,8 +50,7 @@ public class StartExistingGameView extends View {
             return false;
         }
         {
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
+        this.console.println("The file was saved successfully");
         return true;
         
         }
@@ -77,10 +64,3 @@ public class StartExistingGameView extends View {
         
         
       
-
-//
-//    public void displayStartExistingGameView() {
-//        this.console.println("\ndisplay StartExistingGameView has been called ********\n");
-//    }
-
-//}

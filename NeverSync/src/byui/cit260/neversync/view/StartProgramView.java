@@ -22,7 +22,7 @@ public class StartProgramView extends View {
     public String[] getInputs() {
 
         String[] input = new String[2];
-        System.out.println(""
+        this.console.println(""
                 + "==================================================================================="
                 + "                                                                                 \n"
                 + "                                                                                 \n"
@@ -45,7 +45,7 @@ public class StartProgramView extends View {
                 + "   ██║ ╚████║███████╗ ╚████╔╝ ███████╗██║  ██║███████║   ██║   ██║ ╚████║╚██████╗\n"
                 + "   ╚═╝  ╚═══╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\n"
                 + "");
-        System.out.println("===================================================="
+        this.console.println("===================================================="
                 + "==============================="
                 + "\n          Welcome to the City of Aaron! "
                 + "\nThe player of the game will assume the role of the leader"
@@ -61,8 +61,8 @@ public class StartProgramView extends View {
                 + "\nfrom office and the game ends"
                 + "\n===================================================="
                 + "===============================");
-        System.out.println("\nCompiled By Jeff Ledbetter & Ben Langston\n");
-        System.out.println("*****Welcome to the Game!*****\n");
+        this.console.println("\nCompiled By Jeff Ledbetter & Ben Langston\n");
+        this.console.println("*****Welcome to the Game!*****\n");
 
         String playersName = this.getInput("\nPlease enter your name: ");
         input[0] = playersName;
@@ -79,11 +79,12 @@ return input;
         Player player = GameControl.savePlayer(playersName);
 
         if (player == null) {
-            System.out.println("Could not create the player." + "\n"
+            ErrorView.display(getClass().getName(), "Could not create the player." 
+                    + "\n"
                     + "Enter a different name.");
             return false;
         } else {
-            System.out.println("======================================= "
+            this.console.println("======================================= "
                     + "\nWelcome to the game " + playersName
                     + "\nWe hope you have a lot of fun!"
                     + "\n=======================================");
@@ -93,8 +94,5 @@ return input;
             return true;
 
         }
-
-    
-
     }
 }
