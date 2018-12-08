@@ -15,9 +15,9 @@ import neversync.NeverSync;
  * @author benjaminlangston
  */
 public class CropControl {
-    
-    public static double calcBushelsToFeedThePeople(double wheatToFeed, double initWheatStorage) 
-        throws CropControlException {
+
+    public static double calcBushelsToFeedThePeople(double wheatToFeed, double initWheatStorage)
+            throws CropControlException {
         Game game = NeverSync.getCurrentGame();
 
         if (wheatToFeed < 0) {
@@ -25,7 +25,7 @@ public class CropControl {
                     + "be a Positive Number, Please Try Again.");
         }
 
-        if (initWheatStorage < wheatToFeed ) {
+        if (initWheatStorage < wheatToFeed) {
             throw new CropControlException("\n\nThere is Not Enough Wheat in "
                     + "Storage To Feed The People, Please use a lower "
                     + "value.");
@@ -36,20 +36,18 @@ public class CropControl {
         game.setWheatFedToPeople(wheatToFeed);
         return wheatNew;
     }
-    
-    public static double calcCropYield(double percentTithed) 
-        throws CropControlException {
+
+    public static double calcCropYield(double percentTithed)
+            throws CropControlException {
         Game game = NeverSync.getCurrentGame();
-        int blessingFactor;
+        double blessingFactor = 0;
+        double eatenFactor = 0;
         double bushelsHarvested;
-        
+
         Random rand = new Random();
-        int blessingOne = rand.nextInt((3 - 1) + 1) + 1;
-        int blessingTwo = rand.nextInt((4 - 2) + 1) + 2;
-        int blessingThree = rand.nextInt((5 - 2) + 1) + 2;
-        
-        
-        
+        double blessingOne = rand.nextInt((3 - 1) + 1) + 1;
+        double blessingTwo = rand.nextInt((4 - 2) + 1) + 2;
+        double blessingThree = rand.nextInt((5 - 2) + 1) + 2;
 
         if (percentTithed < 0) {
             throw new CropControlException("\nThe Value must "
@@ -61,40 +59,116 @@ public class CropControl {
                     + "Than 100\n");
         }
 
-        
-
         if (percentTithed < 8) {
             blessingFactor = blessingOne;
-        } else if (percentTithed >= 8 || percentTithed <= 12 ) {
+        } else if (percentTithed >= 8 && percentTithed <= 12) {
             blessingFactor = blessingTwo;
         } else if (percentTithed > 12) {
             blessingFactor = blessingThree;
-        } else {
-            return -1;
         }
-// fix the logic here
+
+        // calc wheat eaten by rats
+        int tithingOne = rand.nextInt((10 - 6) + 1) + 6;
+        int tithingTwo = rand.nextInt((7 - 3) + 1) + 3;
+        int tithingThree = rand.nextInt((5 - 3) + 1) + 3;
+
+        if (percentTithed < 8) {
+            eatenFactor = tithingOne;
+        } else if (percentTithed >= 8 && percentTithed <= 12) {
+            eatenFactor = tithingTwo;
+        } else if (percentTithed > 12) {
+            eatenFactor = tithingThree;
+        }
+
+        // grow the population
+        double popGrowth = rand.nextInt((5 - 1) + 1) + 1;
+        double curPop = game.getCurrentPopulation();
+
+        popGrowth = ((curPop * popGrowth) / 100);
+        double newPop = (curPop + popGrowth);
+
+        game.setNewPopulation((int) popGrowth);
+
+        game.setCurrentPopulation(newPop);
+
+        eatenFactor = (eatenFactor / 100);
+
+        eatenFactor = Math.round(eatenFactor * 100.0) / 100.0;
+        // save the amount eaten to the game
+//        game.setWheatEatenByRats(eatenFactor);
+
+        // get the acres planted for harvesting
         double acresPlanted = game.getAcresPlanted();
-        bushelsHarvested = acresPlanted * blessingFactor;
-        
-        
-        double bushelsTithed = bushelsHarvested * .1;
+        bushelsHarvested = (int) (acresPlanted * blessingFactor);
+
+        // calc amount of wheat to pay tithings
+        double bushelsTithed = bushelsHarvested * (percentTithed * .01);
+
+        // save wheat tithed to the game
         game.setBushelsInTithes(bushelsTithed);
+
+        // save the bushels per acres value for annual report
         game.setBushelsPerAcreHarvested(blessingFactor);
+
+        // set the amount of bushels harvested
         game.setBushelsHarvested(bushelsHarvested);
-        double updatedWheat = game.getWheatInStorage();
-        
-        updatedWheat = updatedWheat + (bushelsHarvested - bushelsTithed);
-        game.setWheatInStorage(updatedWheat);
+
+        // get the current wheat in storage value
+        int updatedWheat = (int) game.getWheatInStorage();
+
+        // calc new wheat after harvesting and tithing
+        updatedWheat = (int) (updatedWheat + (bushelsHarvested - bushelsTithed));
+
+        // set the wheat value in the game after subtracting rat factor
+        double stWt = (updatedWheat - (updatedWheat * eatenFactor));
+
+        stWt = Math.round(stWt * 100.0) / 100.0;
+
+        game.setWheatInStorage(stWt);
+
+        // save the amount eaten to the game
+        double wBRt = (updatedWheat * eatenFactor);
+
+        wBRt = Math.round(wBRt * 100.0) / 100.0;
+        game.setWheatEatenByRats(wBRt);
+
         return bushelsHarvested;
 
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
+    public static double calcMortality(double fed, double pop) {
+        Game game = NeverSync.getCurrentGame();
+        double passed = 0;
+
+        // need exception here and work on the logic
+        if (fed < 1) {
+            return 1;
+        }
+
+        fed = (fed / 20);
+
+        if (fed < pop) {
+            passed = ((fed - pop) * -1);
+
+            game.setStarved((int) passed);
+
+            double newPop = (pop - passed);
+
+            game.setCurrentPopulation(newPop);
+
+            int year = game.getYear();
+
+            year = year + 1;
+
+            game.setYear(year);
+
+            if (newPop > (pop * .5)) {
+
+                return 1;
+            }
+
+        }
+        return 2;
+    }
+
 }

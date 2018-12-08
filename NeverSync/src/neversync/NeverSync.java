@@ -89,8 +89,7 @@ public class NeverSync {
             NeverSync.inFile
                     = new BufferedReader(new InputStreamReader(System.in));
             NeverSync.outFile = new PrintWriter(System.out, true);
-            NeverSync.logFile = new PrintWriter(
-            "/users/benjaminlangston/Desktop/NetBeansReports/logFile.txt");
+            NeverSync.logFile = new PrintWriter("logFile.txt");
 
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();

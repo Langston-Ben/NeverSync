@@ -8,6 +8,7 @@ package byui.cit260.neversync.view;
 //import java.util.Scanner;
 
 import byui.cit260.neversync.exceptions.MapControlException;
+import cit260.neversync.control.CropControl;
 import cit260.neversync.control.MapControl;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
@@ -182,7 +183,26 @@ public class GameMenuView extends View {
     }
 
     private void liveYear() {
-        this.console.println("placeholder for liveYear");
+        
+        // this needs some work.....
+        Game game = NeverSync.getCurrentGame();
+        double wheatFed = game.getWheatFedToPeople();
+        double curPop = game.getCurrentPopulation();
+        double mort = 0;
+        
+        mort = CropControl.calcMortality(wheatFed, curPop);
+        
+        if (mort == 1) {
+        this.console.println("Your Population is below 50%.\nGAME OVER"
+                + "\nGAME OVER\nGAME OVER\nGAME OVER\nGAME OVER");
+        }
+        else if(mort == 2) {
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.display();
+        
+        
+        }
+        
     }
 
     private void reportMenu() {
