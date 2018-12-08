@@ -30,6 +30,7 @@ public class ReportsMenuView extends View {
         this.console.println(
                 "\nThe options on the Report Menu are: \n"
                 + "A - View the ANIMALS in the storehouse\n"
+				+ "M - View the \n"
                 + "T - View the TOOLS in the storehouse\n"
                 + "P - View the PROVISIONS in the storehouse\n"
                 + "W - View the AUTHORS of the game\n"
@@ -112,6 +113,20 @@ public class ReportsMenuView extends View {
     }
 
     private void locationsReport() {
+		
+		Game game = NeverSync.getCurrentGame();
+        game.getActors();
+        Location[] cordinates = game.getActors();
+        
+            this.console.println("\n\n         Actor Location Report"          );
+            this.console.printf("%n%-20s%10s%10s", "Name", "?", "Location");
+            this.console.printf("%n%-20s%10s%10s", "-----------", "--------", "-----");
+            for (InventoryItem item : tools) {
+                this.console.printf("%n%-20s%7d%13.2f", item.getItemType().toUpperCase()
+                                             , item.getQuantityInStock()
+                                             , item.getPricePerUnit());
+          
+            }
          LocationsReportView locationsReportView = new LocationsReportView();
          locationsReportView.display();
     }
