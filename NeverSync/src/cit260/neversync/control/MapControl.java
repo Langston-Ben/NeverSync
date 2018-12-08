@@ -324,8 +324,8 @@ public class MapControl {
         locations[2][1] = location;
 
         location = locations[3][1];
-        location.setActor(Actor.Sarah);
-//    actorCoordinates = Actor.Sarah.getCoordinates();
+        location.setActor(Actor.Sariah);
+//    actorCoordinates = Actor.Sariah.getCoordinates();
 //     actorCoordinates.x = location.getRow();
 //    actorCoordinates.y = location.getColumn();
         locations[3][1] = location;
