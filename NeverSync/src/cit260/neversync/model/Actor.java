@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package cit260.neversync.model;
-
-import java.awt.Point;
+//import java.awt.Point;
 
 /**
  *
@@ -13,37 +12,43 @@ import java.awt.Point;
  */
 public enum Actor {
     
-    Lehi("Lehi","He is the prophet and leader of the family."),
-    Sarah("Sarah", "She is Lehi's wife and mother of the family."),
-    Nephi("Nephi", "Faithful son and later the prophet leader of the Nephites."),
-    Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi."),
-    Sam("Sam", "The 3rd oldest and faithful brother of Nephi."),
-    Laman("Laman", "The oldest rebellious brother and leader of the Lamanites."),
-    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman."),
-    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.");
+    Lehi("Lehi","He is the prophet and leader of the family.",1,1),
+    Sarah("Sarah", "She is Lehi's wife and mother of the family.",1,2),
+    Nephi("Nephi", "Faithful son and later the prophet leader of the Nephites.",2,1),
+    Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi.",2,2),
+    Sam("Sam", "The 3rd oldest and faithful brother of Nephi.",2,3),
+    Laman("Laman", "The oldest rebellious brother and leader of the Lamanites.",3,3),
+    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman.",3,4),
+    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.",2,4);
     
    
 
-    private Actor(String name, String description) {
+    private Actor(String name, String description,int column,int row) {
         this.name = name;
         this.description = description;
-	//	this.coordinates = coordinates;
+		this.column = column;
+		this.row = row;
+//		this.coordinates = coordinates;
     }
     
     
     private String name;
     private final String description;
-    private Point coordinates;
+//    private Point coordinates;
     private Player player;
+	private int column;
+	private int row;
 
-    public Point getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
-    }
-
+//    public Point getCoordinates() {
+//        return coordinates;
+//    }
+//
+//    public void setCoordinates(Point coordinates) {
+//        this.coordinates = coordinates;
+//    }
+	
+	
+	
     public Player getPlayer() {
         return player;
     }
@@ -63,6 +68,22 @@ public enum Actor {
     public String getDescription() {
         return description;
     }
+
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
     
     
 
