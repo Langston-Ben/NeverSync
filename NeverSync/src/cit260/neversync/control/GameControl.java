@@ -222,7 +222,7 @@ public class GameControl implements Serializable {
         actors.add(Actor.Lemuel);
         actors.add(Actor.Zoram);
         actors.add(Actor.Sam);
-        actors.add(Actor.Sarah);
+        actors.add(Actor.Sariah);
         actors.add(Actor.Nephi);
 
         return actors;

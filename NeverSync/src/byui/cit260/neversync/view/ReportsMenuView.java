@@ -114,15 +114,17 @@ public class ReportsMenuView extends View {
 			game.getActors();
 			ArrayList<Actor> locs = game.getActors();
 
-				this.console.println("\n\n         Actor Location Report"          );
+				this.console.println("\n\n  Actor Location Report"          );
 				this.console.printf("%n%-10s%7s%5s", "Name", "Col", "Row");
 				this.console.printf("%n%-10s%6s%5s", "-----------", "---", "---");
 				for (Actor actor : locs) {
 					this.console.printf("%n%-10s%6d%5d", actor.getName()
 												 , actor.getColumn()
 												 , actor.getRow());
-
             }
+			
+			ActorsReportView actorsReportView = new ActorsReportView();
+			actorsReportView.display();
 	}
 
     private void provisionsReport() {

@@ -12,14 +12,14 @@ package cit260.neversync.model;
  */
 public enum Actor {
     
-    Lehi("Lehi","He is the prophet and leader of the family.",1,1),
-    Sarah("Sarah", "She is Lehi's wife and mother of the family.",1,2),
-    Nephi("Nephi", "Faithful son and later the prophet leader of the Nephites.",2,1),
-    Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi.",2,2),
-    Sam("Sam", "The 3rd oldest and faithful brother of Nephi.",2,3),
-    Laman("Laman", "The oldest rebellious brother and leader of the Lamanites.",3,3),
-    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman.",3,4),
-    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.",2,4);
+    Lehi("Lehi","He is the prophet and leader of the family.",2,1),
+    Sariah("Sarah", "She is Lehi's wife and mother of the family.",3,1),
+    Nephi("Nephi", "Faithful son and later the prophet leader of the Nephites.",1,1),
+    Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi.",4,1),
+    Sam("Sam", "The 3rd oldest and faithful brother of Nephi.",0,1),
+    Laman("Laman", "The oldest rebellious brother and leader of the Lamanites.",1,2),
+    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman.",1,3),
+    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.",1,4);
     
    
 

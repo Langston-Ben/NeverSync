@@ -6,6 +6,7 @@
 package cit260.neversync.control;
 
 import byui.cit260.neversync.exceptions.ReportsControlException;
+import byui.cit260.neversync.view.ActorsReportView;
 import byui.cit260.neversync.view.ErrorView;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
@@ -15,6 +16,7 @@ import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import neversync.NeverSync;
 
 /**
@@ -51,12 +53,37 @@ public class ReportsControl {
         }
     
     }
-    public static void printLocationReport(String outputLocation) throws ReportsControlException {
     
+	public static void printActorsReport(String outputLocation) throws ReportsControlException {
         
+			
+		Game game = NeverSync.getCurrentGame();
+		game.getActors();
+		ArrayList<Actor> locs = game.getActors();
+
+		if (outputLocation == null) {
+		throw new ReportsControlException("You must enter a value");
+        
+        }
+		
+		try (PrintWriter out = new PrintWriter(outputLocation)) {
+
+			out.println("\n\n  Actor Location Report"          );
+			out.printf("%n%-10s%7s%5s", "Name", "Col", "Row");
+			out.printf("%n%-10s%6s%5s", "-----------", "---", "---");				
+			for (Actor actor : locs) {
+				out.printf("%n%-10s%6d%5d", actor.getName()
+											 , actor.getColumn()
+											 , actor.getRow());
+				
+            }
+        }  catch (IOException ex) {
+             ErrorView.display("Error:", ex.getMessage());
+        }   
+    }  
+	
+	public static void printLocationReport(String outputLocation) throws ReportsControlException {     
     }
-        
-        
 }
     
     
