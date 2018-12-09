@@ -69,8 +69,8 @@ import neversync.NeverSync;
         
         {
         this.console.println("Your report has been created");    
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
+//        GameMenuView gameMenuView = new GameMenuView();
+//        gameMenuView.display();
         return true;
         
         }

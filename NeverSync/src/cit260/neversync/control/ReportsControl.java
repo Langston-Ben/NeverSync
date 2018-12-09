@@ -77,7 +77,7 @@ public class ReportsControl {
                          actor.getRow());
 
             }
-            out.flush();
+            out.close();
         } catch (IOException ex) {
             ErrorView.display("Error:", ex.getMessage());
         }

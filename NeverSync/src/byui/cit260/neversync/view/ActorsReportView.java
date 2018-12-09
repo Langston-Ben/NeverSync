@@ -64,8 +64,9 @@ public class ActorsReportView extends View {
         
         {
         this.console.println("Your report has been saved.");    
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
+//        GameMenuView gameMenuView = new GameMenuView();
+//        gameMenuView.display();
+        
         return true;
         
         }
