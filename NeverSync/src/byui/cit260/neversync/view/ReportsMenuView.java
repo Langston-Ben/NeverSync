@@ -29,11 +29,11 @@ public class ReportsMenuView extends View {
                 + "************************\n");
         this.console.println(
                 "\nThe options on the Report Menu are: \n"
-                + "A - View the ANIMALS in the storehouse\n"
-                + "T - View the TOOLS in the storehouse\n"
-                + "P - View the PROVISIONS in the storehouse\n"
-                + "W - View the AUTHORS of the game\n"
-                + "L - View Locations and Availability\n"
+                + "A - View and Print the ANIMALS in the storehouse\n"
+                + "T - View and Print the TOOLS in the storehouse\n"
+                + "P - View and Print the PROVISIONS in the storehouse\n"
+                + "W - View and Print the AUTHORS of the game\n"
+                + "L - View and Print Locations and Availability\n"
                 + "Q - Quit the Reports Menu\n");
        
 		String reportsMenuSelection = this.getInput("\nPlease enter your selection: ");
