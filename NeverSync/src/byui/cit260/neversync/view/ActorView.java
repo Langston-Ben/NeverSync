@@ -45,24 +45,26 @@ public class ActorView {
         actors.add(Actor.Lemuel);
         actors.add(Actor.Zoram);
         actors.add(Actor.Sam);
-        actors.add(Actor.Sarah);
+        actors.add(Actor.Sariah);
         actors.add(Actor.Nephi);
         
                 
             for (Actor actor : actors) {
          
-            this.console.println(actor.getName() + " - " + actor.getDescription());
-           
+            this.console.println(
+					actor.getName() + " - " + 
+					actor.getDescription() + " Location(" + 
+					actor.getColumn() + "," + 
+					actor.getRow() +")");
             }
+			
+ 	
 		this.console.println("\nOriginal Order:");
                 this.console.println(actors);
 		this.console.println("\nReversed List:");
 		Collections.sort(actors, Collections.reverseOrder());
 		this.console.println(actors);
-		
-		this.console.println("\nStay tuned for sort by location feature!");
-                
-
+		                
 		 
    }
 
