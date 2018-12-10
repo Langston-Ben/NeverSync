@@ -68,7 +68,7 @@ public class CropControl {
         }
 
         // calc wheat eaten by rats
-        int tithingOne = rand.nextInt((10 - 6) + 1) + 6;
+        int tithingOne = rand.nextInt((10 - 6) + 1) + 6;        
         int tithingTwo = rand.nextInt((7 - 3) + 1) + 3;
         int tithingThree = rand.nextInt((5 - 3) + 1) + 3;
 
@@ -89,7 +89,7 @@ public class CropControl {
 
         game.setNewPopulation((int) popGrowth);
 
-        game.setCurrentPopulation(newPop);
+        game.setCurrentPopulation((int)newPop);
 
         eatenFactor = (eatenFactor / 100);
 
@@ -105,13 +105,13 @@ public class CropControl {
         double bushelsTithed = bushelsHarvested * (percentTithed * .01);
 
         // save wheat tithed to the game
-        game.setBushelsInTithes(bushelsTithed);
+        game.setBushelsInTithes((int)bushelsTithed);
 
         // save the bushels per acres value for annual report
-        game.setBushelsPerAcreHarvested(blessingFactor);
+        game.setBushelsPerAcreHarvested((int)blessingFactor);
 
         // set the amount of bushels harvested
-        game.setBushelsHarvested(bushelsHarvested);
+        game.setBushelsHarvested((int)bushelsHarvested);
 
         // get the current wheat in storage value
         int updatedWheat = (int) game.getWheatInStorage();
@@ -124,51 +124,135 @@ public class CropControl {
 
         stWt = Math.round(stWt * 100.0) / 100.0;
 
-        game.setWheatInStorage(stWt);
+        game.setWheatInStorage((int)stWt);
 
         // save the amount eaten to the game
         double wBRt = (updatedWheat * eatenFactor);
 
         wBRt = Math.round(wBRt * 100.0) / 100.0;
-        game.setWheatEatenByRats(wBRt);
+        game.setWheatEatenByRats((int)wBRt);
 
         return bushelsHarvested;
 
     }
 
-    public static double calcMortality(double fed, double pop) {
+    
+    
+    
+    
+    public static double calcMortality(double bushFed, double pop) throws CropControlException {
         Game game = NeverSync.getCurrentGame();
         double passed = 0;
 
         // need exception here and work on the logic
-        if (fed < 1) {
-            return 1;
+        if (bushFed < 1) {
+            throw new CropControlException(
+                    "You didn't feed anyone and have killed all your people!!\n\n\n" +
+" ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +
+"██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n" +
+"██║  ███╗███████║██╔████╔██║█████╗                     \n" +
+"██║   ██║██╔══██║██║╚██╔╝██║██╔══╝                     \n" +
+"╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗                   \n" +
+" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                   \n" +
+"                                                       \n" +
+" ██████╗ ██╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗\n" +
+"██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║\n" +
+"██║   ██║██║   ██║█████╗  ██████╔╝██║██║██║██║██║██║██║\n" +
+"██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n" +
+" ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"                                                       ");
         }
-
-        fed = (fed / 20);
-
-        if (fed < pop) {
-            passed = ((fed - pop) * -1);
-
-            game.setStarved((int) passed);
-
+//      
+//        boolean mort = false;
+//        
+//        while (mort == false) {
+        
+        double peopleFed = (bushFed / 20);
+     
+//        if (peopleFed < (pop * .5)) {
+//            throw new CropControlException("Half your population has died!\n"
+//                    + "GAME OVER\nGAME OVER\nGAME OVER\nGAME OVER\nGAME OVER\n");
+//            
+//        }
+            
+            passed = ((peopleFed - pop) * -1);
             double newPop = (pop - passed);
-
-            game.setCurrentPopulation(newPop);
+            
+//        if (newPop < (pop * .5)) { 
+            
+            game.setStarved((int) passed);
+            game.setCurrentPopulation((int) newPop);
 
             int year = game.getYear();
 
             year = year + 1;
 
             game.setYear(year);
-
-            if (newPop > (pop * .5)) {
-
-                return 1;
+            
+            if (year == 3 ){
+//                 mort = true;
+            return year;
             }
-
+            if (peopleFed < (pop * .5)) {
+            throw new CropControlException("Half your population has died!\n" +
+" ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +
+"██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n" +
+"██║  ███╗███████║██╔████╔██║█████╗                     \n" +
+"██║   ██║██╔══██║██║╚██╔╝██║██╔══╝                     \n" +
+"╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗                   \n" +
+" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                   \n" +
+"                                                       \n" +
+" ██████╗ ██╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗\n" +
+"██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║\n" +
+"██║   ██║██║   ██║█████╗  ██████╔╝██║██║██║██║██║██║██║\n" +
+"██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n" +
+" ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"                                                       \n");
         }
-        return 2;
+             return 5;
     }
-
+            
 }
+//
+//            if (newPop < (pop * .5)) {
+//                
+//            game.setStarved((int) passed);
+//
+//            game.setCurrentPopulation((int) newPop);
+
+//            year = game.getYear();
+//
+//            year = year + 1;
+//
+//            game.setYear(year);
+//            
+//            if (year == 10 ){
+//            break;
+//            }
+            
+//           
+//
+//                throw new CropControlException("Half the population has died.\n"
+//                        + "Game Over");
+//               
+                
+//            } break;
+            
+////            return passed;
+//            }
+//            
+//           
+//            
+//         
+//        
+//
+////            mort = true;
+//
+//        }
+////        return 1;
+////    }
+//    
+//
+//}

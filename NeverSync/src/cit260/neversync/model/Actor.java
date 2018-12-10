@@ -18,8 +18,10 @@ public enum Actor {
     Jacob("Jacob", "Nephi's faithful brother, prophet, and successor to Nephi.",4,1),
     Sam("Sam", "The 3rd oldest and faithful brother of Nephi.",0,1),
     Laman("Laman", "The oldest rebellious brother and leader of the Lamanites.",1,2),
-    Lemuel("Lemul","The 2nd oldest rebellious brother who went with Laman.",1,3),
-    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.",1,4);
+    Lemuel("Lemuel","The 2nd oldest rebellious brother who went with Laman.",1,3),
+    Zoram("Zoram","Laban's servant that became a faithful friend to Nephi.",1,4),
+    Korihor("Korihor","The destroyer of all things, avoid him at all costs!!",4,4),
+    Amalickiah("Amalickiah", "Beware of his advice, he deals in secret combinations...",2,3);
     
    
 
@@ -29,6 +31,11 @@ public enum Actor {
 		this.column = column;
 		this.row = row;
 //		this.coordinates = coordinates;
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", description=" + description + ", player=" + player + ", column=" + column + ", row=" + row + '}';
     }
     
     

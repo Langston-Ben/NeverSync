@@ -7,6 +7,7 @@ package byui.cit260.neversync.view;
 
 //import java.util.Scanner;
 
+import byui.cit260.neversync.exceptions.CropControlException;
 import byui.cit260.neversync.exceptions.MapControlException;
 import cit260.neversync.control.CropControl;
 import cit260.neversync.control.MapControl;
@@ -14,6 +15,8 @@ import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import neversync.NeverSync;
@@ -190,13 +193,74 @@ public class GameMenuView extends View {
         double curPop = game.getCurrentPopulation();
         double mort = 0;
         
-        mort = CropControl.calcMortality(wheatFed, curPop);
-        
-        if (mort == 1) {
-        this.console.println("Your Population is below 50%.\nGAME OVER"
-                + "\nGAME OVER\nGAME OVER\nGAME OVER\nGAME OVER");
+        try {
+            mort = CropControl.calcMortality(wheatFed, curPop);
+        } catch (CropControlException ex) {
+            ErrorView.display(this.getClass().getName(),ex.getMessage());
+            System.exit(0);
+//                return;
+           
         }
-        else if(mort == 2) {
+//        
+        if (mort == 3) {
+            double points = game.getCurrentPopulation();
+            double bonus = game.getWheatInStorage();
+            
+            points = points * 10;
+            bonus = bonus + points;
+        
+            this.console.println(
+"██╗   ██╗ ██████╗ ██╗   ██╗\n" +
+"╚██╗ ██╔╝██╔═══██╗██║   ██║                                                 \n" +
+" ╚████╔╝ ██║   ██║██║   ██║                                                 \n" +
+"  ╚██╔╝  ██║   ██║██║   ██║                                                 \n" +
+"   ██║   ╚██████╔╝╚██████╔╝                                                 \n" +
+"   ╚═╝    ╚═════╝  ╚═════╝                                                  \n" +
+"                                                                            \n" +
+" █████╗ ██████╗ ███████╗                                                    \n" +
+"██╔══██╗██╔══██╗██╔════╝                                                    \n" +
+"███████║██████╔╝█████╗                                                      \n" +
+"██╔══██║██╔══██╗██╔══╝                                                      \n" +
+"██║  ██║██║  ██║███████╗                                                    \n" +
+"╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝                                                    \n" +
+"                                                                            \n" +
+" █████╗                                                                     \n" +
+"██╔══██╗                                                                    \n" +
+"███████║                                                                    \n" +
+"██╔══██║                                                                    \n" +
+"██║  ██║                                                                    \n" +
+"╚═╝  ╚═╝                                                                    \n" +
+"                                                                            \n" +
+"██╗    ██╗██╗███╗   ██╗███╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗██╗██╗\n" +
+"██║    ██║██║████╗  ██║████╗  ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║██║██║\n" +
+"██║ █╗ ██║██║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝██║██║██║██║██║██║██║██║██║\n" +
+"██║███╗██║██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗██╗██╗\n" +
+" ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
+"                                                                            \n\n");
+        this.console.println("You have finish the game. Your score is: \n" + bonus);
+        PrintWriter out = null;
+            try {
+                out = new PrintWriter("highscore.txt"); 
+                
+            out.printf("%n%-20s", "High Score");
+            out.printf("%n%-20s", "-----------");
+            
+                out.printf("%n%-20s", bonus);
+                
+                
+                // need to fix or delete this....
+                
+            } catch (FileNotFoundException ex) {
+                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
+                return;
+            }
+        
+        
+        
+        System.exit(0);
+        }
+        else if(mort == 5) {
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
         

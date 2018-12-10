@@ -20,12 +20,11 @@ import neversync.NeverSync;
  * @author benjaminlangston
  */
 public class MapView {
-    
+
     private String message;
 
     protected final BufferedReader keyboard = NeverSync.getInFile();
     protected final PrintWriter console = NeverSync.getOutFile();
-
 
     public MapView() {
 
@@ -44,7 +43,7 @@ public class MapView {
         Map map = game.getMap(); // retreive the map from game
         Location[][] locations = map.getLocations(); // retreive the locations from map
         // Build the heading of the map
-        
+
         this.console.print("  |");
         for (int column = 0; column < locations[0].length; column++) {
             // print col numbers to side of map
@@ -78,33 +77,127 @@ public class MapView {
                 }
             }
             this.console.println("|");
-            
+
         }
-        this.console.println("\nYour current location is: \n" + map.getCurrentLocation().getDescription());
-        
-        
-        
+        this.console.println("\nYour current location is: \n"
+                + map.getCurrentLocation().getDescription());
+
+        String three = map.getCurrentLocation().getDisplaySymbol();
+
+        if ("SQ".equals(three)) {
+            double caus = game.getCurrentPopulation();
+            this.console.println("Your Current Population is " + caus + " people.");
+            double wht = (caus * 20);
+            this.console.println(wht + " bushels are needed to avoid starvation.");
+        }
+
         InventoryItem currentItems = map.getCurrentLocation().getItem();
-        
+
         if (currentItems != null) {
-        
-       
+
             String one = currentItems.getItemType();
-            
-            
 
-            this.console.println("You have found " + one + " at this location."
-                    + "\nWould you like to add it to your backpack?");
+            this.console.println("You have found " + one + " at this location.");
 
         }
-        
-        
-        
+
         Actor currentActor = map.getCurrentLocation().getActor();
+
         if (currentActor == null) {
-        return;
+            return;
         }
-        this.console.println(currentActor + " is here to help you, do you have a question to ask?");
+
+        // use loop to avoid killing people twice for additional visit
+//        boolean here = map.getCurrentLocation().isVisited();
+//        while (here == false) { Amalickiah
+        if ("Amalickiah".equals(currentActor.getName())) {
+            this.console.println("Amalickiah is here. His advice is to visit the orchard\n"
+                    + "for the living water that will prolong life......");
+        }
+
+        if ("Laman".equals(currentActor.getName())) {
+            this.console.println("Laman's army is here and they have attacked the city\n"
+                    + "10 people where killed in the attack.\n\n");
+            double caus = game.getCurrentPopulation();
+            caus = caus - 10;
+            game.setCurrentPopulation((int) caus);
+
+            this.console.print("Your new population is " + caus + "\n");
+            return;
+
+        }
+
+        if ("Lemuel".equals(currentActor.getName())) {
+            this.console.println("Lemuel has released a plaque on the city\n"
+                    + "Half the population died.\n\n");
+            double pop = game.getCurrentPopulation();
+            double caus = pop * .5;
+            game.setCurrentPopulation((int) caus);
+
+            this.console.println("Your new population is " + caus + "\n\n");
+
+            if (caus < 50) {
+
+                this.console.println("The population is less than 50.\n\n\n"
+                        + " ██████╗  █████╗ ███╗   ███╗███████╗                   \n"
+                        + "██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n"
+                        + "██║  ███╗███████║██╔████╔██║█████╗                     \n"
+                        + "██║   ██║██╔══██║██║╚██╔╝██║██╔══╝                     \n"
+                        + "╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗                   \n"
+                        + " ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                   \n"
+                        + "                                                       \n"
+                        + " ██████╗ ██╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗\n"
+                        + "██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║\n"
+                        + "██║   ██║██║   ██║█████╗  ██████╔╝██║██║██║██║██║██║██║\n"
+                        + "██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                        + "╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n"
+                        + " ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                        + "                                                       \n");
+
+                System.exit(0);
+            }
+
+            return;
+
+        }
+
+        if ("Korihor".equals(currentActor.getName())) {
+            this.console.println("Korihor has released the black death on the city\n"
+                    + "Everyone has been wiped out.\n\n");
+
+            this.console.println("\n\n\n"
+                    + " ██████╗  █████╗ ███╗   ███╗███████╗                   \n"
+                    + "██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n"
+                    + "██║  ███╗███████║██╔████╔██║█████╗                     \n"
+                    + "██║   ██║██╔══██║██║╚██╔╝██║██╔══╝                     \n"
+                    + "╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗                   \n"
+                    + " ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                   \n"
+                    + "                                                       \n"
+                    + " ██████╗ ██╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗\n"
+                    + "██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║\n"
+                    + "██║   ██║██║   ██║█████╗  ██████╔╝██║██║██║██║██║██║██║\n"
+                    + "██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                    + "╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n"
+                    + " ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                    + "                                                       \n");
+
+            double caus = game.getCurrentPopulation();
+            caus = caus * 0;
+            game.setCurrentPopulation((int) caus);
+
+            System.exit(0);
+//        return;
+
+        }
+//        here = true;
+//        }
+
+        if ("Korihor".equals(currentActor.getName()) || "Amalickiah".equals(currentActor.getName())) {
+            return;
+        }
+
+        String actor = currentActor.getName();
+        this.console.println(actor + " is here to help you, do you have a question to ask?");
     }
 
 }

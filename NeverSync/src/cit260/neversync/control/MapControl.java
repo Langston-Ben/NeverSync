@@ -79,13 +79,15 @@ public class MapControl {
         location.setBlocked(false);
         location.setDisplaySymbol("RV");
         location.setDescription("This is a river Aaron.\nThis is your starting"
-                + " point in the game.\nPlease select your next location carefully!");
+                + " point in the game.\nPlease select your next location carefully!\n"
+                + "You should move to the wheat field to plant the crops this season.");
         locations[0][0] = location;
 //                  
         location = new Location();
         location.setRow(0);
         location.setColumn(1);
-        location.setDescription("This is a wheat field");
+        location.setDescription("This is a wheat field.\nPlant the crops for this season, "
+                + "then move to the city square to feed the people.");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("WH");
@@ -103,7 +105,9 @@ public class MapControl {
         location = new Location();
         location.setRow(0);
         location.setColumn(3);
-        location.setDescription("This is city square");
+        location.setDescription("This is city square.\nPlease feed the people,"
+                + "they are hungry and require 20 bushels each to live the year\n"
+                + "Next, proceed to the church to pay tithes and offerings.\n");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("SQ");
@@ -139,7 +143,8 @@ public class MapControl {
         location = new Location();
         location.setRow(1);
         location.setColumn(2);
-        location.setDescription("This is the church");
+        location.setDescription("This is the church.\nPlease pay your tithes and "
+                + "then proceed to one other location\nbefore moving to the storehouse");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("CH");
@@ -364,7 +369,42 @@ public class MapControl {
 //    actorCoordinates.x = location.getRow();
 //    actorCoordinates.y = location.getColumn();
         locations[1][4] = location;
+        
+        location = locations[2][2];
+        location.setActor(Actor.Laman);
+        locations[2][2] = location;
+        
+        location = locations[2][3];
+        location.setActor(Actor.Laman);
+        locations[2][3] = location;
 
+        location = locations[2][4];
+        location.setActor(Actor.Laman);
+        locations[2][4] = location;
+        
+        location = locations[3][3];
+        location.setActor(Actor.Lemuel);
+        locations[3][3] = location;
+        
+        location = locations[4][4];
+        location.setActor(Actor.Korihor);
+        locations[4][4] = location;
+        
+        location = locations[4][2];
+        location.setActor(Actor.Lemuel);
+        locations[4][2] = location;
+        
+        location = locations[4][2];
+        location.setActor(Actor.Laman);
+        locations[4][2] = location;
+        
+        location = locations[4][0];
+        location.setActor(Actor.Amalickiah);
+        locations[4][0] = location;
+     
+        
+        
+        
         return 1;
     }
 
