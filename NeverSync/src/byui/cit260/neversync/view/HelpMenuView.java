@@ -73,7 +73,7 @@ public class HelpMenuView extends View {
         this.console.println("\nCrop Management Resources:");
         this.console.println("\n"
                 + "You are given 2700 bushels of wheat to begin the game. "
-                + "\nEach person consumes 3 bushels per year."
+                + "\nEach person consumes 20 bushels per year."
                 + "\nEach year you are allowed to decide how much is set aside to pay tithing, "
                 + "feed your people, plant as crops, and to save. "
                 + "\nYou may receive up to 10 newcomers per year. "
