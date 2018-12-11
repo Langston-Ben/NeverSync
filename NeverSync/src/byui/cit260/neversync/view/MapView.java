@@ -66,6 +66,9 @@ public class MapView {
                     // Set < > indicators to show this location has been visited.
                     leftIndicator = ">"; // can be stars or whatever these are indicators showing visited
                     rightIndicator = "<"; // same as above
+                } else if (locations[row][column].isBlocked()) {
+                    leftIndicator = "!";
+                    rightIndicator = "!";
                 }
                 this.console.print("|"); // start map with a |
                 if (locations[row][column] == null) {
@@ -84,6 +87,7 @@ public class MapView {
                 + map.getCurrentLocation().getDescription());
 
         String three = map.getCurrentLocation().getDisplaySymbol();
+        ArrayList<String> backPack = game.getPlayer().getBackPack();
 
         if ("SQ".equals(three)) {
             double caus = game.getCurrentPopulation();
@@ -91,14 +95,42 @@ public class MapView {
             double wht = (caus * 20);
             this.console.println(wht + " bushels are needed to avoid starvation.");
         }
+        
+        if ("OR".equals(three)) {
+        this.console.println("You have found the key to the temple and it has been\n"
+                + "added to your backpack.\nPlease visit the Library to unlock "
+                + "the Temple soon....");
+        
+        backPack.add("key");
+        
+      
+            
+            backPack = game.getPlayer().getBackPack();
+            
+        }
+        
+        if ("LB".equals(three)) {
+            locations = map.getLocations();
 
+            for (String string : backPack) {
+
+                if ("key".equals(string)) {
+                    locations[3][4].setBlocked(false);
+                    this.console.println("You have unlocked the temple. Please visit often....");
+                    return;
+                }
+            
+            }
+        
+        }
+        
         InventoryItem currentItems = map.getCurrentLocation().getItem();
 
         if (currentItems != null) {
 
             String one = currentItems.getItemType();
 
-            this.console.println("You have found " + one + " at this location.");
+            this.console.println("\nYou have found " + one + " at this location.");
 
         }
 
@@ -108,7 +140,6 @@ public class MapView {
             return;
         }
 
-       
         if ("Amalickiah".equals(currentActor.getName())) {
             this.console.println("Amalickiah is here. His advice is to visit the orchard\n"
                     + "for the living water that will prolong life......");
@@ -116,16 +147,15 @@ public class MapView {
 
         if ("Laman".equals(currentActor.getName())) {
             locations = map.getLocations();
-            
+
             if (locations[3][4].visited == false) {
-            
-            
-            this.console.println("Laman's army is here and they have attacked the city\n"
-                    + "10 people where killed in the attack.\n\n");
-            double caus = game.getCurrentPopulation();
-            caus = 10;
-            game.setPopulationKilled((int) caus);
-            
+
+                this.console.println("Laman's army is here and they have attacked the city\n"
+                        + "10 people where killed in the attack.\n\n");
+                double caus = game.getCurrentPopulation();
+                caus = 10;
+                game.setPopulationKilled((int) caus);
+
             }
 
 //            this.console.print("Your new population is " + caus + "\n");
@@ -168,22 +198,23 @@ public class MapView {
         }
 
         if ("Korihor".equals(currentActor.getName())) {
-            
-            ArrayList<String> backPack = game.getPlayer().getBackPack();
-            
+
+            backPack = game.getPlayer().getBackPack();
+
             for (String string : backPack) {
-                
+
                 if ("antiplague".equals(string)) {
-                    
-                  this.console.println("The antiplague in your backpack has saved\n"
-                          + "the city from Korihor's treachery\nNow visit the temple"
-                          + " and \nyou will be safe from Laman and Lemuel....");
-                return;
+
+                    this.console.println("The antiplague in your backpack has saved\n"
+                            + "the city from Korihor's treachery.\nNow visit the temple"
+                            + " and \nyou will be safe from Laman and Lemuel....");
+
+//                  backPack.remove("antiplague");
+                    return;
                 }
-            
+
             }
-            
-            
+
             this.console.println("Korihor has released the black death on the city\n"
                     + "Everyone has been wiped out.\n\n");
 

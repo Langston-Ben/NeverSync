@@ -5,6 +5,7 @@
  */
 package byui.cit260.neversync.view;
 
+import byui.cit260.neversync.exceptions.PlantControlException;
 import byui.cit260.neversync.exceptions.StoreHouseException;
 //import cit260.neversync.control.GameControl;
 import cit260.neversync.control.StoreHouseControl;
@@ -39,6 +40,16 @@ public class ItemInventoryView {
 //        game.setInventory(GameControl.createItems());
         Game game = NeverSync.getCurrentGame();
         game.getInventory();
+        String loc = NeverSync.getCurrentGame().getMap().getCurrentLocation().getDisplaySymbol();
+            
+            if (!"ST".equals(loc)) {
+                this.console.println("\n\nYou must be in the Storehouse to purchase items!!\n"
+                        + "Use the Map the Change locations to ST.");
+                return;
+            }
+        
+        
+        
 
         InventoryItem[] tools = game.getInventory();
         this.console.println("========================\n"

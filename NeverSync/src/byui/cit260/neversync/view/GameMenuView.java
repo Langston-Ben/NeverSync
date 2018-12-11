@@ -170,7 +170,7 @@ public class GameMenuView extends View {
             try {
                 MapControl.movePlayer(map, iRow, iColumn);
             } catch (MapControlException ex) {
-                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
+                ErrorView.display(this.getClass().getName(), "\n\n" + ex.getMessage());
                 return;
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
@@ -240,7 +240,7 @@ public class GameMenuView extends View {
 "╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗██╗██╗\n" +
 " ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
 "                                                                            \n\n");
-        this.console.println("You have finish the game. Your score is: \n" + bonus);
+        this.console.println("You have finished the game. Your score is: \n" + bonus);
         PrintWriter out = null;
             try {
                 out = new PrintWriter("highscore.txt"); 

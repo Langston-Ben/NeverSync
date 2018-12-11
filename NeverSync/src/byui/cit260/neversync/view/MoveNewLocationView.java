@@ -50,6 +50,7 @@ public class MoveNewLocationView extends View {
         Location[][] locations = map.getLocations(); // retreive the locations from map
         for (int row = 0; row < locations.length; row++) {
             for (int column = 0; column < locations[row].length; column++) {
+                
                 if (locations[row][column] != null) {
                     if (mapOption.equals(locations[row][column].getDisplaySymbol())) {
                         try {
@@ -57,11 +58,13 @@ public class MoveNewLocationView extends View {
                         } catch (MapControlException ex) {
                             ErrorView.display(this.getClass().getName(), ex.getMessage());
                         }
+                        
 
                         MapView mapView = new MapView();
                         mapView.displayMap();
                         MainMenuView mainMenuView = new MainMenuView();
                         mainMenuView.display();
+                        
                         return true;
                     }
                 }

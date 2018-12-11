@@ -80,7 +80,11 @@ public class MapControl {
         location.setDisplaySymbol("RV");
         location.setDescription("This is a river Aaron.\nThis is your starting"
                 + " point in the game.\nPlease select your next location carefully!\n"
-                + "You should move to the wheat field to plant the crops this season.");
+                + "You should move to the wheat field to plant the crops this season.\n"
+                + "Amalickiah is at the butcher shop (BX) with some advice for you...\n\n"
+                + "You may want to purchase an item at the store before going to the location\n"
+                + "he tells you about.\n\n"
+                + "The Temple is the key to safety...");
         locations[0][0] = location;
 //                  
         location = new Location();
@@ -96,7 +100,8 @@ public class MapControl {
         location = new Location();
         location.setRow(0);
         location.setColumn(2);
-        location.setDescription("This is the storehouse");
+        location.setDescription("This is the storehouse\nHave a look around and "
+                + "purchase what you need.");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("ST");
@@ -256,7 +261,7 @@ public class MapControl {
                 + "Temple attendance can bring miracles into the lives of the "
                 + "population of the City of Aaron.\n\n");
         location.setVisited(false);
-        location.setBlocked(false);
+        location.setBlocked(true);
         location.setDisplaySymbol("TP");
         locations[3][4] = location;
 
@@ -400,7 +405,7 @@ public class MapControl {
         location.setActor(Actor.Laman);
         locations[4][2] = location;
         
-        location = locations[4][0];
+        location = locations[3][1];
         location.setActor(Actor.Amalickiah);
         locations[4][0] = location;
      
@@ -473,9 +478,13 @@ public class MapControl {
 
     public static void movePlayer(Map map, int row, int column) 
         throws MapControlException {
+        Location[][] locations = map.getLocations();
         
         if (map == null || row < 0 || column < 0)
             throw new MapControlException("MovePlayer Failed");
+        
+        if (locations[row][column].isBlocked()) {
+            throw new MapControlException("Location currently blocked, try another location\n");                  }
         
         map.setCurrentLocation(map.getLocations()[row][column]);
         map.getCurrentLocation().setVisited(true);

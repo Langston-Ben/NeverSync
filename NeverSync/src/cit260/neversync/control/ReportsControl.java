@@ -111,7 +111,13 @@ public class ReportsControl {
 //    }
 
     public static void printLocationReport(String outputLocation) throws ReportsControlException {
-
+//        Location[][] locations = NeverSync.getCurrentGame().getMap().getLocations();
+        
+        String listing = NeverSync.getCurrentGame().getMap().getDescription();
+        
+        System.out.println(listing);
+        
+        
     }
 
 }
