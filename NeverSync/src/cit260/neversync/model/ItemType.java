@@ -24,7 +24,8 @@ public enum ItemType {
     shovel,
     sickle,
     saw,
-    nails;
+    nails,
+    antiplague;
   
 }
    

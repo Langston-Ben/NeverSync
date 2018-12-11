@@ -252,10 +252,12 @@ public class MapControl {
         location = new Location();
         location.setRow(3);
         location.setColumn(4);
-        location.setDescription("This is the Pottery Store");
+        location.setDescription("This is the Temple of the City of Aaron\n"
+                + "Temple attendance can bring miracles into the lives of the "
+                + "population of the City of Aaron.\n\n");
         location.setVisited(false);
         location.setBlocked(false);
-        location.setDisplaySymbol("PS");
+        location.setDisplaySymbol("TP");
         locations[3][4] = location;
 
         location = new Location();

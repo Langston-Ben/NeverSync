@@ -98,7 +98,7 @@ public class GameControl implements Serializable {
 
     public static InventoryItem[] createItems() {
 
-        InventoryItem[] items = new InventoryItem[15];
+        InventoryItem[] items = new InventoryItem[16];
 
         InventoryItem item = new InventoryItem();
         item.setItemType("oil");
@@ -204,6 +204,13 @@ public class GameControl implements Serializable {
         item.setRequiredAmount(5);
         item.setPricePerUnit(1.50);
         items[ItemType.nails.ordinal()] = item;
+        
+        item = new InventoryItem();
+        item.setItemType("antiplague");
+        item.setQuantityInStock(1);
+        item.setRequiredAmount(1);
+        item.setPricePerUnit(100);
+        items[ItemType.antiplague.ordinal()] = item;
 
         return items;
 

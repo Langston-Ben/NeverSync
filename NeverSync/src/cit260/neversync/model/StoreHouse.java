@@ -19,6 +19,7 @@ public class StoreHouse implements Serializable {
     private String food;
     private String medicine;
     private String weapon;
+   
 
     public StoreHouse() {
     }

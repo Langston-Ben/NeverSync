@@ -38,6 +38,7 @@ public class ReportsMenuView extends View {
                 + "P - View and Print the PROVISIONS in the storehouse\n"
                 + "W - View and Print the AUTHORS of the game\n"
                 + "L - View and Print Locations and Availability\n"
+                + "B - View the items in your backpack\n"
                 + "Q - Quit the Reports Menu\n");
        
 		String reportsMenuSelection = this.getInput("\nPlease enter your selection: ");
@@ -71,6 +72,9 @@ public class ReportsMenuView extends View {
                 break;
             case "L":
                 locationsReport();
+                break;
+            case "B":
+                backPackReport();
                 break;
             case "Q":
                 return true;
@@ -142,5 +146,17 @@ public class ReportsMenuView extends View {
     private void locationsReport() {
          LocationsReportView locationsReportView = new LocationsReportView();
          locationsReportView.display();
+    }
+
+    private void backPackReport() {
+        
+        Game game = NeverSync.getCurrentGame();
+        ArrayList<String> backPack = game.getPlayer().getBackPack();
+        
+        for (String string : backPack) {
+            
+            this.console.println(string);
+            
+        }
     }
 }

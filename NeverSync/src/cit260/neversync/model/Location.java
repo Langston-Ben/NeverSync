@@ -18,7 +18,7 @@ public class Location implements Serializable {
     private int row;        
     private int column; 
     private String description;
-    private boolean visited;   
+    public boolean visited;   
     public Scene scene;
     private boolean blocked;
     private String displaySymbol;
@@ -26,12 +26,21 @@ public class Location implements Serializable {
     private Actor actor;
 //    private final ArrayList<InventoryItem> item = new ArrayList<>();
     private InventoryItem item;
+    private Map map;
     
     public Location() {
     }
 
     public Actor getActor() {
         return actor;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     public void setActor(Actor actor) {

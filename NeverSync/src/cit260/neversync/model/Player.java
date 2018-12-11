@@ -19,6 +19,8 @@ public class Player implements Serializable {
     private String name;
     private Double time;
     private Game game;
+    
+    private final ArrayList<String> backPack = new ArrayList<>();
     private final ArrayList<Actor> actor = new ArrayList<>();
 
     public ArrayList<Actor> getActor() {
@@ -28,7 +30,16 @@ public class Player implements Serializable {
     public Player() {
     }
 
+    
+    
+
     // Getters and Setters
+    
+    
+    public ArrayList<String> getBackPack() {
+        return backPack;
+    }
+
     public String getName() {
         return name;
     }

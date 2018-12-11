@@ -13,6 +13,7 @@ import cit260.neversync.model.InventoryItem;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 //import java.util.Scanner;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
@@ -139,6 +140,18 @@ public class ItemInventoryView {
                         ItemType.setItemType(one);
                         ItemType.setQuantity((int) quantityToBuy);
                         ItemType.setQuantityInStock((int) remaining);
+                        
+                        // save the item to the players backpack
+                        
+                        ArrayList<String> backPack = game.getPlayer().getBackPack();
+                        
+                        backPack.add(two);
+//
+//        
+//        
+//        actors.add(Actor.Lehi);
+                        
+                       
 
                         return;
                     }

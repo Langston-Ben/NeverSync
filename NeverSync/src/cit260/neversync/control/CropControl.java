@@ -6,6 +6,7 @@
 package cit260.neversync.control;
 
 import byui.cit260.neversync.exceptions.CropControlException;
+import byui.cit260.neversync.exceptions.PlantControlException;
 import cit260.neversync.model.Game;
 import java.util.Random;
 import neversync.NeverSync;
@@ -18,7 +19,15 @@ public class CropControl {
 
     public static double calcBushelsToFeedThePeople(double wheatToFeed, double initWheatStorage)
             throws CropControlException {
+        
         Game game = NeverSync.getCurrentGame();
+        String loc = NeverSync.getCurrentGame().getMap().getCurrentLocation().getDisplaySymbol();
+        
+        if (!"SQ".equals(loc)) {
+                throw new CropControlException("\n\nYou must be at the city square"
+                        + " to feed the people!!\n"
+                        + "Use the Map the Change locations.");
+            }
 
         if (wheatToFeed < 0) {
             throw new CropControlException("\nThe Value must "
@@ -40,6 +49,16 @@ public class CropControl {
     public static double calcCropYield(double percentTithed)
             throws CropControlException {
         Game game = NeverSync.getCurrentGame();
+         String loc = NeverSync.getCurrentGame().getMap().getCurrentLocation().getDisplaySymbol();
+        
+        if (!"CH".equals(loc)) {
+                throw new CropControlException("\n\nYou must be at the Church to "
+                        + "pay tithing...!!\n"
+                        + "You may want to visit the Temple first...."
+                        + "Use the Map the Change locations.");
+            }
+        
+        
         double blessingFactor = 0;
         double eatenFactor = 0;
         double bushelsHarvested;
@@ -175,9 +194,10 @@ public class CropControl {
 //                    + "GAME OVER\nGAME OVER\nGAME OVER\nGAME OVER\nGAME OVER\n");
 //            
 //        }
+            int killed = game.getPopulationKilled();
             
             passed = ((peopleFed - pop) * -1);
-            double newPop = (pop - passed);
+            double newPop = (pop - passed - killed);
             
 //        if (newPop < (pop * .5)) { 
             
@@ -196,6 +216,7 @@ public class CropControl {
             }
             if (peopleFed < (pop * .5)) {
             throw new CropControlException("Half your population has died!\n" +
+                    
 " ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +
 "██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n" +
 "██║  ███╗███████║██╔████╔██║█████╗                     \n" +

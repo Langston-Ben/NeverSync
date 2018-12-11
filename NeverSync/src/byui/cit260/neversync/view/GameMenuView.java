@@ -44,6 +44,8 @@ public class GameMenuView extends View {
             this.console.printf("%n%-30s%10s", "Current Year:" ,game.getYear(),"\n");
             this.console.printf("%n%-30s%10s", "People Starved:" ,game.getStarved(),"\n");
             this.console.printf("%n%-30s%10s", "New Population:" ,game.getNewPopulation(),"\n");
+            this.console.printf("%n%-30s%10s", "Population Killed:" , 
+                    game.getPopulationKilled(),"\n");
             this.console.printf("%n%-30s%10s", "Current Population:" 
                     ,game.getCurrentPopulation(),"\n");
             this.console.printf("%n%-30s%10s", "Current Acres Owned:" ,game.getAcresOwned(),"\n");

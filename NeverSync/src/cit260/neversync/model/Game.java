@@ -25,6 +25,7 @@ public class Game implements Serializable {
     private double acresOwned;
     private double wheatInStorage;
     private double acresPlanted;
+    private int populationKilled;
     private int year;
     private int starved;
     private int newPopulation;
@@ -42,6 +43,14 @@ public class Game implements Serializable {
     public Game() {
     }
 
+    public int getPopulationKilled() {
+        return populationKilled;
+    }
+
+    public void setPopulationKilled(int populationKilled) {
+        this.populationKilled = populationKilled;
+    }
+    
     public double getWheatFedToPeople() {
         return wheatFedToPeople;
     }

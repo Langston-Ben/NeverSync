@@ -13,6 +13,7 @@ import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import neversync.NeverSync;
 
 /**
@@ -107,22 +108,27 @@ public class MapView {
             return;
         }
 
-        // use loop to avoid killing people twice for additional visit
-//        boolean here = map.getCurrentLocation().isVisited();
-//        while (here == false) { Amalickiah
+       
         if ("Amalickiah".equals(currentActor.getName())) {
             this.console.println("Amalickiah is here. His advice is to visit the orchard\n"
                     + "for the living water that will prolong life......");
         }
 
         if ("Laman".equals(currentActor.getName())) {
+            locations = map.getLocations();
+            
+            if (locations[3][4].visited == false) {
+            
+            
             this.console.println("Laman's army is here and they have attacked the city\n"
                     + "10 people where killed in the attack.\n\n");
             double caus = game.getCurrentPopulation();
-            caus = caus - 10;
-            game.setCurrentPopulation((int) caus);
+            caus = 10;
+            game.setPopulationKilled((int) caus);
+            
+            }
 
-            this.console.print("Your new population is " + caus + "\n");
+//            this.console.print("Your new population is " + caus + "\n");
             return;
 
         }
@@ -162,6 +168,22 @@ public class MapView {
         }
 
         if ("Korihor".equals(currentActor.getName())) {
+            
+            ArrayList<String> backPack = game.getPlayer().getBackPack();
+            
+            for (String string : backPack) {
+                
+                if ("antiplague".equals(string)) {
+                    
+                  this.console.println("The antiplague in your backpack has saved\n"
+                          + "the city from Korihor's treachery\nNow visit the temple"
+                          + " and \nyou will be safe from Laman and Lemuel....");
+                return;
+                }
+            
+            }
+            
+            
             this.console.println("Korihor has released the black death on the city\n"
                     + "Everyone has been wiped out.\n\n");
 

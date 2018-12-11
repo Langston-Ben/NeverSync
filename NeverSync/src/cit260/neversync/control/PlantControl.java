@@ -19,6 +19,13 @@ public class PlantControl {
             double acresToPlant, double initWheatStorage)
             throws PlantControlException {
             Game game = NeverSync.getCurrentGame();
+            String loc = NeverSync.getCurrentGame().getMap().getCurrentLocation().getDisplaySymbol();
+            
+            if (!"WH".equals(loc)) {
+                throw new PlantControlException("\n\nYou must be in the Wheat Field to Plant!!\n"
+                        + "Use the Map the Change locations.");
+            }
+            
             if (acresToPlant< 0) {
                 throw new PlantControlException("\n\nThe input cannot be negative.\n");
                         
