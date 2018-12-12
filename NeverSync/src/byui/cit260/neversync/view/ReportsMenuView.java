@@ -14,6 +14,7 @@ import cit260.neversync.model.Location;
 import java.io.PrintWriter;
 import neversync.NeverSync;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -152,7 +153,7 @@ public class ReportsMenuView extends View {
         
         for (Location[] locations : locList) {
             
-            this.console.println(locations);
+            this.console.println(Arrays.toString(locations));
             
         }
          LocationsReportView locationsReportView = new LocationsReportView();
