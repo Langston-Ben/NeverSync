@@ -7,11 +7,14 @@ package byui.cit260.neversync.view;
 
 import byui.cit260.neversync.exceptions.ReportsControlException;
 import cit260.neversync.model.Game;
+import cit260.neversync.model.Map;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.Actor;
+import cit260.neversync.model.Location;
 import java.io.PrintWriter;
 import neversync.NeverSync;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -144,6 +147,15 @@ public class ReportsMenuView extends View {
     }
 
     private void locationsReport() {
+		
+		Game game = NeverSync.getCurrentGame();
+        Location[][] locList = game.getMap().getLocations();
+        
+        for (Location[] locations : locList) {
+            
+            this.console.println(Arrays.toString(locations));
+            
+        }
          LocationsReportView locationsReportView = new LocationsReportView();
          locationsReportView.display();
     }
