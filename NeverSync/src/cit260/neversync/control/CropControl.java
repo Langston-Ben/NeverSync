@@ -100,7 +100,7 @@ public class CropControl {
         }
 
         // grow the population
-        double popGrowth = rand.nextInt((5 - 1) + 1) + 1;
+        double popGrowth = rand.nextInt((20 - 1) + 1) + 1;
         double curPop = game.getCurrentPopulation();
 
         popGrowth = ((curPop * popGrowth) / 100);
@@ -210,7 +210,7 @@ public class CropControl {
 
             game.setYear(year);
             
-            if (year == 2 ){
+            if (year == 4 ){
 //                 mort = true;
             return year;
             }

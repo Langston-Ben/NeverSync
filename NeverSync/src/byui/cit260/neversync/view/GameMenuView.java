@@ -203,7 +203,7 @@ public class GameMenuView extends View {
 
         }
 //        
-        if (mort == 2) {
+        if (mort == 4) {
             double points = game.getCurrentPopulation();
             double bonus = game.getWheatInStorage();
 
@@ -254,8 +254,36 @@ public class GameMenuView extends View {
                 ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
                 return;
             }
+            
 
-            this.console.println("Enter Q to quit or M to return to the main menu");
+        this.console.println("\n\n         This is the final Annual Report");
+        this.console.printf("%n%-30s%10s", "Item", "Quantity");
+        this.console.printf("%n%-30s%10s", "----", "  --------\n\r");
+
+        this.console.printf("%n%-30s%10s", "Current Year:", game.getYear(), "\n");
+        this.console.printf("%n%-30s%10s", "People Starved:", game.getStarved(), "\n");
+        this.console.printf("%n%-30s%10s", "New Population:", game.getNewPopulation(), "\n");
+        this.console.printf("%n%-30s%10s", "Population Killed:",
+                game.getPopulationKilled(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Population:",
+                game.getCurrentPopulation(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Acres Owned:", game.getAcresOwned(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Bushels Per Acre:",
+                game.getBushelsPerAcreHarvested(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Bushels Harvested:",
+                game.getBushelsHarvested(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Bushels Tithed:",
+                game.getBushelsInTithes(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Wheat Eaten By Rats:",
+                game.getWheatEatenByRats(), "\n");
+        this.console.printf("%n%-30s%10s", "Current Wheat:",
+                game.getWheatInStorage(), "\n");
+            
+            
+            
+            
+
+            this.console.println("\n\nEnter Q to quit or M to return to the main menu");
             boolean valid = false;
             String selection = null;
 
