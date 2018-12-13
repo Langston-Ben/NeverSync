@@ -148,13 +148,18 @@ public class ReportsMenuView extends View {
 
     private void locationsReport() {
 		
-		Game game = NeverSync.getCurrentGame();
-        Location[][] locList = game.getMap().getLocations();
+            Game game = NeverSync.getCurrentGame();
+
+            Location[][] locations = game.getMap().getLocations();
+            for (int column = 0; column < locations[0].length; column++) 
+
+            for (int row = 0; row < locations.length; row++) {
+            String red = locations[row][column].getDescription();
+            String blue = locations[row][column].getDisplaySymbol();
+                        
+            this.console.println("Description: " + red);
+            this.console.println("Map Symbol: " + blue + "\n\n");
         
-        for (Location[] locations : locList) {
-            
-            this.console.println(Arrays.toString(locations));
-            
         }
          LocationsReportView locationsReportView = new LocationsReportView();
          locationsReportView.display();
