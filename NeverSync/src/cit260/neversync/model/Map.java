@@ -26,6 +26,15 @@ public class Map implements Serializable {
     private int currentColumn = 0;
     private InventoryItem item;
     private Actor actor;
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public Map() {
     }

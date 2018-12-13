@@ -50,7 +50,7 @@ public class GameControl implements Serializable {
     public GameControl() {
     }
 
-    public static int createNewGame(Player player) {
+    public static int createNewGame(Player player) throws GameControlException{
         // Check for invalid inputs
         if (player == null) {
             return -1;
@@ -86,9 +86,7 @@ public class GameControl implements Serializable {
         }
 
         if (map == null) {
-
-            System.out.println("createMap failed");
-            return -2;
+            throw new GameControlException("Map creation has failed");
         } else {
 
             return 1;
