@@ -210,7 +210,7 @@ public class CropControl {
 
             game.setYear(year);
             
-            if (year == 3 ){
+            if (year == 2 ){
 //                 mort = true;
             return year;
             }

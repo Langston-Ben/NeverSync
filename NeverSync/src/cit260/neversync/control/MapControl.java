@@ -259,7 +259,9 @@ public class MapControl {
         location.setColumn(4);
         location.setDescription("This is the Temple of the City of Aaron\n"
                 + "Temple attendance can bring miracles into the lives of the "
-                + "population of the City of Aaron.\n\n");
+                + "population of the City of Aaron.\n\n"
+                + "The Lord has blessed you by eliminating the armies of Laman and "
+                + "Lemuel");
         location.setVisited(false);
         location.setBlocked(true);
         location.setDisplaySymbol("TP");

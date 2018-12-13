@@ -130,7 +130,7 @@ public class MapView {
 
             String one = currentItems.getItemType();
 
-            this.console.println("\nYou have found " + one + " at this location.");
+//            this.console.println("\nYou have found " + one + " at this location.");
 
         }
 
