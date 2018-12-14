@@ -87,6 +87,8 @@ public class MapView {
         }
         this.console.println("\nYour current location is: \n"
                 + map.getCurrentLocation().getDescription());
+        
+        
 
         String three = map.getCurrentLocation().getDisplaySymbol();
         ArrayList<String> backPack = game.getPlayer().getBackPack();
@@ -99,7 +101,7 @@ public class MapView {
         }
         
         if ("OR".equals(three)) {
-        this.console.println("You have found the key to the temple and it has been\n"
+        this.console.println("You have found the key to the Temple and it has been\n"
                 + "added to your backpack.\nPlease visit the Library to unlock "
                 + "the Temple soon....");
         
@@ -113,12 +115,7 @@ public class MapView {
         
         if ("LB".equals(three)) {
             locations = map.getLocations();
-//            
-            
-            
-            
-            
-            
+//          
 
             for (String string : backPack) {
 
@@ -130,6 +127,108 @@ public class MapView {
             
             }
         
+        }
+        
+        if ("FR".equals(three)) {
+        this.console.println("\n\nYou have arrived at the farm.\nThe farmer is happy"
+                + " to see you.");
+        this.console.println("The farmer needs grain...\nVisit the store"
+                        + " and bring the grain back for access to the wheat field");
+        
+   
+            
+            backPack = game.getPlayer().getBackPack();
+            
+            for (String string : backPack) {
+
+                if ("grain".equals(string)) {
+                    locations[0][1].setBlocked(false);
+                    this.console.println("You have unlocked the wheat field.\n"
+                            + "The people of the City of Aaron are grateful\n\n");
+                    return;
+                }
+               
+            }
+            
+        }
+        
+        
+        if ("JD".equals(three)) {
+        this.console.println("\n\nThe judge has some knowledge to share, but first "
+                + "you must answer a question.....\n\n");
+        
+        Question question = new Question();
+            
+                question.setQuestionText("How many books are there in the Book of Mormon?");
+                question.setAnswer1("16");
+                question.setAnswer2("15");
+                question.setAnswer3("20");
+                question.setAnswer4("11");
+                question.setCorrectAnswer(2);
+                question.setPoints(5);
+
+            this.console.println(question.getQuestionText());
+            this.console.println("Enter the number of the correct answer: (1, 2, 3, 4) \n"
+            + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+            + question.getAnswer3() + "\n4: " + question.getAnswer4());
+                
+            
+            Double theAnswer = null;
+            boolean c = false;
+            
+        while (theAnswer == null) {
+            String value = null;
+            while (c == false) {
+            try {
+                value = this.keyboard.readLine();
+
+                value = value.trim().toUpperCase();
+
+                if (value.equals("Q")) {
+                    return;
+                }
+
+                try {
+
+                    theAnswer = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value");
+
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+            }
+            
+           if (theAnswer == null) {
+           this.console.println("Wrong input...Try again..");
+           continue;
+           }
+            
+            if (theAnswer != question.getCorrectAnswer()) {
+                this.console.println("Sorry, that is incorrect.  Try again...");
+
+            
+                    
+            }
+
+            
+            else {
+                
+                this.console.println("Your answer is correct.\n\n"
+                        + "You must visit the farmer, he is the keymaker for the gate"
+                        + " the has locked you out of the wheat field");
+                break;
+                
+                
+            }
+                
+            }
+             continue;
+        }
         }
         
         InventoryItem currentItems = map.getCurrentLocation().getItem();
@@ -149,9 +248,166 @@ public class MapView {
         }
 
         if ("Amalickiah".equals(currentActor.getName())) {
-            this.console.println("Amalickiah is here. His advice is to visit the orchard\n"
-                    + "for the living water that will prolong life......");
+            this.console.println("Amalickiah is here. To speak with him "
+                + "you must answer a question.....\n\n");
+            
+            Question question = new Question();
+            
+                question.setQuestionText("\nHow old was Mormon when he took charge of the Nephite armies?\n");
+                question.setAnswer1("30");
+                question.setAnswer2("13");
+                question.setAnswer3("16");
+                question.setAnswer4("11");
+                question.setCorrectAnswer(3);
+                question.setPoints(5);
+
+            this.console.println(question.getQuestionText());
+            this.console.println("Enter the number of the correct answer: (1, 2, 3, 4) \n"
+            + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+            + question.getAnswer3() + "\n4: " + question.getAnswer4());
+                
+            
+            Double theAnswer = null;
+            boolean c = false;
+            
+        while (theAnswer == null) {
+            String value = null;
+            while (c == false) {
+            try {
+                value = this.keyboard.readLine();
+
+                value = value.trim().toUpperCase();
+
+                if (value.equals("Q")) {
+                    return;
+                }
+
+                try {
+
+                    theAnswer = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value");
+
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+            }
+            
+             if (theAnswer == null) {
+           this.console.println("Wrong input...Try again..");
+           continue;
+           }
+            
+            if (theAnswer != question.getCorrectAnswer()) {
+                this.console.println("Sorry, that is incorrect.  Try again...");
+                
+//            return;
+            }
+            else {
+                
+                this.console.println("Your answer is correct.\n\n"
+                        + "Amalickiah's advice is to visit the orchard\n"
+                        + "for the living water that will prolong life......\n\n"
+                        + "Beware of secret combinations......\n\n"
+                        + "The Animal Doctor has wisdom.....");
+                break;
+                
+                
+            }
+                continue; 
+            }
         }
+        
+            
+        }
+        
+        
+        
+        
+         if ("Lehi".equals(currentActor.getName())) {
+            this.console.println("Lehi is here. To speak with him "
+                + "you must answer a question.....\n\n");
+            
+            Question question = new Question();
+            
+                question.setQuestionText("\n\nWho was the firstborn son of the brother of Jared?\n\n");
+                question.setAnswer1("Jared");
+                question.setAnswer2("Panchi");
+                question.setAnswer3("Pagag");
+                question.setAnswer4("Joshus");
+                question.setCorrectAnswer(3);
+                question.setPoints(5);
+
+            this.console.println(question.getQuestionText());
+            this.console.println("Enter the number of the correct answer: (1, 2, 3, 4) \n"
+            + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+            + question.getAnswer3() + "\n4: " + question.getAnswer4());
+                
+            
+            Double theAnswer = null;
+            boolean c = false;
+            
+        while (theAnswer == null) {
+            String value = null;
+            while (c == false) {
+            try {
+                value = this.keyboard.readLine();
+
+                value = value.trim().toUpperCase();
+
+                if (value.equals("Q")) {
+                    return;
+                }
+
+                try {
+
+                    theAnswer = Double.parseDouble(value);
+
+                } catch (NumberFormatException nfe) {
+
+                    ErrorView.display(this.getClass().getName(),
+                            "\n\nYou must enter a numerical value");
+
+
+                }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+            }
+            
+             if (theAnswer == null) {
+           this.console.println("Wrong input...Try again..");
+           continue;
+           }
+            
+            if (theAnswer != question.getCorrectAnswer()) {
+                this.console.println("Sorry, that is incorrect.  Try again...");
+                
+//            return;
+            }
+            else {
+                
+                this.console.println("Your answer is correct.\n\n"
+                        + "Lehi's advice is to visit the storehouse\n"
+                        + "the purchase an item to defend against emenies in the "
+                        + "orchard\n\nSickness will prevail without the right choice");
+                break;
+                
+                
+            }
+                continue; 
+            }
+        }
+        
+            
+         }  
+            
+            
+            
+        
 
         if ("Laman".equals(currentActor.getName())) {
             locations = map.getLocations();
@@ -160,9 +416,38 @@ public class MapView {
 
                 this.console.println("Laman's army is here and they have attacked the city\n"
                         + "10 people where killed in the attack.\n\n");
-                double caus = game.getCurrentPopulation();
-                caus = 10;
+                double curPop = game.getCurrentPopulation();
+                double caus = 10;
+                double curKil = game.getPopulationKilled();
+                caus = (curKil + caus);
+                
+                if (caus > curPop) {
+                this.console.println("The people of Aaron have been destroyed\n\n\n");
+                this.console.println("The population is less than 50.\n\n\n"
+                        + " ██████╗  █████╗ ███╗   ███╗███████╗                   \n"
+                        + "██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n"
+                        + "██║  ███╗███████║██╔████╔██║█████╗                     \n"
+                        + "██║   ██║██╔══██║██║╚██╔╝██║██╔══╝                     \n"
+                        + "╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗                   \n"
+                        + " ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                   \n"
+                        + "                                                       \n"
+                        + " ██████╗ ██╗   ██╗███████╗██████╗ ██╗██╗██╗██╗██╗██╗██╗\n"
+                        + "██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██║██║██║██║██║██║\n"
+                        + "██║   ██║██║   ██║█████╗  ██████╔╝██║██║██║██║██║██║██║\n"
+                        + "██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                        + "╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n"
+                        + " ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
+                        + "                                                       \n");
+                        
+                       
+                System.exit(0);
+                }
+                
                 game.setPopulationKilled((int) caus);
+                
+                
+                double newPop = (curPop - 10);
+                game.setCurrentPopulation((int)newPop);
 
             }
 
@@ -262,3 +547,4 @@ public class MapView {
     }
 
 }
+    

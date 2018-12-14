@@ -83,6 +83,7 @@ public class Question implements Serializable {
         this.correctAnswer = correctAnswer;
     }
 
+	
     @Override
     public int hashCode() {
         int hash = 3;
@@ -91,7 +92,7 @@ public class Question implements Serializable {
         hash = 83 * hash + Objects.hashCode(this.answer2);
         hash = 83 * hash + Objects.hashCode(this.answer3);
         hash = 83 * hash + Objects.hashCode(this.answer4);
-        hash = 83 * hash + this.correctAnswer;
+        hash = 83 * hash + Objects.hashCode(this.correctAnswer);
         return hash;
     }
 

@@ -79,12 +79,15 @@ public class MapControl {
         location.setBlocked(false);
         location.setDisplaySymbol("RV");
         location.setDescription("This is a river Aaron.\nThis is your starting"
-                + " point in the game.\nPlease select your next location carefully!\n"
-                + "You should move to the wheat field to plant the crops this season.\n"
+                + " point in the game.\nPlease select your next location carefully!\n\n"
+                + "You should move to the wheat field to plant the crops this season.\n\n"
                 + "Amalickiah is at the butcher shop (BX) with some advice for you...\n\n"
                 + "You may want to purchase an item at the store before going to the location\n"
                 + "he tells you about.\n\n"
-                + "The Temple is the key to safety...");
+                + "The Temple is the key to safety...\n"
+                + "Visiting the temple will protect your from the armies of Laman and Lemuel\n\n"
+                + "The Judge has instruction for you as the new Mayor of Aaron\n"
+                + "Visit (JD)\n");
         locations[0][0] = location;
 //                  
         location = new Location();
@@ -93,7 +96,7 @@ public class MapControl {
         location.setDescription("This is a wheat field.\nPlant the crops for this season, "
                 + "then move to the city square to feed the people.");
         location.setVisited(false);
-        location.setBlocked(false);
+        location.setBlocked(true);
         location.setDisplaySymbol("WH");
         locations[0][1] = location;
 
@@ -194,7 +197,10 @@ public class MapControl {
         location = new Location();
         location.setRow(2);
         location.setColumn(2);
-        location.setDescription("This is the Library");
+        location.setDescription("This is the Library\n\nHere you find the key to"
+                + " all knowledge....\nVisit the Farm to unlock the wheat field...\n"
+                + "You will need to purchase an item from the store first for the farmer...\n"
+                + "The farmer needs grain....");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("LB");
@@ -230,7 +236,7 @@ public class MapControl {
         location = new Location();
         location.setRow(3);
         location.setColumn(1);
-        location.setDescription("This is the Butcher");
+        location.setDescription("This is the Butcher Shop");
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("BX");
@@ -325,58 +331,34 @@ public class MapControl {
 
         Location location = locations[1][1];
         location.setActor(Actor.Nephi);
-//    Point actorCoordinates = Actor.Nephi.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[1][1] = location;
 
         location = locations[2][1];
         location.setActor(Actor.Lehi);
-//    actorCoordinates = Actor.Lehi.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[2][1] = location;
 
         location = locations[3][1];
         location.setActor(Actor.Sariah);
-//    actorCoordinates = Actor.Sariah.getCoordinates();
-//     actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[3][1] = location;
 
         location = locations[4][1];
         location.setActor(Actor.Jacob);
-//    actorCoordinates = Actor.Jacob.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[4][1] = location;
 
         location = locations[0][1];
         location.setActor(Actor.Sam);
-//    actorCoordinates = Actor.Sam.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[0][1] = location;
 
         location = locations[1][2];
         location.setActor(Actor.Laman);
-//    actorCoordinates = Actor.Laman.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[1][2] = location;
 
         location = locations[1][3];
         location.setActor(Actor.Lemuel);
-//    actorCoordinates = Actor.Lemuel.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[1][3] = location;
 
         location = locations[1][4];
         location.setActor(Actor.Zoram);
-//    actorCoordinates = Actor.Zoram.getCoordinates();
-//    actorCoordinates.x = location.getRow();
-//    actorCoordinates.y = location.getColumn();
         locations[1][4] = location;
         
         location = locations[2][2];
@@ -409,7 +391,7 @@ public class MapControl {
         
         location = locations[3][1];
         location.setActor(Actor.Amalickiah);
-        locations[4][0] = location;
+        locations[3][1] = location;
      
         
         
@@ -495,37 +477,5 @@ public class MapControl {
         
     }
     
-    
-//public static Location moveActor(Player player, int newRow, int newColumn)  
-//        throws MapControlException {
-//       
-//    
-//        if (player == null) {
-//        throw new MapControlException("\nPlayer cannot be null");
-//        }
-//        Game game = new Game();
-//        game = NeverSync.getCurrentGame();
-//        
-//        Map map = game.getMap();
-//        
-//        Location[][] locations = map.getLocations();
-//        
-//        if (newRow < 1 || newRow > map.getRows() || newColumn < 1 
-//                || newColumn > map.getColumns()) {
-//        throw new MapControlException();
-//        }
-//            
-//        int currentRow = map.getCurrentRow();
-//        int currentColumn = map.getCurrentColumn();
-//        
-//        map.getCurrentLocation().setVisited(true);
-//        
-//        Location[][] newLocation = map.setCurrentRow(newRow);
-//        
-//        map.setCurrentRow(newRow);
-//        map.setCurrentColumn(newColumn);
-//        
-//        
-// return newLocation;
-//}
+
 }
