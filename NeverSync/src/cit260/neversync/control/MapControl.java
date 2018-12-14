@@ -88,6 +88,7 @@ public class MapControl {
                 + "Visiting the temple will protect your from the armies of Laman and Lemuel\n\n"
                 + "The Judge has instruction for you as the new Mayor of Aaron\n"
                 + "Visit (JD)\n");
+        location.setLocVisited(false);
         locations[0][0] = location;
 //                  
         location = new Location();
@@ -95,6 +96,7 @@ public class MapControl {
         location.setColumn(1);
         location.setDescription("This is a wheat field.\nPlant the crops for this season, "
                 + "then move to the city square to feed the people.");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(true);
         location.setDisplaySymbol("WH");
@@ -105,6 +107,7 @@ public class MapControl {
         location.setColumn(2);
         location.setDescription("This is the storehouse\nHave a look around and "
                 + "purchase what you need.");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("ST");
@@ -116,6 +119,7 @@ public class MapControl {
         location.setDescription("This is city square.\nPlease feed the people,"
                 + "they are hungry and require 20 bushels each to live the year\n"
                 + "Next, proceed to the church to pay tithes and offerings.\n");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("SQ");
@@ -125,6 +129,7 @@ public class MapControl {
         location.setRow(0);
         location.setColumn(4);
         location.setDescription("This is the medical office");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("MO");
@@ -134,6 +139,7 @@ public class MapControl {
         location.setRow(1);
         location.setColumn(0);
         location.setDescription("This is the river bank");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("RB");
@@ -143,6 +149,7 @@ public class MapControl {
         location.setRow(1);
         location.setColumn(1);
         location.setDescription("This is the hospital");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("HO");
@@ -153,6 +160,7 @@ public class MapControl {
         location.setColumn(2);
         location.setDescription("This is the church.\nPlease pay your tithes and "
                 + "then proceed to one other location\nbefore moving to the storehouse");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("CH");
@@ -162,6 +170,7 @@ public class MapControl {
         location.setRow(1);
         location.setColumn(3);
         location.setDescription("This is the playhouse");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("PL");
@@ -171,6 +180,7 @@ public class MapControl {
         location.setRow(1);
         location.setColumn(4);
         location.setDescription("This is the animal shed");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("AS");
@@ -180,6 +190,7 @@ public class MapControl {
         location.setRow(2);
         location.setColumn(0);
         location.setDescription("This is the farm");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("FR");
@@ -189,6 +200,8 @@ public class MapControl {
         location.setRow(2);
         location.setColumn(1);
         location.setDescription("This is the Animal Doctor");
+        location.setLocVisited(false);
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("AD");
@@ -201,6 +214,7 @@ public class MapControl {
                 + " all knowledge....\nVisit the Farm to unlock the wheat field...\n"
                 + "You will need to purchase an item from the store first for the farmer...\n"
                 + "The farmer needs grain....");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("LB");
@@ -210,6 +224,7 @@ public class MapControl {
         location.setRow(2);
         location.setColumn(3);
         location.setDescription("This is the Law Enforcement");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("LE");
@@ -219,6 +234,7 @@ public class MapControl {
         location.setRow(2);
         location.setColumn(4);
         location.setDescription("This is the Judge");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("JD");
@@ -228,6 +244,7 @@ public class MapControl {
         location.setRow(3);
         location.setColumn(0);
         location.setDescription("This is the Bakey");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("BK");
@@ -237,6 +254,7 @@ public class MapControl {
         location.setRow(3);
         location.setColumn(1);
         location.setDescription("This is the Butcher Shop");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("BX");
@@ -246,6 +264,7 @@ public class MapControl {
         location.setRow(3);
         location.setColumn(2);
         location.setDescription(" This is the Seamstress");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("SM");
@@ -255,6 +274,7 @@ public class MapControl {
         location.setRow(3);
         location.setColumn(3);
         location.setDescription("This is the Boot Maker");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("BM");
@@ -268,6 +288,7 @@ public class MapControl {
                 + "population of the City of Aaron.\n\n"
                 + "The Lord has blessed you by eliminating the armies of Laman and "
                 + "Lemuel");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(true);
         location.setDisplaySymbol("TP");
@@ -277,6 +298,7 @@ public class MapControl {
         location.setRow(4);
         location.setColumn(0);
         location.setDescription("This is the Iron Smith");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("IS");
@@ -286,6 +308,7 @@ public class MapControl {
         location.setRow(4);
         location.setColumn(1);
         location.setDescription("This is the Carpenter");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("CP");
@@ -295,6 +318,7 @@ public class MapControl {
         location.setRow(4);
         location.setColumn(2);
         location.setDescription("This is the Cemetery");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("CY");
@@ -304,6 +328,7 @@ public class MapControl {
         location.setRow(4);
         location.setColumn(3);
         location.setDescription("This is the Grain Mill");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("GM");
@@ -313,6 +338,7 @@ public class MapControl {
         location.setRow(4);
         location.setColumn(4);
         location.setDescription("This is the Orchard");
+        location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
         location.setDisplaySymbol("OR");

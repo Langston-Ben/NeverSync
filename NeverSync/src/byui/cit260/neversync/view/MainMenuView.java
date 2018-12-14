@@ -5,8 +5,11 @@
  */
 package byui.cit260.neversync.view;
 
+import byui.cit260.neversync.exceptions.GameControlException;
 import cit260.neversync.control.GameControl;
 import cit260.neversync.model.Game;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import java.util.Scanner;
 import neversync.NeverSync;
 
@@ -67,7 +70,13 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
         
-        int ret = GameControl.createNewGame(NeverSync.getPlayer());
+        int ret = 0;
+        try {
+            ret = GameControl.createNewGame(NeverSync.getPlayer());
+        } catch (GameControlException ex) {
+            ErrorView.display(this.getClass().getName(), "\n\nGame Could Not Be Startedben"
+                    + "");
+        }
         if (ret == 1) {
             GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();

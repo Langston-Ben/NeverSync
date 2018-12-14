@@ -38,6 +38,14 @@ public class GameMenuView extends View {
 //        boolean c = true;
 //        while (c == true) {
         Game game = NeverSync.getCurrentGame();
+        
+        if (game.isHideReport()) {
+        
+        
+        } else {
+        
+        
+        
         this.console.println("\n\n              Annual Report");
         this.console.printf("%n%-30s%10s", "Item", "Quantity");
         this.console.printf("%n%-30s%10s", "----", "  --------\n\r");
@@ -60,6 +68,7 @@ public class GameMenuView extends View {
                 game.getWheatEatenByRats(), "\n");
         this.console.printf("%n%-30s%10s", "Current Wheat:",
                 game.getWheatInStorage(), "\n");
+        game.setHideReport(true); }
 
 //            c = false;}
         String[] input = new String[1];
@@ -187,9 +196,11 @@ public class GameMenuView extends View {
     }
 
     private void liveYear() {
-
+        
+        
         // this needs some work.....
         Game game = NeverSync.getCurrentGame();
+        game.setHideReport(false);
         double wheatFed = game.getWheatFedToPeople();
         double curPop = game.getCurrentPopulation();
         double mort = 0;

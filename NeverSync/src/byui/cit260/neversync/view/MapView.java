@@ -152,6 +152,9 @@ public class MapView {
             
         }
         
+         if (map.getCurrentLocation().isLocVisited()) {
+        
+        return; }
         
         if ("JD".equals(three)) {
         this.console.println("\n\nThe judge has some knowledge to share, but first "
@@ -221,6 +224,7 @@ public class MapView {
                 this.console.println("Your answer is correct.\n\n"
                         + "You must visit the farmer, he is the keymaker for the gate"
                         + " the has locked you out of the wheat field");
+                map.getCurrentLocation().setLocVisited(true);
                 break;
                 
                 
@@ -246,6 +250,10 @@ public class MapView {
         if (currentActor == null) {
             return;
         }
+        
+        if (map.getCurrentLocation().isLocVisited()) {
+        
+        return; }
 
         if ("Amalickiah".equals(currentActor.getName())) {
             this.console.println("Amalickiah is here. To speak with him "
@@ -314,6 +322,7 @@ public class MapView {
                         + "for the living water that will prolong life......\n\n"
                         + "Beware of secret combinations......\n\n"
                         + "The Animal Doctor has wisdom.....");
+                map.getCurrentLocation().setLocVisited(true);
                 break;
                 
                 
@@ -326,7 +335,10 @@ public class MapView {
         }
         
         
+        if (map.getCurrentLocation().isLocVisited()) {
         
+        return;
+        }
         
          if ("Lehi".equals(currentActor.getName())) {
             this.console.println("Lehi is here. To speak with him "
@@ -394,6 +406,7 @@ public class MapView {
                         + "Lehi's advice is to visit the storehouse\n"
                         + "the purchase an item to defend against emenies in the "
                         + "orchard\n\nSickness will prevail without the right choice");
+                        map.getCurrentLocation().setLocVisited(true);
                 break;
                 
                 

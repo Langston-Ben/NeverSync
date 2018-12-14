@@ -19,12 +19,11 @@ public class Location implements Serializable {
     private int column; 
     private String description;
     public boolean visited;   
+    public boolean locVisited;
     public Scene scene;
     private boolean blocked;
     private String displaySymbol;
-//    private final ArrayList<Actor> actor = new ArrayList<>();
     private Actor actor;
-//    private final ArrayList<InventoryItem> item = new ArrayList<>();
     private InventoryItem item;
     private Map map;
     
@@ -39,6 +38,14 @@ public class Location implements Serializable {
         return map;
     }
 
+    public boolean isLocVisited() {
+        return locVisited;
+    }
+
+    public void setLocVisited(boolean locVisited) {
+        this.locVisited = locVisited;
+    }
+    
     public void setMap(Map map) {
         this.map = map;
     }

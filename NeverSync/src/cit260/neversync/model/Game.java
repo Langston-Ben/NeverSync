@@ -34,6 +34,7 @@ public class Game implements Serializable {
     private double bushelsInTithes;
     private double wheatEatenByRats;
     private double bushelsPerAcreHarvested;
+    private boolean hideReport;
     
     
     private Player player;
@@ -49,6 +50,14 @@ public class Game implements Serializable {
 
     public void setPopulationKilled(int populationKilled) {
         this.populationKilled = populationKilled;
+    }
+
+    public boolean isHideReport() {
+        return hideReport;
+    }
+
+    public void setHideReport(boolean hideReport) {
+        this.hideReport = hideReport;
     }
     
     public double getWheatFedToPeople() {

@@ -71,6 +71,7 @@ public class GameControl implements Serializable {
         game.setBushelsHarvested(3000);
         game.setBushelsInTithes(300);
         game.setWheatEatenByRats(0);
+        game.setHideReport(false);
 //        game.setBushelsPerAcreHarvested();
 
         game.setAcresOwned(1000);
