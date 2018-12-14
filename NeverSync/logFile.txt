@@ -2,4 +2,4 @@
 
 byui.cit260.neversync.view.GameMenuView - 
 
-Invalid Entry
+Location currently blocked, try another location

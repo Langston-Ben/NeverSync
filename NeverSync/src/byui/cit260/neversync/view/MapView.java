@@ -11,7 +11,9 @@ import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import cit260.neversync.model.Question;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import neversync.NeverSync;
@@ -111,6 +113,12 @@ public class MapView {
         
         if ("LB".equals(three)) {
             locations = map.getLocations();
+//            
+            
+            
+            
+            
+            
 
             for (String string : backPack) {
 

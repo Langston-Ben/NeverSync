@@ -5,6 +5,7 @@
  */
 package cit260.neversync.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,9 +21,18 @@ public class Question implements Serializable {
     private String answer3;
     private String answer4;
     private int correctAnswer;
+    private int points;
 
     public Question() {
         
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getQuestionText() {

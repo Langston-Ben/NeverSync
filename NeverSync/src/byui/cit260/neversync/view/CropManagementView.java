@@ -480,6 +480,7 @@ public class CropManagementView extends View {
         this.console.println("\n******************************************************\n"
                 + "The the crop yield this season is " + harvest
                 + " bushels. " + "\n******************************************************\n");
+
     }
 
 }
