@@ -147,9 +147,11 @@ public class MapView {
                     theAnswer = Double.parseDouble(value);
 				   
 					if (question.getCorrectAnswer().equals(value)) {
-					this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+					} else {
+						this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					}
 					
-				   }
 				   
                } catch (NumberFormatException nfe) {
 
