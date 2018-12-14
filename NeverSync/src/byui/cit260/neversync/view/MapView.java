@@ -120,7 +120,7 @@ public class MapView {
                question.setAnswer2("15");
                question.setAnswer3("20");
                question.setAnswer4("11");
-               question.setCorrectAnswer(2);
+               question.setCorrectAnswer("2");
                question.setSetPoints(5);
 
            this.console.println(question.getQuestionText());
@@ -144,8 +144,13 @@ public class MapView {
 
                try {
 
-                   theAnswer = Double.parseDouble(value);
-
+                    theAnswer = Double.parseDouble(value);
+				   
+					if (question.getCorrectAnswer().equals(value)) {
+					this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+					
+				   }
+				   
                } catch (NumberFormatException nfe) {
 
                    ErrorView.display(this.getClass().getName(),

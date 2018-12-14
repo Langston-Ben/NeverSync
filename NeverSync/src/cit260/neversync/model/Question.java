@@ -19,7 +19,7 @@ public class Question implements Serializable {
     private String answer2;
     private String answer3;
     private String answer4;
-    private int correctAnswer;
+    private String correctAnswer;
 	private int setPoints;
 
     public Question() {
@@ -66,11 +66,11 @@ public class Question implements Serializable {
         this.answer4 = answer4;
     }
 
-    public int getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(int correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
@@ -92,7 +92,7 @@ public class Question implements Serializable {
         hash = 83 * hash + Objects.hashCode(this.answer2);
         hash = 83 * hash + Objects.hashCode(this.answer3);
         hash = 83 * hash + Objects.hashCode(this.answer4);
-        hash = 83 * hash + this.correctAnswer;
+        hash = 83 * hash + Objects.hashCode(this.correctAnswer);
         return hash;
     }
 
