@@ -11,7 +11,9 @@ import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import cit260.neversync.model.Question;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import neversync.NeverSync;
@@ -111,7 +113,51 @@ public class MapView {
         
         if ("LB".equals(three)) {
             locations = map.getLocations();
+			Question question = new Question();
 
+			question.setQuestionText("How many books are there in the Book of Mormon?");
+               question.setAnswer1("16");
+               question.setAnswer2("15");
+               question.setAnswer3("20");
+               question.setAnswer4("11");
+               question.setCorrectAnswer(2);
+               question.setSetPoints(5);
+
+           this.console.println(question.getQuestionText());
+           this.console.println("Enter the number of the correct answer: \n"
+           + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+           + question.getAnswer3() + "\n4: " + question.getAnswer4());
+               
+           
+           Double theAnswer = null;
+           
+       while (theAnswer == null) {
+           String value;
+           try {
+               value = this.keyboard.readLine();
+
+               value = value.trim().toUpperCase();
+
+               if (value.equals("Q")) {
+                   return;
+               }
+
+               try {
+
+                   theAnswer = Double.parseDouble(value);
+
+               } catch (NumberFormatException nfe) {
+
+                   ErrorView.display(this.getClass().getName(),
+                           "\n\nYou must enter a numerical value" + nfe);
+                   return;
+
+               }
+           } catch (IOException ex) {
+               ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+           }
+
+       }
             for (String string : backPack) {
 
                 if ("key".equals(string)) {

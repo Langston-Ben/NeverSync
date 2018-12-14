@@ -20,6 +20,7 @@ public class Question implements Serializable {
     private String answer3;
     private String answer4;
     private int correctAnswer;
+	private int setPoints;
 
     public Question() {
         
@@ -73,6 +74,16 @@ public class Question implements Serializable {
         this.correctAnswer = correctAnswer;
     }
 
+	public int getSetPoints() {
+		return setPoints;
+	}
+
+	public void setSetPoints(int setPoints) {
+		this.setPoints = setPoints;
+	}
+
+	
+	
     @Override
     public int hashCode() {
         int hash = 3;
