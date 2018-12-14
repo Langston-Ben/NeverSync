@@ -127,43 +127,41 @@ public class MapView {
            this.console.println("Enter the number of the correct answer: \n"
            + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
            + question.getAnswer3() + "\n4: " + question.getAnswer4());
-               
-           
+       
            Double theAnswer = null;
            
-       while (theAnswer == null) {
-           String value;
-           try {
-               value = this.keyboard.readLine();
+			while (theAnswer == null) {
+				String value;
+				try {
+					value = this.keyboard.readLine();
+					value = value.trim().toUpperCase();
 
-               value = value.trim().toUpperCase();
-
-               if (value.equals("Q")) {
-                   return;
-               }
-
-               try {
-
-                    theAnswer = Double.parseDouble(value);
-				   
-					if (question.getCorrectAnswer().equals(value)) {
-						this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
-					} else {
-						this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					if (value.equals("Q")) {
+						return;
 					}
-					
-				   
-               } catch (NumberFormatException nfe) {
 
-                   ErrorView.display(this.getClass().getName(),
-                           "\n\nYou must enter a numerical value" + nfe);
-                   return;
+					try {
 
-               }
-           } catch (IOException ex) {
-               ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
-           }
+						 theAnswer = Double.parseDouble(value);
 
+						 if (question.getCorrectAnswer().equals(value)) {
+							 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+							 // ADD code to add points for correct answer
+						 } else {
+							 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+						 }
+
+
+					} catch (NumberFormatException nfe) {
+
+						ErrorView.display(this.getClass().getName(),
+								"\n\nYou must enter a numerical value" + nfe);
+						return;
+
+					}
+				} catch (IOException ex) {
+					ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+				}
        }
             for (String string : backPack) {
 
@@ -304,6 +302,496 @@ public class MapView {
 
         String actor = currentActor.getName();
         this.console.println(actor + " is here to help you, do you have a question to ask?");
-    }
+	
+	// Additional Locations with Question Logic
+
+	if ("MO".equals(three)) {
+            locations = map.getLocations();
+			Question question = new Question();
+
+			question.setQuestionText("Not only was I the last Jaredite King, I was the last Jaredite.");
+               question.setAnswer1("Cohor");
+               question.setAnswer2("Corihor");
+               question.setAnswer3("Chemish");
+               question.setAnswer4("Esther");
+               question.setCorrectAnswer("2");
+               question.setSetPoints(5);
+
+           this.console.println(question.getQuestionText());
+           this.console.println("Enter the number of the correct answer: \n"
+           + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+           + question.getAnswer3() + "\n4: " + question.getAnswer4());
+       
+           Double theAnswer = null;
+           
+			while (theAnswer == null) {
+				String value;
+				try {
+					value = this.keyboard.readLine();
+					value = value.trim().toUpperCase();
+
+					if (value.equals("Q")) {
+						return;
+					}
+
+					try {
+
+						 theAnswer = Double.parseDouble(value);
+
+						 if (question.getCorrectAnswer().equals(value)) {
+							 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+							 // ADD code to add points for correct answer
+						 } else {
+							 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+						 }
+
+
+					} catch (NumberFormatException nfe) {
+
+						ErrorView.display(this.getClass().getName(),
+								"\n\nYou must enter a numerical value" + nfe);
+						return;
+
+					}
+				} catch (IOException ex) {
+					ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+				}
+			}
+	}
+	
+	if ("HO".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("How old was Mormon when he took charge of the Nephite armies?");
+		   question.setAnswer1("30");
+		   question.setAnswer2("13");
+		   question.setAnswer3("16");
+		   question.setAnswer4("11");
+		   question.setCorrectAnswer("3");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+	
+		
+	if ("PL".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("In the book of Mosiah, we read about a very righteous king who taught the people from a tower. What was the king's name?");
+		   question.setAnswer1("King Noah");
+		   question.setAnswer2("King Benjamin");
+		   question.setAnswer3("Keing Lehonti");
+		   question.setAnswer4("King Nephi");
+		   question.setCorrectAnswer("2");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+	
+	if ("AS".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("Who was the firstborn son of Jared?");
+		   question.setAnswer1("Jared");
+		   question.setAnswer2("Panchi");
+		   question.setAnswer3("Pagag");
+		   question.setAnswer4("Joshua");
+		   question.setCorrectAnswer("3");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+		
+	if ("FR".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("Who wrote the Title of Liberty?");
+		   question.setAnswer1("Samson");
+		   question.setAnswer2("Jacob");
+		   question.setAnswer3("Samuel");
+		   question.setAnswer4("Moroni");
+		   question.setCorrectAnswer("4");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+		
+	if ("AD".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("I was an exceedingly curious man.");
+		   question.setAnswer1("Hagoth");
+		   question.setAnswer2("Heleman");
+		   question.setAnswer3("Ham");
+		   question.setAnswer4("Helem");
+		   question.setCorrectAnswer("1");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+			
+	if ("LE".equals(three)) {
+		locations = map.getLocations();
+		Question question = new Question();
+
+		question.setQuestionText("This was the son of Zedekiah who was led to the Promised Land.");
+		   question.setAnswer1("Zorom");
+		   question.setAnswer2("Seth");
+		   question.setAnswer3("Malachi");
+		   question.setAnswer4("Mulek");
+		   question.setCorrectAnswer("4");
+		   question.setSetPoints(5);
+
+	   this.console.println(question.getQuestionText());
+	   this.console.println("Enter the number of the correct answer: \n"
+	   + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+	   + question.getAnswer3() + "\n4: " + question.getAnswer4());
+
+	   Double theAnswer = null;
+
+		while (theAnswer == null) {
+			String value;
+			try {
+				value = this.keyboard.readLine();
+				value = value.trim().toUpperCase();
+
+				if (value.equals("Q")) {
+					return;
+				}
+
+				try {
+
+					 theAnswer = Double.parseDouble(value);
+
+					 if (question.getCorrectAnswer().equals(value)) {
+						 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+						 // ADD code to add points for correct answer
+					 } else {
+						 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+					 }
+
+
+				} catch (NumberFormatException nfe) {
+
+					ErrorView.display(this.getClass().getName(),
+							"\n\nYou must enter a numerical value" + nfe);
+					return;
+
+				}
+			} catch (IOException ex) {
+				ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+			}
+		}
+	}
+		
+	if ("JE".equals(three)) {
+            locations = map.getLocations();
+			Question question = new Question();
+
+			question.setQuestionText("This is the 'holy stand'.");
+               question.setAnswer1("Ripliancum");
+               question.setAnswer2("Rameumptom");
+               question.setAnswer3("Roshana");
+               question.setAnswer4("Rabbana");
+               question.setCorrectAnswer("2");
+               question.setSetPoints(5);
+
+           this.console.println(question.getQuestionText());
+           this.console.println("Enter the number of the correct answer: \n"
+           + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+           + question.getAnswer3() + "\n4: " + question.getAnswer4());
+       
+           Double theAnswer = null;
+           
+			while (theAnswer == null) {
+				String value;
+				try {
+					value = this.keyboard.readLine();
+					value = value.trim().toUpperCase();
+
+					if (value.equals("Q")) {
+						return;
+					}
+
+					try {
+
+						 theAnswer = Double.parseDouble(value);
+
+						 if (question.getCorrectAnswer().equals(value)) {
+							 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+							 // ADD code to add points for correct answer
+						 } else {
+							 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+						 }
+
+
+					} catch (NumberFormatException nfe) {
+
+						ErrorView.display(this.getClass().getName(),
+								"\n\nYou must enter a numerical value" + nfe);
+						return;
+
+					}
+				} catch (IOException ex) {
+					ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+				}
+			}
+	}
+	
+	if ("BX".equals(three)) {
+            locations = map.getLocations();
+			Question question = new Question();
+
+			question.setQuestionText("I was Coriantumr's bitter enemy, and the next to last Jaredite.");
+               question.setAnswer1("Shiz");
+               question.setAnswer2("Seezoram");
+               question.setAnswer3("Sam");
+               question.setAnswer4("Shem");
+               question.setCorrectAnswer("1");
+               question.setSetPoints(5);
+
+           this.console.println(question.getQuestionText());
+           this.console.println("Enter the number of the correct answer: \n"
+           + "1: " + question.getAnswer1() + "\n2: " + question.getAnswer2() + "\n3: "
+           + question.getAnswer3() + "\n4: " + question.getAnswer4());
+       
+           Double theAnswer = null;
+           
+			while (theAnswer == null) {
+				String value;
+				try {
+					value = this.keyboard.readLine();
+					value = value.trim().toUpperCase();
+
+					if (value.equals("Q")) {
+						return;
+					}
+
+					try {
+
+						 theAnswer = Double.parseDouble(value);
+
+						 if (question.getCorrectAnswer().equals(value)) {
+							 this.console.println("Well done! You answered the question correctly and will receive 5 bonus points!\n");
+							 // ADD code to add points for correct answer
+						 } else {
+							 this.console.println("Sorry, your answer was not correct. Better luck next time! \n");
+						 }
+
+
+					} catch (NumberFormatException nfe) {
+
+						ErrorView.display(this.getClass().getName(),
+								"\n\nYou must enter a numerical value" + nfe);
+						return;
+
+					}
+				} catch (IOException ex) {
+					ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+				}
+			}
+	}
+		
+	}
 
 }
