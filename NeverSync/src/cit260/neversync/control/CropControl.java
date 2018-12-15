@@ -54,7 +54,7 @@ public class CropControl {
         if (!"CH".equals(loc)) {
                 throw new CropControlException("\n\nYou must be at the Church to "
                         + "pay tithing...!!\n"
-                        + "You may want to visit the Temple first...."
+                        + "You may want to visit the Temple first....\n"
                         + "Use the Map the Change locations.");
             }
         
@@ -100,10 +100,11 @@ public class CropControl {
         }
 
         // grow the population
-        double popGrowth = rand.nextInt((20 - 1) + 1) + 1;
+        int popGrowth = rand.nextInt((20 - 1) + 1) + 1;
+        
         double curPop = game.getCurrentPopulation();
 
-        popGrowth = ((curPop * popGrowth) / 100);
+        popGrowth = (int) ((curPop * popGrowth) / 100);
         double newPop = (curPop + popGrowth);
 
         game.setNewPopulation((int) popGrowth);
@@ -197,6 +198,12 @@ public class CropControl {
             int killed = game.getPopulationKilled();
             
             passed = ((peopleFed - pop) * -1);
+            
+            if (passed < 0) {
+            passed = 0;
+            }
+            
+            
             double newPop = (pop - passed - killed);
             
 //        if (newPop < (pop * .5)) { 
@@ -214,7 +221,7 @@ public class CropControl {
 //                 mort = true;
             return year;
             }
-            if (peopleFed < (pop * .5)) {
+            if (peopleFed < (50)) {
             throw new CropControlException("Half your population has died!\n" +
                     
 " ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +

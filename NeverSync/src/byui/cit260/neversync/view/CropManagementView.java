@@ -457,12 +457,12 @@ public class CropManagementView extends View {
                 } catch (NumberFormatException nfe) {
 
                     ErrorView.display(this.getClass().getName(),
-                            "\n\nYou must enter a numerical value" + nfe);
+                            "\n\nYou must enter a numerical value");
                     return;
 
                 }
             } catch (IOException ex) {
-                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex);
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: ");
             }
 
         }

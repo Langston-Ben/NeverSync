@@ -80,14 +80,15 @@ public class MapControl {
         location.setDisplaySymbol("RV");
         location.setDescription("This is a river Aaron.\nThis is your starting"
                 + " point in the game.\nPlease select your next location carefully!\n\n"
-                + "You should move to the wheat field to plant the crops this season.\n\n"
+                + "You should move to the wheat field (WH) to plant the crops this season,"
+                + " but it must be unlocked first...\n\n"
                 + "Amalickiah is at the butcher shop (BX) with some advice for you...\n\n"
                 + "You may want to purchase an item at the store before going to the location\n"
                 + "he tells you about.\n\n"
-                + "The Temple is the key to safety...\n"
+                + "The Temple is the key to safety (TP)...\n"
                 + "Visiting the temple will protect your from the armies of Laman and Lemuel\n\n"
-                + "The Judge has instruction for you as the new Mayor of Aaron\n"
-                + "Visit (JD)\n");
+                + "The Judge (JD) has instruction for you as the new Mayor of Aaron\n"
+                );
         location.setLocVisited(false);
         locations[0][0] = location;
 //                  
@@ -95,7 +96,7 @@ public class MapControl {
         location.setRow(0);
         location.setColumn(1);
         location.setDescription("This is a wheat field.\nPlant the crops for this season, "
-                + "then move to the city square to feed the people.");
+                + "then move to the city square (SQ) to feed the people.");
         location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(true);
@@ -118,7 +119,8 @@ public class MapControl {
         location.setColumn(3);
         location.setDescription("This is city square.\nPlease feed the people,"
                 + "they are hungry and require 20 bushels each to live the year\n"
-                + "Next, proceed to the church to pay tithes and offerings.\n");
+                + "Next, proceed to the church (CH) to pay tithes and offerings.\n"
+                + "Beware of the Lamanites");
         location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
@@ -159,7 +161,7 @@ public class MapControl {
         location.setRow(1);
         location.setColumn(2);
         location.setDescription("This is the church.\nPlease pay your tithes and "
-                + "then proceed to one other location\nbefore moving to the storehouse");
+                + "move to the storehouse to view the annual report...\n\n");
         location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
@@ -211,9 +213,9 @@ public class MapControl {
         location.setRow(2);
         location.setColumn(2);
         location.setDescription("This is the Library\n\nHere you find the key to"
-                + " all knowledge....\nVisit the Farm to unlock the wheat field...\n"
-                + "You will need to purchase an item from the store first for the farmer...\n"
-                + "The farmer needs grain....");
+                + " all knowledge....\nVisit the Farm (FR) to unlock the wheat field...\n"
+                + "You may need to purchase an item from the store (ST) first for the farmer...\n"
+                );
         location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(false);
@@ -287,7 +289,7 @@ public class MapControl {
                 + "Temple attendance can bring miracles into the lives of the "
                 + "population of the City of Aaron.\n\n"
                 + "The Lord has blessed you by eliminating the armies of Laman and "
-                + "Lemuel");
+                + "Lemuel\n\n");
         location.setLocVisited(false);
         location.setVisited(false);
         location.setBlocked(true);

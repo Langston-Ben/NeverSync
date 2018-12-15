@@ -132,11 +132,11 @@ public class MapView {
         if ("FR".equals(three)) {
         this.console.println("\n\nYou have arrived at the farm.\nThe farmer is happy"
                 + " to see you.");
+        
+        if (!game.isHasItem()) {
         this.console.println("The farmer needs grain...\nVisit the store"
                         + " and bring the grain back for access to the wheat field");
-        
-   
-            
+        }
             backPack = game.getPlayer().getBackPack();
             
             for (String string : backPack) {
@@ -147,6 +147,7 @@ public class MapView {
                             + "The people of the City of Aaron are grateful\n\n");
                     return;
                 }
+                
                
             }
             

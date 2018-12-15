@@ -32,6 +32,7 @@ public class InventoryItem implements Serializable {
     private String animalType;
     private int quantityInStock;
     private int age;
+    
 
     public int getRequiredAmount() {
         return requiredAmount;

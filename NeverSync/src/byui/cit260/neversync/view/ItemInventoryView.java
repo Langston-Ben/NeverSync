@@ -40,6 +40,7 @@ public class ItemInventoryView {
 //        game.setInventory(GameControl.createItems());
         Game game = NeverSync.getCurrentGame();
         game.getInventory();
+        
         String loc = NeverSync.getCurrentGame().getMap().getCurrentLocation().getDisplaySymbol();
             
             if (!"ST".equals(loc)) {
@@ -151,6 +152,17 @@ public class ItemInventoryView {
                         ItemType.setItemType(one);
                         ItemType.setQuantity((int) quantityToBuy);
                         ItemType.setQuantityInStock((int) remaining);
+                        double curWt = game.getWheatInStorage();
+                        double newWt = curWt - purchase;
+                        game.setWheatInStorage(newWt);
+                        
+                        this.console.println("The wheat remaining in storage after the purchase is: " 
+                        + newWt);
+                        
+                        if ("grain".equals(two)) {
+                        game.setHasItem(true);
+                        
+                        }
                         
                         // save the item to the players backpack
                         

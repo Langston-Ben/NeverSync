@@ -35,6 +35,7 @@ public class Game implements Serializable {
     private double wheatEatenByRats;
     private double bushelsPerAcreHarvested;
     private boolean hideReport;
+    private boolean hasItem;
     
     
     private Player player;
@@ -42,6 +43,14 @@ public class Game implements Serializable {
     private ArrayList<Actor> Actors = new ArrayList<>();
 
     public Game() {
+    }
+
+    public boolean isHasItem() {
+        return hasItem;
+    }
+
+    public void setHasItem(boolean hasItem) {
+        this.hasItem = hasItem;
     }
 
     public int getPopulationKilled() {
