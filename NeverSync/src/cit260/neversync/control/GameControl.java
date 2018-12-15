@@ -9,6 +9,8 @@ import byui.cit260.neversync.exceptions.GameControlException;
 import byui.cit260.neversync.exceptions.MapControlException;
 import byui.cit260.neversync.view.ErrorView;
 import cit260.neversync.model.Actor;
+import cit260.neversync.model.Animals;
+import cit260.neversync.model.AnimalList;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
@@ -212,6 +214,64 @@ public class GameControl implements Serializable {
         items[ItemType.antiplague.ordinal()] = item;
 
         return items;
+
+    }
+	
+	public static AnimalList[] createAnimalList() {
+
+        AnimalList[] anims = new AnimalList[7];
+
+        AnimalList animal = new AnimalList();
+        animal.setAnimalType("dog");
+        animal.setQuantityInStock(10);
+        animal.setRequiredAmount(1);
+        animal.setPricePerUnit(1.50);
+        anims[Animals.dog.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("hedgehog");
+        animal.setQuantityInStock(10);
+        animal.setRequiredAmount(1);
+        animal.setPricePerUnit(5.00);
+        anims[Animals.hedgehog.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("horse");
+        animal.setQuantityInStock(10);
+        animal.setRequiredAmount(1);
+        animal.setPricePerUnit(10.00);
+        anims[Animals.horse.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("lama");
+        animal.setQuantityInStock(100);
+        animal.setRequiredAmount(5);
+        animal.setPricePerUnit(2.00);
+        anims[Animals.lama.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("mule");
+        animal.setQuantityInStock(20);
+        animal.setRequiredAmount(1);
+        animal.setPricePerUnit(2.50);
+        anims[Animals.mule.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("owl");
+        animal.setQuantityInStock(100);
+        animal.setRequiredAmount(1);
+        animal.setPricePerUnit(1.00);
+        anims[Animals.owl.ordinal()] = animal;
+
+        animal = new AnimalList();
+        animal.setAnimalType("oxen");
+        animal.setQuantityInStock(200);
+        animal.setRequiredAmount(2);
+        animal.setPricePerUnit(2.00);
+        anims[Animals.oxen.ordinal()] = animal;
+
+       
+        return anims;
 
     }
 

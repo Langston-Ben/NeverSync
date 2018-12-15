@@ -19,6 +19,7 @@ public class Game implements Serializable {
     // class instance variables
     private String thePlayer;
     private InventoryItem[] inventory;
+	private AnimalList[] anims;
     private Map map;
     private String theStorehouse;
     private double currentPopulation;
@@ -214,11 +215,22 @@ public class Game implements Serializable {
         this.Actors = Actors;
     }
 
+	public AnimalList[] getAnims() {
+		return anims;
+	}
+
+	public void setAnims(AnimalList[] anims) {
+		this.anims = anims;
+	}
+
+	
+	
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 23 * hash + Objects.hashCode(this.thePlayer);
         hash = 23 * hash + Arrays.deepHashCode(this.inventory);
+		hash = 23 * hash + Arrays.deepHashCode(this.anims);
         hash = 23 * hash + Objects.hashCode(this.map);
         hash = 23 * hash + Objects.hashCode(this.theStorehouse);
         hash = 23 * hash + (int) (Double.doubleToLongBits(this.currentPopulation) ^ (Double.doubleToLongBits(this.currentPopulation) >>> 32));
@@ -227,6 +239,7 @@ public class Game implements Serializable {
         hash = 23 * hash + Objects.hashCode(this.player);
         hash = 23 * hash + Objects.hashCode(this.actor);
         hash = 23 * hash + Objects.hashCode(this.Actors);
+		
         return hash;
     }
 
@@ -258,6 +271,9 @@ public class Game implements Serializable {
             return false;
         }
         if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+		if (!Arrays.deepEquals(this.anims, other.anims)) {
             return false;
         }
         if (!Objects.equals(this.map, other.map)) {

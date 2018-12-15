@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cit260.neversync.model;
+package cit260.neversync.control;
 
 /**
  *
- * @author benjaminlangston
+ * @author jeffledbetter
  */
-public enum Animals {
-    
-    dog,
-	hedgehog,
-	horse,
-	lama,
-    mule,
-	owl,
-	oxen;
+public class AnimalsList {
+	
 }

@@ -11,6 +11,8 @@ import cit260.neversync.model.Map;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Location;
+import cit260.neversync.model.Animals;
+import cit260.neversync.model.AnimalList;
 import java.io.PrintWriter;
 import neversync.NeverSync;
 import java.util.ArrayList;
@@ -91,8 +93,22 @@ public class ReportsMenuView extends View {
     }
 
     private void animalsReport() {
-        this.console.println("\nAnimals Report:");
-        this.console.println("\n");
+        Game game = NeverSync.getCurrentGame();
+        game.getAnims();
+        AnimalList[] listOfAnimals = game.getAnims();
+        
+            this.console.println("\n\n            Animal Report"          );
+            this.console.printf("%n%-20s%10s%10s", "Description", "Quantity", "Price");
+            this.console.printf("%n%-20s%10s%10s", "-----------", "--------", "-----");
+            for (AnimalList animal : listOfAnimals) {
+                this.console.printf("%n%-20s%7d%13.2f", animal.getAnimalType().toUpperCase()
+                                             , animal.getQuantityInStock()
+                                             , animal.getPricePerUnit());
+          
+            }
+        
+        AnimalsReportView animalsReportView = new AnimalsReportView();
+        animalsReportView.display();
     }
 
     private void toolsReport() {

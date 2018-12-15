@@ -10,6 +10,7 @@ import byui.cit260.neversync.view.ActorsReportView;
 import byui.cit260.neversync.view.ErrorView;
 import neversync.NeverSync;
 import cit260.neversync.model.Actor;
+import cit260.neversync.model.AnimalList;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.InventoryItem;
 import cit260.neversync.model.ItemType;
@@ -119,5 +120,38 @@ public class ReportsControl {
         
         
     }
+	
+	public static void printAnimalsReport(String outputLocation) throws ReportsControlException {
+//        
+
+		Game game = NeverSync.getCurrentGame();
+        game.getAnims();
+        AnimalList[] listOfAnimals = game.getAnims();
+
+        if (outputLocation == null) {
+            throw new ReportsControlException("You must enter a value");
+
+        }
+
+        try (PrintWriter out = new PrintWriter(outputLocation)) {
+
+            out.println("\n\n            Animals Report");
+            out.printf("%n%-20s%10s%10s", "Description", "Quantity", "Price");
+            out.printf("%n%-20s%10s%10s", "-----------", "--------", "-----");
+            for (AnimalList animal : listOfAnimals) {
+                out.printf("%n%-20s%7d%13.2f", animal.getAnimalType().toUpperCase(),
+                         animal.getQuantityInStock(),
+                         animal.getPricePerUnit());
+
+            }
+            out.flush();
+        } catch (IOException ex) {
+            ErrorView.display("Error:", ex.getMessage());
+        }
+        
+        
+    }
+	
+	
 
 }
