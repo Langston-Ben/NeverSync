@@ -556,8 +556,8 @@ public class MapView {
             return;
         }
 
-        String actor = currentActor.getName();
-        this.console.println(actor + " is here to help you, do you have a question to ask?");
+//        String actor = currentActor.getName();
+//        this.console.println(actor + " is here to help you, do you have a question to ask?");
     }
 
 }

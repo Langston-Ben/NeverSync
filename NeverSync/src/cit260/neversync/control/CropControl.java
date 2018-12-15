@@ -217,11 +217,8 @@ public class CropControl {
 
             game.setYear(year);
             
-            if (year == 4 ){
-//                 mort = true;
-            return year;
-            }
-            if (peopleFed < (50)) {
+            
+            if (newPop < (50)) {
             throw new CropControlException("Half your population has died!\n" +
                     
 " ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +
@@ -238,7 +235,13 @@ public class CropControl {
 "╚██████╔╝ ╚████╔╝ ███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗\n" +
 " ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n" +
 "                                                       \n");
+            
+            
         }
+            if (year == 4 ){
+//                 mort = true;
+            return year;
+            }
              return 5;
     }
             

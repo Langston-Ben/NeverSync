@@ -251,20 +251,24 @@ public class GameMenuView extends View {
                     + " ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
                     + "                                                                            \n\n");
             this.console.println("You have finished the game. Your score is: \n" + bonus);
-            PrintWriter out = null;
-            try {
-                out = new PrintWriter("highscore.txt");
-
-                out.printf("%n%-20s", "High Score");
-                out.printf("%n%-20s", "-----------");
-
-                out.printf("%n%-20s", bonus);
-
-                // need to fix or delete this....
-            } catch (FileNotFoundException ex) {
-                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
-                return;
-            }
+            
+            
+//            PrintWriter out = null;
+//            String score = "highscore.txt";
+//            try {
+//                out = new PrintWriter(score); 
+//                out.println("\n\n            Score Report");
+//                out.printf("%n%-20s", "High Score");
+//                out.printf("%n%-20s", "-----------");
+//
+//                out.printf("%n%-13.2f", bonus);
+//                
+//           
+//                // need to fix or delete this....
+//            } catch (FileNotFoundException ex) {
+//                ErrorView.display(this.getClass().getName(), "\n\nInvalid Entry");
+//                return;
+//            }
             
 
         this.console.println("\n\n         This is the final Annual Report");
