@@ -219,7 +219,7 @@ public class CropControl {
             
             
             if (newPop < (50)) {
-            throw new CropControlException("Half your population has died!\n" +
+            throw new CropControlException("Half your population has died!\n\n\n" +
                     
 " ██████╗  █████╗ ███╗   ███╗███████╗                   \n" +
 "██╔════╝ ██╔══██╗████╗ ████║██╔════╝                   \n" +

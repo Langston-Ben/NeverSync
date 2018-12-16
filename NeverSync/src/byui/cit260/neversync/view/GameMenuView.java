@@ -10,11 +10,14 @@ import byui.cit260.neversync.exceptions.CropControlException;
 import byui.cit260.neversync.exceptions.GameControlException;
 import byui.cit260.neversync.exceptions.MapControlException;
 import cit260.neversync.control.CropControl;
+import cit260.neversync.control.GameControl;
 import cit260.neversync.control.MapControl;
 import cit260.neversync.model.Actor;
 import cit260.neversync.model.Game;
 import cit260.neversync.model.Location;
 import cit260.neversync.model.Map;
+import cit260.neversync.model.Player;
+import cit260.neversync.model.Scores;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,19 +37,22 @@ public class GameMenuView extends View {
     @Override
 
     public String[] getInputs() {
-
-//        boolean c = true;
-//        while (c == true) {
         Game game = NeverSync.getCurrentGame();
         
         if (game.isHideReport()) {
         
-        
         } else {
         
+            try {
+           int two = GameControl.getScore();                  
+        this.console.println("\n\nCurrent High Score is "
+                + two + ".");
+        this.console.println("Can You Top It?\n");
+        } catch (GameControlException ex) {
+        ErrorView.display(this.getClass().getName(), "No Current High Score...");
+        }   
         
-        
-        this.console.println("\n\n              Annual Report");
+        this.console.println("\n              Annual Report");
         this.console.printf("%n%-30s%10s", "Item", "Quantity");
         this.console.printf("%n%-30s%10s", "----", "  --------\n\r");
 
@@ -68,6 +74,7 @@ public class GameMenuView extends View {
                 game.getWheatEatenByRats(), "\n");
         this.console.printf("%n%-30s%10s", "Current Wheat:",
                 game.getWheatInStorage(), "\n");
+        
         game.setHideReport(true); }
 
 //            c = false;}
@@ -85,6 +92,7 @@ public class GameMenuView extends View {
                 + "L - Live the Year\n"
                 + "R - Reports Menu\n"
                 + "S - Save Game\n"
+                + "H - Reset High Score\n"        
                 + "Q - Return to the main menu\n");
 
         String helpMenuSelection = this.getInput("\nPlease enter your selection: ");
@@ -124,6 +132,9 @@ public class GameMenuView extends View {
                 break;
             case "S":
                 saveGame();
+                break;
+            case "H":
+                resetHighScore();
                 break;
             case "Q":
                 return true;
@@ -250,7 +261,37 @@ public class GameMenuView extends View {
                     + "╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║██╗██╗██╗██╗██╗██╗██╗██╗██╗\n"
                     + " ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝\n"
                     + "                                                                            \n\n");
-            this.console.println("You have finished the game. Your score is: \n" + bonus);
+            this.console.println("You have finished the game. Your score is: " + bonus + "\n");
+            
+            
+            int score = 0;
+            try {
+                score = GameControl.getScore();
+            } catch (GameControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            
+            
+            String playerName  = game.getPlayer().getName();
+           
+            
+            if (score < bonus) {
+                
+            this.console.println(playerName + " you have the new high score of " + bonus);
+            
+            Scores nScore = new Scores();
+            
+            nScore.setHighScore((int) bonus);
+            nScore.setPlayer(playerName);
+            
+                try {
+                    GameControl.saveHighScore((int) bonus);
+                } catch (GameControlException ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+            
+            }
+            
             
             
 //            PrintWriter out = null;
@@ -363,6 +404,17 @@ public class GameMenuView extends View {
         ItemInventoryView itemInventoryView = new ItemInventoryView();
         itemInventoryView.displayItemInventoryView();
 
+    }
+
+    private void resetHighScore() {
+        
+        try {
+            GameControl.resetHighScore(0);
+            this.console.println("\n\nThe High Score Has Been Reset");
+        } catch (GameControlException ex) {
+            ErrorView.display(this.getClass().getName(), "\n\nCannot Reset the High "
+                    + "Score");
+        }
     }
 
 }

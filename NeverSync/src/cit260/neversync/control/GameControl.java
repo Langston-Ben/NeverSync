@@ -15,9 +15,12 @@ import cit260.neversync.model.ItemType;
 import cit260.neversync.model.Map;
 import cit260.neversync.model.Player;
 import cit260.neversync.model.Question;
+import cit260.neversync.model.Scores;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.ObjectOutputStream;
+import java.io.DataOutputStream;
+import java.io.DataInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -50,13 +53,14 @@ public class GameControl implements Serializable {
     public GameControl() {
     }
 
-    public static int createNewGame(Player player) throws GameControlException{
+    public static int createNewGame(Player player) throws GameControlException {
         // Check for invalid inputs
         if (player == null) {
             return -1;
         }
 
         Game game = new Game();
+        Scores score = new Scores();
         game.setPlayer(player);
         NeverSync.setCurrentGame(game);
         game.setPlayer(player);
@@ -73,6 +77,9 @@ public class GameControl implements Serializable {
         game.setWheatEatenByRats(0);
         game.setHideReport(false);
         game.setHasItem(false);
+        game.getScore();
+        score.getNewScore();
+        score.getHighScore();
 //        game.setBushelsPerAcreHarvested();
 
         game.setAcresOwned(1000);
@@ -204,7 +211,7 @@ public class GameControl implements Serializable {
         item.setRequiredAmount(5);
         item.setPricePerUnit(1.50);
         items[ItemType.nails.ordinal()] = item;
-        
+
         item = new InventoryItem();
         item.setItemType("antiplague");
         item.setQuantityInStock(1);
@@ -288,6 +295,77 @@ public class GameControl implements Serializable {
         }
 
         return game;
+    }
+
+    public static void saveHighScore(int score)
+            throws GameControlException {
+        if (score == 0) {
+            throw new GameControlException(
+                    "Error saving score");
+        }
+
+        try (DataOutputStream out
+                = new DataOutputStream(new FileOutputStream("gameScore.dat"))) {
+//                = new IntegerOutputStream(new FileOutputStream("gameScore.dat"))) {
+
+//            out.writeObject(player);
+//            out.writeObject(score);
+            out.writeInt(score);
+
+        } catch (Exception ex) {
+
+            throw new GameControlException("Game Could Not Be Saved. "
+                    + "Error: " + ex.getMessage());
+        }
+
+    }
+
+    public static int getScore() throws GameControlException {
+
+        Scores score = new Scores();
+        int newScore = 0;
+//        String player = null;
+//        Player player = new Player();
+
+        try (FileInputStream in = new FileInputStream("gameScore.dat")) {
+
+            DataInputStream saved = new DataInputStream(in);
+
+            newScore = (int) saved.readInt();
+//             System.out.println(newScore);
+
+//            player = (String) saved.readObject();
+        } catch (Exception e) {
+            throw new GameControlException(
+                    e.getMessage());
+        }
+
+        {
+
+            score.setHighScore(newScore);
+
+        }
+
+        return newScore;
+    }
+
+    public static void resetHighScore(int score)
+            throws GameControlException {
+        if (score < 0) {
+            throw new GameControlException(
+                    "Error saving score");
+        }
+
+        try (DataOutputStream out
+                = new DataOutputStream(new FileOutputStream("gameScore.dat"))) {
+            out.writeInt(score);
+
+        } catch (Exception ex) {
+
+            throw new GameControlException("Game Could Not Be Saved. "
+                    + "Error: " + ex.getMessage());
+        }
+
     }
 
 }
